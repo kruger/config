@@ -1,0 +1,1 @@
+setenv PATH ${PWD}:${PATH}
