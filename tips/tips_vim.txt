@@ -1,0 +1,623 @@
+*tips_vim.txt*   
+vim:foldmethod=marker:
+------------------------------------------------------------------------------
+# Absolutely essential/*{{{*/
+------------------------------------------------------------------------------
+* # g* g#          : find word under cursor (forwards/backwards)
+%                   : match brackets {}[]()
+matchit.vim      : % now matches tags <tr><td><script> etc
+<C-N> <C-P>   : word completion in insert mode
+<C-X><C-L>    : Line complete SUPER USEFUL
+/<C-R><C-W>   : Pull <cword> onto search/command line
+:set ignorecase # you nearly always want this
+:h slash<C-D> : type control-D and get a list all help topics containing
+                   slash (plus use TAB for Help completion)
+/*}}}*/
+------------------------------------------------------------------------------
+# Spelling /*{{{*/
+------------------------------------------------------------------------------
+
+:set spell
+:set nospell
+z=		Suggest spelling fixes
+zg		Add word to dictionary
+zw		Add word to list of wrong words
+]s		Move to next misspelled words
+[s		Move to next misspelled words backwards
+
+/*}}}*/
+------------------------------------------------------------------------------
+# Markers & moving about/*{{{*/
+'.               : jump to last modification line (SUPER)
+`.               : jump to exact spot in last modification line
+`` 		     : jumps back and forth, between two points.
+<C-O>            : retrace your movements in file (old)
+<C-I>            : retrace your movements in file (new) (Alternatively: <TAB>)
+:ju(mps)
+:help jump-motions
+:history          : list of all your commands
+Special marks include:
+	'	The cursor position before doing a jump
+	"	The cursor position when last editing the file
+	[	Start of the last change
+	]	End of the last change/*}}}*/
+------------------------------------------------------------------------------
+   Using marks/*{{{*/
+   References:
+   THis is my modified version of something I originally got at:
+   updated version at http://www.rayninfo.co.uk/vimtips.html
+   When you make a jump to a position with the "G" command, Vim remembers the
+   position from before this jump.  This position is called a mark.  To go back
+   where you came from, use this command: >
+   	``
+   The `` command jumps back and forth, between two points.
+   The CTRL-O command jumps to older positions (Hint: O for older).  
+   The CTRL-I then jumps back to newer positions (Hint: I is just next 
+   	to O on the keyboard). 
+   
+   You can use this command to get a list of marks: >
+   
+   	:marks
+   
+   You will notice a few special marks.  These include:
+   
+   	'	The cursor position before doing a jump
+   	"	The cursor position when last editing the file
+   	[	Start of the last change
+   	]	End of the last change
+   
+   PREDEFINED MARKS
+   
+   After jumping to another file, you can use two predefined marks which are very
+   useful: >
+   
+   	`"
+   
+   This takes you to the position where the cursor was when you left the file.
+   Another mark that is remembered is the position where you made the last
+   change: >
+   
+   	`.
+   
+   Suppose you are editing the file "one.txt".  Somewhere halfway the file you
+   use "x" to delete a character.  Then you go to the last line with "G" and
+   write the file with ":w".  You edit several other files, and then use ":edit
+   one.txt" to come back to "one.txt".  If you now use `" Vim jumps to the last
+   line of the file.  Using `. takes you to the position where you deleted the
+   character.  Even when you move around in the file `" and `. will take you to
+   the remembered position.  At least until you make another change or leave the
+   file.
+   /*}}}*/
+----------------------------------------------------------------------
+# Exploring/*{{{*/
+:Ex                             : file explorer note capital Ex
+\be                             : builtin buffer explorer
+:ls                             : list of buffers(eg following)
+:cd ..                          : move to parent directory/*}}}*/
+------------------------------------------------------------------------------
+# Great/*{{{*/
+guu                             : lowercase line
+gUU                             : uppercase line
+gUU                             : swap case
+gf                              : open file name under cursor (SUPER)
+ga                              : display hex,ascii value of character under cursor
+ggg?G                           : rot13 whole file (or ggVGg?)
+CTRL-A,CTRL-X                   : increment,decerement number under cursor/*}}}*/
+------------------------------------------------------------------------------
+# Abbreviations & maps/*{{{*/
+:ab a           : list of abbreviations beginning a
+:map ,            : list of maps beginning ,/*}}}*/
+------------------------------------------------------------------------------
+# Formatting text/*{{{*/
+gq<CR>
+gqap  (a is motion p paragraph (visual mode))/*}}}*/
+------------------------------------------------------------------------------
+# Recording (BEST TIP of ALL)/*{{{*/
+qq  # record to q
+your commands
+q
+@q to execute
+@@ to Repeat
+# editing a register/recording
+"ap
+<you can now see register contents, edit as required>
+"add
+@a/*}}}*/
+------------------------------------------------------------------------------
+# Registers/*{{{*/
+:reg             : display contents of all registers
+# appending to registers (use CAPITAL)
+# yank 5 lines into "a" then add a further 5
+"a5yy
+10j
+"A5yy/*}}}*/
+------------------------------------------------------------------------------
+   Using registers/*{{{*/
+   
+   When you want to copy several pieces of text from one file to another, having
+   to switch between the files and writing the target file takes a lot of time.
+   To avoid this, copy each piece of text to its own register.
+      A register is a place where Vim stores text.  Here we will use the
+   registers named a to z (later you will find out there are others).  Let's copy
+   a sentence to the f register (f for First): >
+   
+   	"fyas
+   
+   The "yas" command yanks a sentence like before.  It's the "f that tells Vim
+   the text should be place in the f register.  This must come just before the
+   yank command.
+      Now yank three whole lines to the l register (l for line): >
+   
+   	"l3Y
+   
+   The count could be before the "l just as well.  To yank a block of text to the
+   b (for block) register: >
+   
+   	CTRL-Vjjww"by
+   
+   Notice that the register specification "b is just before the "y" command.
+   This is required.  If you would have put it before the "w" command, it would
+   not have worked.
+      Now you have three pieces of text in the f, l and b registers.  Edit
+   another file, move around and place the text where you want it: >
+   
+   	"fp
+   
+   Again, the register specification "f comes before the "p" command.
+      You can put the registers in any order.  And the text stays in the register
+   until you yank something else into it.  Thus you can put it as many times as
+   you like.
+   
+   When you delete text, you can also specify a register.  Use this to move
+   several pieces of text around.  For example, to delete-a-word and write it in
+   the w register: >
+   
+   	"wdaw
+   
+   Again, the register specification comes before the delete command "d"./*}}}*/
+----------------------------------------------------------------------
+# Paste register */*{{{*/
+:redir @*   : redirect commands to paste
+:redir END
+"*yy        : yank to paste
+"*p         : insert paste buffer/*}}}*/
+------------------------------------------------------------------------------
+# Tabs */*{{{*/
+Ways of expanding tab:
+:retab
+1!Gexpand'.
+Useful mapping:
+map @T	:retab^M
+
+/*}}}*/
+------------------------------------------------------------------------------
+# Shifting code and tabs */*{{{*/
+Parameters controlling moving code:
+ :set expandtab
+ :set tabstop=4 
+ :set shiftwidth=2
+
+Shifting code:
+
+Highlight a block of code (V followed by cursor movement commands) and then
+change its indentation with > or <.
+
+Note that you can hit '<' or '>' *followed* by a motion command as well.
+So
+   <G 	shifts the whole file to the left by the shiftwidth
+   <%		shifts until the matching brace/paren/etc, up *or* down
+   <}		shifts a paragraph forward (use { for backward)
+   <<		shifts the current line
+
+/*}}}*/
+------------------------------------------------------------------------------
+# Get output from other commands/*{{{*/
+:r!ls            : reads in output of ls
+!!date           : same thing
+:%!sort -u       : use an external program to filter content/*}}}*/
+------------------------------------------------------------------------------
+# Multiple Files Management (see mappings as well)/*{{{*/
+:wn              : write file and move to next (SUPER)
+:bd              : remove file from buffer list (SUPER)
+:sav php.html    : Save current file as php.html and "move" to php.html
+:sp fred.txt     : open fred.txt into a split
+:e!              : return to unmodified file
+:e #                 : edit alternative file
+:e %
+:rew                : rewwind to first file in ARGS
+:brew
+:b <TAB> lets you cycle through all of the buffers.
+:set aw          :automatically save buffer before going to next/*}}}*/
+------------------------------------------------------------------------------
+ : show lines matching word under cursor <cword>  [I /*{{{*/
+
+Actually, the [I is even more powerfull than that. It does not search
+only current buffer, but also included files, where meaning of
+'included' depends on settings, but defaults are set for C (i.e.,
+#included files, searched in ., /usr/include and maybe elsewhere). It is
+really good thing. 
+
+o jump to those results, just use
+
+# to go to the first match
+[ CNTR-I  
+
+# to go to the others.
+] CTRL-I
+
+# This follows the C-I/C-O jumping patterns.   Also, try prepending the
+# windowing operator (CTRL-W) and a new window will open into the
+# appropriate file./*}}}*/
+------------------------------------------------------------------------------
+#Conventional Shifting/*{{{*/
+:'a,'b>>
+# visual shifting (builtin-repeat)
+:vnoremap < <gv
+:vnoremap > >gv/*}}}*/
+------------------------------------------------------------------------------
+# searching/*{{{*/
+/^joe.*fred.*bill/ : normal
+/^[A-J]\+/         : search for lines beginning A-J followed by at leat 1 A-J
+/forum\(\_.\)*pent   search over possible multiple lines
+/fred\_s*joe/i    : any whitespace including newline
+/fred\|joe        : Search for FRED OR JOE/*}}}*/
+------------------------------------------------------------------------------
+#substitution/*{{{*/
+:%s/fred/joe/igc            : general substitute command
+:%s/\r//g                   : Delete DOS returns ^M
+:'a,'bg/fred/s/dick/joe/gc  : VERY USEFUL
+:s/\(.*\):\(.*\)/\2 :  \1/  : reverse fields separated by :
+:%s/^.\{-}pdf/new.pdf/  non greedy matching (ie to first pdf)
+:s/fred/<c-r>a/g substitute "fred" with contents of register "a"
+:%s/^\(.*\)\n\1/\1$/  delete duplicate lines
+# non-greedy matching \{-}
+:%s/^.\{-}pdf/new.pdf/
+:help /\{-}
+:s/fred/<c-r>a/g substitute "fred" with contents of register "a"
+# multiple commands
+:%s/\f\+\.gif\>/\r&\r/g | v/\.gif$/d | %s/gif/jpg/
+:%s/suck\|buck/loopy/gc  : ORing
+:s/__date__/\=strftime("%c")/ : insert datestring/*}}}*/
+------------------------------------------------------------------------------
+# global command/*{{{*/
+:g/^\s*$/d       :delete all blank lines
+:g!/^dd/d        : delete lines not containing string
+:v/^dd/d         : delete lines not containing string
+:g/fred/,/joe/d  : not line based
+:v/./.,/./-1join : compress empty lines
+:'a,'b g/^Error/ . w >> errors.txt
+:g/cmap\|form/p  : ORing/*}}}*/
+------------------------------------------------------------------------------
+# Operate command over multiple files/*{{{*/
+:argdo %s/foo/bar/
+:bufdo %s/foo/bar/
+:windo %s/foo/bar//*}}}*/
+------------------------------------------------------------------------------
+# Command line tricks/*{{{*/
+gvim -h
+ls | gvim -   : edit a PIPE!!/*}}}*/
+------------------------------------------------------------------------------
+# This is cute (reverses lines.  Be careful):/*{{{*/
+ :se rl /*}}}*/
+------------------------------------------------------------------------------
+ Does the Vim has column mode? So I can select text/*{{{*/
+ between column 10 and column 30.
+ You can select in column-mode by using ctrl-v./*}}}*/
+------------------------------------------------------------------------------
+   Use of "text-blocks/*{{{*/
+   aw			"a word", select [count] words (see |word|).
+   			Leading or trailing white space is included, but not
+   			counted.
+   			When used in Visual linewise mode "aw" switches to
+   			Visual characterwise mode.
+   
+   							*v_iw* *iw*
+   iw			"inner word", select [count] words (see |word|).
+   			White space between words is counted too.
+   			When used in Visual linewise mode "iw" switches to
+   			Visual characterwise mode.
+   
+   							*v_aW* *aW*
+   aW			"a WORD", select [count] WORDs (see |WORD|).
+   			Leading or trailing white space is included, but not
+   			counted.
+   			When used in Visual linewise mode "aW" switches to
+   			Visual characterwise mode.
+   
+   							*v_iW* *iW*
+   iW			"inner WORD", select [count] WORDs (see |WORD|).
+   			White space between words is counted too.
+   			When used in Visual linewise mode "iW" switches to
+   			Visual characterwise mode.
+   
+   							*v_as* *as*
+   as			"a sentence", select [count] sentences (see
+   			|sentence|).
+   			When used in Visual mode it is made characterwise.
+   
+   							*v_is* *is*
+   is			"inner sentence", select [count] sentences (see
+   			|sentence|).
+   			When used in Visual mode it is made characterwise.
+   
+   							*v_ap* *ap*
+   ap			"a paragraph", select [count] paragraphs (see
+   			|paragraph|).
+   			When used in Visual mode it is made linewise.
+   
+   							*v_ip* *ip*
+   ip			"inner paragraph", select [count] paragraphs (see
+   			|paragraph|).
+   			When used in Visual mode it is made linewise.
+   
+   a]						*v_a]* *v_a[* *a]* *a[*
+   a[			"a [] block", select [count] '[' ']' blocks.  This
+   			goes backwards to the [count] unclosed '[', and finds
+   			the matching ']'.  The enclosed text is selected,
+   			including the '[' and ']'.
+   			When used in Visual mode it is made characterwise.
+   
+   i]						*v_i]* *v_i[* *i]* *i[*
+   i[			"inner [] block", select [count] '[' ']' blocks.  This
+   			goes backwards to the [count] unclosed '[', and finds
+   			the matching ']'.  The enclosed text is selected,
+   			excluding the '[' and ']'.
+   			When used in Visual mode it is made characterwise.
+   
+   a)							*v_a)* *a)* *a(*
+   a(							*v_ab* *v_a(* *ab*
+   ab			"a block", select [count] blocks, from "[count] [(" to
+   			the matching ')', including the '(' and ')' (see
+   			|[(|).
+   			When used in Visual mode it is made characterwise.
+   
+   i)							*v_i)* *i)* *i(*
+   i(							*v_ib* *v_i(* *ib*
+   ib			"inner block", select [count] blocks, from "[count] [("
+   			to the matching ')', excluding the '(' and ')' (see
+   			|[(|).
+   			When used in Visual mode it is made characterwise.
+   
+   a>						*v_a>* *v_a<* *a>* *a<*
+   a<			"a <> block", select [count] <> blocks, from the
+   			[count]'th unmatched '<' backwards to the matching
+   			'>', including the '<' and '>'.
+   			When used in Visual mode it is made characterwise.
+   
+   i>						*v_i>* *v_i<* *i>* *i<*
+   i<			"inner <> block", select [count] <> blocks, from
+   			the [count]'th unmatched '<' backwards to the matching
+   			'>', excluding the '<' and '>'.
+   			When used in Visual mode it is made characterwise.
+   
+   a}							*v_a}* *a}* *a{*
+   a{							*v_aB* *v_a{* *aB*
+   aB			"a Block", select [count] Blocks, from "[count] [{" to
+   			the matching '}', including the '{' and '}' (see
+   			|[{|).
+   			When used in Visual mode it is made characterwise.
+   
+   i}							*v_i}* *i}* *i{*
+   i{							*v_iB* *v_i{* *iB*
+   iB			"inner Block", select [count] Blocks, from "[count] [{"
+   			to the matching '}', excluding the '{' and '}' (see
+   			|[{|).
+   			When used in Visual mode it is made characterwise.
+   
+   When used after an operator:
+   For non-block objects:
+   	For the "a" commands: The operator applies to the object and the white
+   	space after the object.  If there is no white space after the object
+   	or when the cursor was in the white space before the object, the white
+   	space before the object is included.
+   	For the "inner" commands: If the cursor was on the object, the
+   	operator applies to the object.  If the cursor was on white space, the
+   	operator applies to the white space.
+   For a block object:
+   	The operator applies to the block where the cursor is in, or the block
+   	on which the cursor is on one of the braces.  For the "inner" commands
+   	the surrounding braces are excluded.  For the "a" commands, the braces
+   	are included.
+   
+   When used in Visual mode:
+   When start and end of the Visual area are the same (just after typing "v"):
+   	One object is selected, the same as for using an operator.
+   When start and end of the Visual area are not the same:
+   	For non-block objects the area is extended by one object or the white
+   	space up to the next object, or both for the "a" objects.  The
+   	direction in which this happens depends on which side of the Visual
+   	area the cursor is.  For the block objects the block is extended one
+   	level outwards.
+   
+   For illustration, here is a list of delete commands, grouped from small to big
+   objects.  Note that for a single character and a whole line the existing vi
+   movement commands are used.
+   	"dl"	delete character (alias: "x")		|dl|
+   	"diw"	delete inner word			*diw*
+   	"daw"	delete a word				*daw*
+   	"diW"	delete inner WORD (see |WORD|)		*diW*
+   	"daW"	delete a WORD (see |WORD|)		*daW*
+   	"dd"	delete one line				|dd|
+   	"dis"	delete inner sentence			*dis*
+   	"das"	delete a sentence			*das*
+   	"dib"	delete inner '(' ')' block		*dib*
+   	"dab"	delete a '(' ')' block			*dab*
+   	"dip"	delete inner paragraph			*dip*
+   	"dap"	delete a paragraph			*dap*
+   	"diB"	delete inner '{' '}' block		*diB*
+   	"daB"	delete a '{' '}' block			*daB*
+   
+   Note the difference between using a movement command and an object.  The
+   movement command operates from here (cursor position) to where the movement
+   takes us.  When using an object the whole object is operated upon, no matter
+   where on the object the cursor is.  For example, compare "dw" and "da": "dw"
+   deletes from the cursor position to the start of the next word, "da" deletes
+      the word under the cursor and the space after or before it./*}}}*/
+----------------------------------------------------------------------
+   FORMATTING TEXT:/*{{{*/
+   gq is a format operator that formats things according to textwidth
+   and formatoptions
+   
+   gU -> convert to uppercase
+   gu -> convert to lowercase
+   g~ -> swap case/*}}}*/
+----------------------------------------------------------------------
+Folding/*{{{*/
+----------------------------------------------------------------------
+If you use foldmethod=marker, the {{{ and }}} delineate folds.  You can
+highlight a section of text and zf will automatically create a fold for it./*}}}*/
+------------------------------------------------------------------------------
+Undo in Vim 7/*{{{*/
+------------------------------------------------------------------------------
+In Vim 7.0, a new feature has been included which allows a user to jump
+back or forward to any point of editing in time.  Examples:
+
+:earlier 5m
+
+If that is the wrong place, you can move forward from that point
+
+:later 30s
+
+/*}}}*/
+------------------------------------------------------------------------------
+Plugins/*{{{*/
+------------------------------------------------------------------------------
+<URL:vim_quickref.txt>
+
+/*}}}*/
+------------------------------------------------------------------------------
+Search /*{{{*/
+/word	Search word from top to bottom
+?word	Search word from bottom to top
+/jo[ha]n	Search john or joan
+/\< the	Search the, theatre or then
+/the\>	Search the or breathe
+/\< the\>	Search the
+/\< .\>	Search all words of 4 letters
+/\/	Search fred but not alfred or frederick
+/fred\|joe	Search fred or joe
+/\<\d\d\d\d\>	Search exactly 4 digits
+/^\n\{3}	Find 3 empty lines
+:bufdo /searchstr/	Search in all open files
+/*}}}*/
+------------------------------------------------------------------------------
+Replace /*{{{*/
+:%s/old/new/g	Replace all occurences of old by new in file
+:%s/old/new/gw	Replace all occurences with confirmation
+:2,35s/old/new/g	Replace all occurences between lines 2 and 35
+:5,$s/old/new/g	Replace all occurences from line 5 to EOF
+:%s/^/hello/g	Replace the begining of each line by hello
+:%s/$/Harry/g	Replace the end of each line by Harry
+:%s/onward/forward/gi	Replace onward by forward , case unsensitive
+:%s/ *$//g	Delete all white spaces
+:g/string/d	Delete all lines containing string
+:v/string/d	Delete all lines containing which didnt contain string
+:s/Bill/Steve/	Replace the first occurence of Bill by Steve in current line
+:s/Bill/Steve/g	Replace Bill by Steve in current line
+:%s/Bill/Steve/g	Replace Bill by Steve in all the file
+:%s/\r//g	Delete DOS carriage returns (^M)
+:%s/\r/\r/g	Transform DOS carriage returns in returns
+:%s#<[^>]\+>##g	Delete HTML tags but keeps text
+:%s/^\(.*\)\n\1$/\1/	Delete lines which appears twice
+Ctrl+a	Increment number under the cursor
+Ctrl+x	Decrement number under cursor
+ggVGg?	Change text to Rot13
+/*}}}*/
+------------------------------------------------------------------------------
+Case /*{{{*/
+Vu	Lowercase line
+VU	Uppercase line
+g~~	Invert case
+vEU	Switch word to uppercase
+vE~	Modify word case
+ggguG	Set all text to uppercase
+:set ignorecase	Ignore case in searches
+:set smartcase	Ignore case in searches excepted if an uppercase letter is used
+:%s/\<./\u&/g	Sets first letter of each word to uppercase
+:%s/\<./\l&/g	Sets first letter of each word to lowercase
+:%s/.*/\u&	Sets first letter of each line to uppercase
+:%s/.*/\l&	Sets first letter of each line to lowercase
+Read/Write files
+:1,10 w outfile	Saves lines 1 to 10 in outfile
+:1,10 w >> outfile	Appends lines 1 to 10 to outfile
+:r infile	Insert the content of infile
+:23r infile	Insert the content of infile under line 23
+/*}}}*/
+------------------------------------------------------------------------------
+File explorer /*{{{*/
+:e .	Open integrated file explorer
+:Sex	Split window and open integrated file explorer
+:browse e	Graphical file explorer
+:ls	List buffers
+:cd ..	Move to parent directory
+:args	List files
+:args *.php	Open file list
+:grep expression *.php	Returns a list of .php files contening expression
+gf	Open file name under cursor
+/*}}}*/
+------------------------------------------------------------------------------
+Interact with Unix /*{{{*/
+:!pwd	Execute the pwd unix command, then returns to Vi
+!!pwd	Execute the pwd unix command and insert output in file
+:sh	Temporary returns to Unix
+$exit	Retourns to Vi
+/*}}}*/
+------------------------------------------------------------------------------
+Alignment /*{{{*/
+:%!fmt	Align all lines
+!}fmt	Align all lines at the current position
+5!!fmt	Align the next 5 lines
+/*}}}*/
+------------------------------------------------------------------------------
+Tabs /*{{{*/
+:tabnew	Creates a new tab
+gt	Show next tab
+:tabfirst	Show first tab
+:tablast	Show last tab
+:tabm n(position)	Rearrange tabs
+:tabdo %s/foo/bar/g	Execute a command in all tabs
+:tab ball	Puts all open files in tabs
+/*}}}*/
+------------------------------------------------------------------------------
+Window spliting /*{{{*/
+:e filename	Edit filename in current window
+:split filename	Split the window and open filename
+ctrl-w up arrow	Puts cursor in top window
+ctrl-w ctrl-w	Puts cursor in next window
+ctrl-w_	Maximise current window
+ctrl-w=	Gives the same size to all windows
+10 ctrl-w+	Add 10 lines to current window
+:vsplit file	Split window vertically
+:sview file	Same as :split in readonly mode
+:hide	Close current window
+:only	Close all windows, excepted current
+:b 2	Open #2 in this window
+/*}}}*/
+------------------------------------------------------------------------------
+Auto-completion /*{{{*/
+Ctrl+n Ctrl+p (in insert mode)	Complete word
+Ctrl+x Ctrl+l	Complete line
+:set dictionary=dict	Define dict as a dictionnary
+Ctrl+x Ctrl+k	Complete with dictionnary
+/*}}}*/
+------------------------------------------------------------------------------
+Marks /*{{{*/
+mk	Marks current position as k
+k	Moves cursor to mark k
+dk	Delete all until mark k
+/*}}}*/
+------------------------------------------------------------------------------
+Abbreviations /*{{{*/
+:ab mail mail@provider.org	Define mail as abbreviation of mail@provider.org
+/*}}}*/
+------------------------------------------------------------------------------
+Text indent /*{{{*/
+:set autoindent	Turn on auto-indent
+:set smartindent	Turn on intelligent auto-indent
+:set shiftwidth=4	Defines 4 spaces as indent size
+ctrl-t, ctrl-d	Indent/desindent in insert mode
+/*}}}*/
+------------------------------------------------------------------------------
+Reverse lines in a file /*{{{*/
+:g/^/m0
+/*}}}*/

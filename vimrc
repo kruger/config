@@ -158,26 +158,15 @@ nn <M-.> :call search ("^". matchstr (getline (line (".")), '\(\s*\)') ."\\S")<C
 "  Get to the configuration files quickly
  nmap ,,rc :e ~/.vimrc<CR>
  nmap ,,src :so ~/.vimrc<CR>
- nmap ,,svo :so ~/.vimoutlinerrc<CR>
 
 "  These files contain useful info. Need to reference quickly like help
- nmap ,,tq :e ~/.vim/doc/vim_quickref.txt<CR>
- nmap ,,tv :e ~/.vim/doc/tips_vim.txt<CR>
- nmap ,,tt :e ~/.vim/doc/tips_tcsh.txt<CR>
- nmap ,,tl :e ~/.vim/doc/tips_linux.txt<CR>
- nmap ,,ts :e ~/.vim/doc/tips_shell.txt<CR>
- nmap ,,tx :e ~/.vim/doc/tips_tex.txt<CR>
- nmap ,,tc :e ~/.vim/doc/crefvim.txt<CR>
-
-"SEK - This is for my PIM management
-"map ,,td :15 sp $OUTLINES/ToDo.otl<CR>
-map ,,td :e $OUTLINES/ToDo.otl<CR>
-map ,,fd :e $OUTLINES/FD.otl<CR>
-map ,,jd :e $OUTLINES/2004.otl<CR>
-map ,,ad :e $PIM/addresses/addresses<CR>
-map ,,ab :e $PIM/addresses/addressbook<CR>
-map ,,bb :e $PIM/tex/kruger.bib<CR>
-map ,,qt :e $PIM/quotes/quotes.txt<CR>
+ nmap ,,tq :e ~/config/tips/vim_quickref.txt<CR>
+ nmap ,,tv :e ~/config/tips/tips_vim.txt<CR>
+ nmap ,,tt :e ~/config/tips/tips_tcsh.txt<CR>
+ nmap ,,tl :e ~/config/tips/tips_linux.txt<CR>
+ nmap ,,ts :e ~/config/tips/tips_shell.txt<CR>
+ nmap ,,tx :e ~/config/tips/tips_tex.txt<CR>
+ nmap ,,tc :e ~/config/tips/crefvim.txt<CR>
 
 " -------------------------------------------------------------------
 " Moving around

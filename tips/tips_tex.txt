@@ -1,0 +1,121 @@
+*tips_tex.txt*   Scott Kruger's tip file.  Originally from VimTip on vim.org, but hacked
+vim:foldmethod=marker:
+------------------------------------------------------------------------------
+ PSTricks comments/*{{{*/
+
+>I've just installed PSTricks and have tried it out. Great tool! The
+>only problem is that the postscript elements are not shown by the
+>xdvi. 
+
+Basically, xdvi can only show EPS files inserted in the LaTeX.
+It cannot deal with general PostScript addenda.
+PSTricks is extremely powerful,
+and can insert PostScript in all sorts of unlikely places.
+
+Of course you can view it with ghostview or ghostscript (gs)
+
+latex myfile
+dvips -o myfile.ps myfile
+ghostview myfile.ps
+
+/*}}}*/
+------------------------------------------------------------------------------
+ Redefine sections/*{{{*/
+
+Ng Fuk Ching (BACS3 student) (c4045921@csultra32) wrote:
+: How can I redefine the style in the \chapter, \section in latex?
+: I want to make the fonts smaller and less space from the top
+: margin.
+
+
+\@startsection{name}{level}{indent}{beforeskip}{afterskip}{style}
+
+which lets you define your own personalized sectioning commands.  this
+will do exactly what you want.
+
+you could also \renewcommand{\chapter} using \@startsection if you like a
+chapter being called a chapter.
+
+see page 24--27 in the companion.
+
+/*}}}*/
+------------------------------------------------------------------------------
+ Label appendices /*{{{*/
+
+> I am using the article style in LaTeX, and I have a document with
+> sections and 2 appendices.
+> I would like the equation to be numbered A.1, A.2, .... B.1, B.2, ...
+> etc... in the appendices.
+> I would be grateful if anybody could indicate a simple way to achieve
+> this. Thanks in advance for the help.
+
+\newpage\
+\section*{Appendix A}
+\setcounter{equation}{0}
+\renewcommand{\theequation}{A.\arabic{equation}}
+
+/*}}}*/
+------------------------------------------------------------------------------
+ EPS Trick using psfrag /*{{{*/
+
+From Tony Lacey <a.lacey@sheffield.ac.uk>
+Subject: Re: Drawing program for X (not XFig)
+
+Just in case your still interested there is quite a smart thing that
+latex2e lets you do now with eps images.  If the eps image contains some
+text you can replace this text with latex text.  How is this useful you
+may ask?  Well you can replace any text in an eps file with not only
+latex text which will then be of the same font and type as the rest of
+the text, but also with latex equations.  For instance I just add tags
+in the Xfig drawing and use these to locate equations within the latex. 
+The class package is called psfrag and is widely available.
+
+Also you might like to take a look at gnuplot.  This is a 2D and 3D
+plotting program (you may be aware of this sorry if you are).  Gnuplot
+outputs fig format graphs which can then be pulled into Xfig for a bit
+of "tarting up" and then output at eps.  This coupled with psfrag might
+help you out.
+
+/*}}}*/
+
+------------------------------------------------------------------------------
+ Center a float /*{{{*/
+
+> To center a float, here's what I use:
+> 
+> 
+> \begin{figure}[h]
+> \leavevmode
+> \centering
+> \epsfig{figre=foo.eps}
+> \caption{A picture of foo}
+> \end{figure}
+> 
+> I've not had a problem with this to date.
+
+A float specification of [h] translates into English as `please take this
+float and all following ones to the end of the document' LaTeX2.09 used to
+believe you really meant that, current LaTeX releases generate a
+warning message and change that to [ht] before doing anything else.
+
+You should use \centering *before* starting the paragraph (actually it
+works anyway, but it just looks a bit odd mid paragraph).
+
+The \leavevmode (which isn't strictly a LaTeX command) is not needed
+unless you are using a very old buggy epsfig package. In fact
+\leavevmode should never be needed in LaTeX documents: All LaTeX box
+constructs start a paragraph automatically.
+
+epsfig (even the current version) is not recommended, it is really
+just distributed for the benefit of old documents. You should use the
+graphics or graphicx packages instead.
+
+
+\begin{figure}[hpt]
+ \centering
+ \includegraphics{foo.eps}
+ \caption{A picture of foo}
+\end{figure}
+ 
+/*}}}*/
+------------------------------------------------------------------------------

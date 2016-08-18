@@ -1,0 +1,263 @@
+*tips_mac.txt*   
+vim:foldmethod=marker:
+------------------------------------------------------------------------------
+ Spotlight search from CLI/*{{{*/
+
+While Apple provides an interface to do searches, it has some limitations. If
+you need to use more customized searches, you can do so either in the Terminal,
+or in a search window using Raw requests criteria (do a Finder Find, click
+Other, then Raw Query from the pop-up). The key commands are mdls, which allows
+you to list the metadata of a file, and mdfind, which actually performs
+searches. See the man pages for both commands to get more details. The
+interesting part is that mdfind actually supports logical operators (and, or,
+not, etc...), which can help to create advanced requests.
+
+An additional way to find informations on how to write requests is to read the
+information in the finder of a Smart Folder (created by saving a search; do a
+Get Info on it). You will find the request sent to Spotlight, and can use that
+information to create your own searches.
+
+Examples of requests:
+
+$ mdfind -onlyin ~ "(kMDItemFSName =='*.htm*') && (kMDItemFSName !='*Favorites*')"
+  /* Find all the files containing '.htm' but not 'Favorites' in your home folder */
+
+$ mdfind -onlyin ~/Desktop/Test "kMDItemContentTypeTree = 'public.text'" 
+  /* Find all Text documents in the Test folder of your Desktop folder */
+
+$ mdfind "kMDItemFSLabel != 6"
+  /* Find files that are not labeled '6' (one of the available colors of labels) */
+
+
+
+(-...) = NOT
+| = OR
+space = AND
+
+
+The query (kallipygos|aphrodite) will find documents (and mail messages and what-not) that contain the word ?kallipygos? or the word ?aphrodite? or
+
+It appeary I found the undocumented boolean NOT in Spotlight (for OR, look
+here). The syntax seems to be lenin(-stalin). This will find documents
+mentioning Lenin, but ignoring, thankfully, Stalin. Note that there?s no
+whitespace before the parenthesis.
+
+/*}}}*/
+------------------------------------------------------------------------------
+ Spotlight databases/*{{{*/
+
+
+sudo mdutil -E /
+	Erase the index file (.Spotlight-V100) and rebuild
+sudo mdutil -s /
+	show if indexing is enabled on the volume, and "-i
+sudo mdutil -i on /
+sudo mdutil -i off /
+	enable or disable indexing
+mdimport ~/Documents
+	index your Documents folder
+mdimport -L 
+	List all installed filters
+
+/*}}}*/
+------------------------------------------------------------------------------
+ Spotlight for music/*{{{*/
+
+$ sudo mdimport -f /Volumes/your_iPod/iPod_Control/
+	Also useful is the -f flag: I keep all my music on my iPod; Apple (probably in
+	an attempt satisfy the RIAA etc etc etc) hasn't allowed Spotlight to index
+	your iPod's music (although all other files on the iPod are indexed), even
+	when specifying the correct directory. Fortunately the 'force' flag bypasses
+	this inconvenience for indexed music goodness.
+
+Other note on indexing music:
+	spotlight wouldn't find any of my iTunes tracks nomatter what I did. The same
+	for some word documents. However, they both got indexed when I openned them in
+	the finder (not when I played the tunes in iTunes). So I opened iTunes and
+	minimized it (important or you'll have to leave your mac alone a while) and
+	turned off the sound (you may like it but it's a pretty odd effect). Then ran
+	the command below
+	
+	find ~/Music -name '*.mp3' -or -name '*m4p' -exec open {} \;
+	
+	This opens in turns each and every track. Voilla, indexed.
+	May be worth a try if the mdimport command gives no mileage.
+
+/*}}}*/
+------------------------------------------------------------------------------
+ Spotlight for network drives/*{{{*/
+
+    I was quite disappointed when I read Friday evening that Spotlight would only
+    index volumes physically attached to my machine (e.g., FireWire or internal).
+    I have a Linux server in the basement with lots of data that I was hoping to
+    index and mine with Spotlight. This evening, while digging around, I found a
+    command line utility called mdutil. It has a switch, -i, to enable indexing on
+    a volume. So I just went ahead as root (sudo bash) and ran:
+    
+     mdutil /Volumes/ldm -i on
+    
+     Then I checked the status with
+    
+      mdutil /Volumes/ldm -s
+    
+      And, behold ... I got back the following:
+    
+       /Volumes/ldm/:
+      Status: Indexing Enabled
+
+	A second later, the Spotlight Icon started pulsating. Half an hour
+	later, it stopped. I went to a Finder window, typed a query, and
+	selected the network volume ldm. To my delight, matches were coming back
+	instantaneously on files deep down in the file hierarchy on that volume.
+	I have not checked whether newly added files are indexed on the fly,
+	too, and I do not know where the .Spotlight-V100 file is stored (not in
+	the root of the volume in question it seems).
+
+	I thought that others may give it a try to confirm whether this is
+	working as expected. The volume I tested this with was an AFP volume
+	served via NETATALK (v. 2.0.2) by my Linux server (a x86 debian box).
+	Unfortunately, it appears to fail with SAMBA. I have not checked NFS.
+	One caveat: you must rerun the mdutil command each time the volume is
+	mounted.
+
+	Hope it helps someone!
+
+--------------------
+The databases for network volumes with indexing enabled seem to be stored in
+/var/db/Spotlight-V100/.
+--------------------
+
+i just found this hint and read through the comments and was saddened by the reports that this wouldn't work for samba mounted shares. i decided to try it anyhow, and was joyous when it worked. i then decided it was too much work to do this every time my computer is re-connected to the "work" network, so i wrote a script and put it in root's crontab. (note: you may be not want to do this, as it involves a lot of root activity).
+
+here's the shell script:
+
+
+#!/bin/sh
+
+echo "`date +'%Y%m%d %H:%M:%S'` - checking for VOLUME_NAME" >> /var/root/reindex.VOLUME_NAME.log
+
+if [[ `df -k | grep VOLUME_NAME` != "" ]]
+  then
+    echo "`date +'%Y%m%d %H:%M:%S'` - VOLUME_NAME mounted" >> /var/root/reindex.VOLUME_NAME.log
+    if [[ `mdutil -s /Volumes/VOLUME_NAME | grep Enabled` == "" ]]
+      then
+        echo "`date +'%Y%m%d %H:%M:%S'` - reindexing VOLUME_NAME" >> /var/root/reindex.VOLUME_NAME.log
+        mdutil -i on /Volumes/VOLUME_NAME
+    fi
+fi
+
+i chmod +x'd the script, put it at /var/root/reindex.VOLUME_NAME, and added the following to root's crontab:
+
+
+*/5 8-18 * * 1-5 /var/root/reindex.VOLUME_NAME > /dev/null 2>&1
+
+this basically checks every five minutes of the workday if it needs to re-enable indexing on my SMB mounted share and turns it on if it isn't already. and keeps a log on its activities for debugging purposes. i've already removed those lines as i don't need to keep an eye on it after i know it's setup and working properly.
+
+note: figuring out how to do all this as root is left as an exercise to the reader. i don't want to be responsible for anyone hosing their system :)
+
+--------------------
+
+Instead of polling each minutes, its now possible with Tigers new launchd to only run commands when a specific folder changes (like /Volumes).
+
+Here is a small example of how I enable indexing when I mount my "stuff" smb volume.
+
+Two files are involved, first a Launch Daemon config file:
+/Library/LaunchDaemons/enableindexing.plist
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+        <key>Label</key>
+        <string>enableindexing</string>
+        <key>ProgramArguments</key>
+        <array>
+                <string>/usr/local/bin/enableindexing.sh</string>
+        </array>
+        <key>WatchPaths</key>
+        <array>
+                <string>/Volumes</string>
+        </array>
+</dict>
+</plist>
+
+This basically tells the daemon to run the script "/usr/local/bin/enableindexing.sh" when something in /Volumes is changed.
+
+My "/usr/local/bin/enableindexing.sh" scripts look like this:
+
+
+#!/bin/sh
+sleep 1 # let things settle down a bit
+if mdutil -s "/Volumes/stuff" | grep -q "Indexing Disabled" ; then
+	mdutil -i on "/Volumes/stuff" >/dev/null
+fi
+
+If your smb volume is not called stuff, you might want to change the script a bit :)
+The "sleep 1" line is enough on my machine (G5), but maybe a longer sleep is needed on a slower machine.
+Also remember to run "chmod +x /usr/local/bin/enableindexing.sh"
+
+To tell the Launch Daemon about this new script, either reboot or do "sudo launchctl load /Library/LaunchDaemons/enableindexing.plist" 
+
+/*}}}*/
+------------------------------------------------------------------------------
+ Spotlight for text files /*{{{*/
+
+
+I've noticed that Spotlight doesn't want to index some plain text files in my
+home Documents folder. It turns out that, to be indexed, text files must meet
+rather specific conditions. In particular, they must have the extension .txt or
+.text, OR they should have file type set to TEXT. The simplest method, of
+course, would be to rename the files, but this is not always possible, so a
+second method is always a good option.
+
+I don't know if it's possible to change a file's type from the GUI, so I use
+the command line utility SetFile from the Developer Tools package for this.
+SetFile -t TEXT filename will do the job and will make your file indexable.
+
+To check if a given file (not only text files) is already indexed, you'll need
+to use the mdimport command. In the Terminal, type mdimport -d1
+filename_to_test. If it says something like this:
+
+2005-05-03 22:27:53.872 mdimport[336] Import 'filename' type
+ 'dyn.ah62d4rv4gk8z2addrf3u' no mdimporter
+
+then Spotlight doesn't recognize the format (no mdimporter is the key part) of
+filename. If it says something like this:
+
+2005-05-03 22:29:46.764 mdimport[338] Import 'filename' type 
+ 'com.apple.traditional-mac-plain-text' using
+ 'file://localhost/System/Library/Spotlight/RichText.mdimporter/'
+
+Then it's all good and file is already indexed. Enjoy!
+
+/*}}}*/
+------------------------------------------------------------------------------
+Create default info cards for new Address Book entries /*{{{*/
+
+
+ 	This is so easy it should be in the Help, but it doesn't seem to
+	be. While the Address Book application lets you alter (in its
+	Preferences) the fields it displays by default, you can't edit the
+	default content of those fields.
+
+	However, there's a good workaround. First, create a new entry in
+	the Address Book and edit it to include whatever information you'd
+	like to use by default. Next, export it as a vCard (File: Export
+	vCard), and then keep it on the Desktop, in the Dock, or wherever
+	you like. To use your template, just double-click it (click on it
+	in the Dock, whatever), and it imports as a new Address Book entry
+	containing your default info, ready to be added to.
+
+	In fact, you can create as many as you want and name them
+	appropriately -- for example, I have one for Auckland people,
+	another for Sydney people -- whatever.
+
+	[robg adds: I had to delete the newly-created card after
+	exporting. If I didn't, Address Book would simply update the
+	existing record (with no new info, obviously) when I opened the
+	"template card" from the Finder.]
+
+/*}}}*/
+------------------------------------------------------------------------------
+

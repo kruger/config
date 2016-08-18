@@ -1,0 +1,144 @@
+*tips_linux.txt*   
+vim:foldmethod=marker:
+------------------------------------------------------------------------------
+# Terminal Color/*{{{*/
+------------------------------------------------------------------------------
+I've discovered the same thing. I use #d7d7cf text on a #1f1f1f
+background, and this really helps a lot. Its much easier on the eyes
+than stark white on black.
+/*}}}*/
+------------------------------------------------------------------------------
+# Dowloading large tar files /*{{{*/
+------------------------------------------------------------------------------
+
+When downloading the large files over a slow connection, You can see
+where the download is by checking which file in the tarball is being
+received. You can decompress and un-tar your files as they download,
+sort of a "streaming decompressor", if you will. From the command line:
+
+tail -f --bytes=1m file-being-downloaded.tar.gz | tar -zxv
+
+Tail will display the downloaded portion of the file, then remain open
+displaying bytes as they are received. Make sure the 1m (1 megabyte in
+this case) is LARGER than what you have already downloaded.
+
+/*}}}*/
+------------------------------------------------------------------------------
+# Show NFS Mounts/*{{{*/
+------------------------------------------------------------------------------
+Using a Network Files System (NFS) is a common method for sharing drive
+space on UNIX-like systems such as Linux. Although relatively easy to
+configure, it's also easy to forget the NFS mounts of several systems on
+a large network. Here's an easy remedy.
+
+If you know the hostname of a remote system, use the command
+
+"showmount -e hostname"
+
+to list the NFS mounts available from that machine.
+/*}}}*/
+------------------------------------------------------------------------------
+# tar instead of cp/*{{{*/
+------------------------------------------------------------------------------
+
+Don't use the 'cp' command for this task.  I can't remember the reason, but
+it has something to do with changing permissions or messing up links (I will
+research it and get back to you as to what happens).  There is no reason to
+write or use some bloated program, such as DiskCopy.  One has already been
+written for unix/linux, the 'tar' command.
+
+tar cvpf `/` | (cd <new drive>; tar xvpf `/`)
+
+The filename `/` should work, but you'll have to experiment.  Make sure the
+new drive is mounted and use the mount point as the destination.
+
+Jeff
+/*}}}*/
+------------------------------------------------------------------------------
+# Log and show a command /*{{{*/
+------------------------------------------------------------------------------
+
+           % make all >&! log &
+           % tail -f log
+
+Logs a make into the log file and also monitors the log file with the tail
+command.
+ Tom   
+
+------------------------------------------
+/*}}}*/
+------------------------------------------------------------------------------
+# Termination commands /*{{{*/
+------------------------------------------------------------------------------
+
+Try CTRL-\ to terminate a frozen program if CTRL-c doesn't work.
+
+When a Unix command or program freezes, try the interrupt key sequence, CTRL-c
+(CONTROL and c simultaneously) to terminate the program. If CTRL-c doesn't
+work, try the quit key sequence, CTRL-\ (CONTROL and backslash simultaneously).
+It will work in many cases that CTRL-c will not. 
+
+Note CTRL-c and CTRL-\ are the interrupt and quit key sequences on most Unix
+systems, but not all. If CTRL-c or CTRL-\ doesn't work for you, use the stty
+command to list the quit key sequence. For example, 
+
+                   $ stty -a
+                   ...
+                   cchars: discard = ^O; dsusp = ^Y; eof = ^D;
+                           eol2 = ; erase = ^H; intr = ^C;
+                           min = 1; quit = ^\; reprint = ^R;
+                   ...
+
+The interrupt key is listed after intr. The quit key is listed after quit.
+Note: a carrot (^) in the stty output indicates the CTRL key. 
+/*}}}*/
+------------------------------------------------------------------------------
+# Text to speech  /*{{{*/
+------------------------------------------------------------------------------
+ text to speech, including intonation - look for 'festival'. Comes on
+ the RedHat CDs. Had a ball having my box tell people what to do, read
+ out shell scripts, etc.
+
+ Brought me back to the good ole days of DRSBAITSO from my 8-bit
+ soundblaster card.
+/*}}}*/
+------------------------------------------------------------------------------
+# Useful commands that I can't remember.  /*{{{*/
+
+ to adds line numbers to a file
+	nl
+ for help in spelling words (see also ~/bin/wspell)
+ 	look 
+ Print user id (uid) and his/her group id (gid), 
+	id username 
+  To set the hardware clock from the system clock
+ 	setclock 
+  Info on your server. 
+	uname -a 
+  Show the kernel modules currently loaded.
+ 	lsmod 
+ This is how I recorded the RH8.0 disk:
+ 	cdrecord -v speed=8 dev=0,0 /scratch/rh8.0_isos/Psyche-i386-disc1.iso
+ To delete files securely: 
+	shred
+ This seems like it could be very useful:
+	watch (look at man page for examples)
+ 	Example:
+      	watch -n1 "cat /proc/interrupts"
+ This lists the objects in a library:
+     nm
+
+  sar
+  vmstat
+  procinfo
+  lsof
+  lsof -i
+/*}}}*/
+------------------------------------------------------------------------------
+# Miscellaneous.  /*{{{*/
+
+For home use!
+For work use!
+
+/*}}}*/
+------------------------------------------------------------------------------

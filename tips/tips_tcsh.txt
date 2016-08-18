@@ -1,0 +1,197 @@
+*tips_tcsh.txt*   
+vim:foldmethod=marker:
+------------------------------------------------------------------------------
+# Odds and ends/*{{{*/
+------------------------------------------------------------------------------
+alias vipr 'vi `$_`'	# vi output of previous command
+/*}}}*/
+------------------------------------------------------------------------------
+# FILE MATCHING SHORTCUTS/*{{{*/
+------------------------------------------------------------------------------
+? 		matches a single character
+[^...]  	match any char not named in brackets
+^pattern  	match any filenames not matching patterrn
+
+mkdir project{1,2,3,4,5}
+  becomes
+mkdir project1 project2 project3 project4 project5
+
+diff document{.old} 
+  becomes
+diff document.old document
+
+More advanced:
+	ace 29: echo {a,b,c}{1,2,3}
+	a1 a2 a3 b1 b2 b3 c1 c2 c3
+
+/*}}}*/
+------------------------------------------------------------------------------
+# History variable/*{{{*/
+#---------------------------------------------------------------------------------------
+
+History variable:   !$		-uses example from previous command
+Example:  To fire up netscape, I could
+	which netscape
+	!$
+
+/*}}}*/
+------------------------------------------------------------------------------
+# arguments in aliasing/*{{{*/
+------------------------------------------------------------------------------
+To be able to use an argument in the alias:
+	alias llm 'ls -l \!* | more'
+
+To be able to use 2 arguments in the alias:
+	alias tobox 'cp \!:1 ~/Mail/\!:2'
+
+/*}}}*/
+------------------------------------------------------------------------------
+# USEFUL VARIABLES TO SET/*{{{*/
+------------------------------------------------------------------------------
+Prompt if mispelled command
+     set correct=cmd
+
+Show listing of what can be matched:
+	set autolist		--any failure
+	set autolist=ambiguous		--only if multiple matches
+
+/*}}}*/
+---------------------------------------------------------------------------------------
+# MORE USEFUL VARIABLES/*{{{*/
+---------------------------------------------------------------------------------------
+ Important variables
+ NOTE: These are useful
+ Tcsh Shell Special Aliases
+ cwdcmd 	run command after directory change
+ periodic 	run command every tperiod minutes
+ precmd 	run command before next prompt
+ beepcmd 	run command when bell sounds
+
+/*}}}*/
+------------------------------------------------------------------------------
+# COMMAND LINE EDITOR/*{{{*/
+------------------------------------------------------------------------------
+
+tcsh adds to csh the ability to edit the command line and history. 
+This version of tcsh has emacs-style command line editing by
+default. You may be used to vi-style editing. 
+This can be changed from within tcsh (or set in $HOME/.tcshrc) with the command 
+	bindkey -v      For vi-style
+	bindkey -e      For emacs-style
+
+bindkey
+	displays current bindings
+
+bindkey -l
+	lists short description
+
+bindkey -c _key cmd_
+	bind UNIX command to key
+
+bindkey -s _string_
+	bind string to key
+
+bindkey -r _key_
+	remove key binding
+
+Key bindings:
+CTRL-P		up
+CTRL-N   	down
+CTRL-B		back
+CTRL-F		forward
+ESC b		back 1 word
+Esc f		forward 1 word
+CTRL-A		beginning of line
+CTRL-E		end of line
+CTRL-D 		delete character under cursor
+ESC D		delete word 
+CTRL-K		delete from cursor to end of line
+CTRL-U		delete entire line
+ESC DEL		delete word backwards
+
+
+To command search based on prefix:
+ Enter first part of command and hit ESC p
+ Esc n goes forward
+/*}}}*/
+------------------------------------------------------------------------------
+# ADVANCED COMMAND LINE /*{{{*/
+------------------------------------------------------------------------------
+ 
+ > vi *.f^Xg
+ vfymulti.f  vfyone.f
+ > vi *.f^X*
+ > vi vfymulti.f vfyone.f
+ > vi vfymulti.f <ret>
+ 2 files to edit
+ "vfymulti.f" 14 lines, 307 characters
+         options/extend_source
+ 	  ........
+ 	  :q!
+
+ In the above example ^Xg after a command like vi *.f produces the list
+ of files according to the specified wildcard, while ^X* echoes the
+ command followed by all file names matching wildcard. By typing <ret>
+ the first file in the list is used. To select any other file, edit the
+ command line before hitting <ret>.
+
+
+/*}}}*/
+---------------------------------------------------------------------------------------
+# ADVANCED ALIASING/*{{{*/
+---------------------------------------------------------------------------------------
+
+TIP#1: Overcome lack of functions With a clever use of alias and
+scripts, lack of 'functions' can be easily overcome.
+
+e.g. I want a 'cd' without argument to behave as cd - instead of cd ~. So i do following:
+
+ 'alias cd   'source ~$USER/.tcsh/func_cd'
+
+where the script ~$USER/.tcsh/func_cd is
+
+ if ( "X$1" == $1 ) then
+ cd -
+
+else
+
+ cd $1
+
+endif 
+/*}}}*/
+---------------------------------------------------------------------------------------
+# Color ls/*{{{*/
+---------------------------------------------------------------------------------------
+2. For a number of years I've been struggling trying to read the results of
+color-ls on my xterm screens. A number of the colors (green and blue) were just
+too bright to read. I didn't want to turn down the brightness of my
+monitor...so I mostly just squinted. For some reason I was looking at the
+XTerm.ad file, and noticed that the colors could be adjusted! The XTerm.ad file
+should be located in /usr/lib/X11/app-defaults (or something similar). It is
+read each time a new xterm start up and sets various options. If you look near
+the end of this file you'll see a number of definitions for the VT100 colors. I
+changed: 
+
+        *VT100*color2: green3
+to 
+ 
+        *VT100*color2: green4
+and 
+        *VT100*color6: cyan3
+
+to 
+
+ 
+        *VT100*color6: cyan4
+
+Like magic, the colors are darkened and I can read the results. If you don't want to fool with your global default file, you could also just
+add the entries to your ~/.Xresources file. 
+/*}}}*/
+---------------------------------------------------------------------------------------
+# Terminal Color/*{{{*/
+------------------------------------------------------------------------------
+I've discovered the same thing. I use #d7d7cf text on a #1f1f1f
+background, and this really helps a lot. Its much easier on the eyes
+than stark white on black.
+/*}}}*/
+------------------------------------------------------------------------------
