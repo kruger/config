@@ -1,0 +1,191 @@
+# ------------------------------------------------------
+#  Hints and tips:
+# ------------------------------------------------------
+#  Here is a table showing the common keys used to navigate menus in Mutt.
+#    j or Down       next-entry      move to the next entry
+#    k or Up         previous-entry  move to the previous entry
+#    z or PageDn     page-down       go to the next page
+#    Z or PageUp     page-up         go to the previous page
+#    = or Home       first-entry     jump to the first entry
+#    * or End        last-entry      jump to the last entry
+#    q               quit            exit the current menu
+#    ?               help            list all keybindings for the current menu
+###
+## The Message Index
+#
+# Moving
+#    c               change to a different mailbox
+#    ESC c           change to a folder in read-only mode
+#    <Tab>           jump to the next new message
+#    /               search
+#    ESC /           search-reverse
+# Operate on message
+#    s               save-message
+#    C               copy the current message to another mailbox
+#    ESC C           decode a message and copy it to a folder
+#    ESC s           decode a message and save it to a folder
+#    d               delete the current message
+#    u               undelete-message
+#    D               delete messages matching a pattern
+#    U               undelete messages matching a pattern
+# Marking 
+#    F               mark as important
+#    N               mark message as new
+#    t               toggle the tag on a message
+#    T               tag messages matching a pattern
+#    ^T              untag messages matching a pattern
+#    ESC t           toggle tag on entire message thread
+# Viewing
+#    l               show messages matching a pattern
+#    o               change the current sort method
+#    O               reverse sort the mailbox
+#    <Return>        display-message
+#    v               view-attachments
+#    ^L              clear and redraw the screen
+# Other
+#    q               save changes and exit
+#    x               abort changes and exit
+#    $               save changes to mailbox
+#    @               show the author's full e-mail address
+#
+###
+##  Sending mail
+#
+#    m       compose         compose a new message
+#    r       reply           reply to sender
+#    g       group-reply     reply to all recipients
+#    L       list-reply      reply to mailing list address
+#    f       forward         forward message
+#    b       bounce          bounce (remail) message
+#    ESC k   mail-key        mail a PGP public key to someone
+#
+###
+##  The Pager  (many have been rebound - see muttrc.bind)
+#
+#    <Return>        go down one line
+#    <Space>         display the next page (or next message if at the end of a message)
+#    -               go back to the previous page
+#    n               search for next match
+#    S               skip beyond quoted text
+#    T               toggle display of quoted text
+#    ?               show keybindings
+#    /               search for a regular expression (pattern)
+#    ESC /           search backwards for a regular expression
+#    \               toggle search pattern coloring
+#    ^               jump to the top of the message
+#    $               jump to the bottom of the message
+#    
+#    In addition, many of the functions from the index are available in
+#    the pager, such as delete-message or copy-message (this is one
+#    advantage over using an external pager to view messages).
+#    
+###
+##  Editting commands (many have been rebound - see muttrc.bind)
+#
+#    ^A or <Home>    bol             move to the start of the line
+#    ^B or <Left>    backward-char   move back one char
+#    Esc B           backward-word   move back one word
+#    ^D or <Delete>  delete-char     delete the char under the cursor
+#    ^E or <End>     eol             move to the end of the line
+#    ^F or <Right>   forward-char    move forward one char
+#    Esc F           forward-word    move forward one word
+#    <Tab>           complete        complete filename or alias
+#    ^T              complete-query  complete address with query
+#    ^K              kill-eol        delete to the end of the line
+#    ESC d           kill-eow        delete to the end ot the word
+#    ^W              kill-word       kill the word in front of the cursor
+#    ^U              kill-line       delete entire line
+#    ^V              quote-char      quote the next typed key
+#    <Up>            history-up      recall previous string from history
+#    <Down>          history-down    recall next string from history
+#    <BackSpace>     backspace       kill the char in front of the cursor
+#    Esc u           upcase-word     convert word to upper case
+#    Esc l           downcase-word   convert word to lower case
+#    Esc c           capitalize-word capitalize the word
+#    ^G              n/a             abort
+#    <Return>        n/a             finish editing
+#
+###
+##  Status Flags
+#
+# In addition to who sent the message and the subject, a short summary
+# of the disposition of each message is printed beside the message
+# number. Zero or more of the following ``flags'' may appear, which
+# mean:
+#
+#     D    message is deleted (is marked for deletion) 
+#     d    message have attachments marked for deletion 
+#     K    contains a PGP public key 
+#     N    message is new 
+#     O    message is old 
+#     P    message is PGP encrypted 
+#     r    message has been replied to 
+#     S    message is PGP signed, and the signature is succesfully verified 
+#     s    message is PGP signed 
+#     !    message is flagged 
+#     *    message is tagged 
+#     
+#     Some of the status flags can be turned on or off using
+#     
+#         * set-flag (default: w)
+#         * clear-flag (default: W)
+#     
+#     Furthermore, the following flags reflect who the message is
+#     addressed to. They can be customized with the $to_chars variable.
+#     (see below)
+#     
+#     +       message is to you and you only
+#     T       message is to you, but also to or cc'ed to others
+#     C       message is cc'ed to you
+#     F       message is from you
+#     L       message is sent to a subscribed mailing list
+#
+###
+##  Compose menu
+#
+#     a       attach-file             attach a file
+#     A       attach-message          attach message(s) to the message
+#     ESC k   attach-key              attach a PGP public key
+#     d       edit-description        edit description on attachment
+#     D       detach-file             detach a file
+#     t       edit-to                 edit the To field
+#     ESC f   edit-from               edit the From field
+#     r       edit-reply-to           edit the Reply-To field
+#     c       edit-cc                 edit the Cc field
+#     b       edit-bcc                edit the Bcc field
+#     y       send-message            send the message
+#     s       edit-subject            edit the Subject
+#     f       edit-fcc                specify an ``Fcc'' mailbox
+#     p       pgp-menu                select PGP options
+#     P       postpone-message        postpone this message until later
+#     q       quit                    quit (abort) sending the message
+#     w       write-fcc               write the message to a folder
+#     i       ispell                  check spelling (if available on your system)
+#     ^F      forget-passphrase       whipe PGP passphrase from memory
+
+
+# ------------------------------------------------------
+# to_chars
+# Default: " +TCFL"
+# 
+# Controls the character used to indicate mail addressed to you. The
+# first character is the one used when the mail is NOT addressed to your
+# address (default: space). The second is used when you are the only
+# recipient of the message (default: +). The third is when your address
+# appears in the TO header field, but you are not the only recipient of
+# the message (default: T). The fourth character is used when your
+# address is specified in the CC header field, but you are not the only
+# recipient. The fifth character is used to indicate mail that was sent
+# by you. The sixth character is used to indicate when a mail was sent
+# to a mailing-list you subscribe to (default: L).
+# 
+# ------------------------------------------------------
+#    Q: Why should you abort commands with CTRL-G? 
+#    A: It's an Emacs thing - so there's a whole operating system
+#	  that uses it. ;-) Quite a few control characters are already
+#	  used with editing, and CTRL-G is not taken. By the way, CTRL-C
+#	  will "interrupt" MUTT immediately (not while it is busy reading
+#	  in a folder, though) - so don't use that for aborting a command
+#	  because it will abot the *program*!
+# ------------------------------------------------------
+

@@ -1,0 +1,74 @@
+--------------------------------------------------------------------------------------------------------------
+Generic bindings:
+--------------------------------------------------------------------------------------------------------------
+^A                  first-entry                     move to the first entry
+^B                  previous-page                   move to the previous page
+^D                  half-down                       scroll down 1/2 page
+^E                  last-entry                      move to the last entry
+^F                  next-page                       move to the next page
+^L                  refresh                         clear and redraw the screen
+<Return>            select-entry                    select the current entry
+^U                  half-up                         scroll up 1/2 page
+<Esc>/              search-reverse                  search backwards for a regular expression
+<Space>             next-page                       move to the next page
+!                   shell-escape                    invoke a command in a subshell
+*                   last-entry                      move to the last entry
+/                   search                          search for a regular expression
+1G                  first-entry                     move to the first entry
+1g                  first-entry                     move to the first entry
+2                   jump                            jump to an index number
+3                   jump                            jump to an index number
+4                   jump                            jump to an index number
+5                   jump                            jump to an index number
+6                   jump                            jump to an index number
+7                   jump                            jump to an index number
+8                   jump                            jump to an index number
+9                   jump                            jump to an index number
+:                   enter-command                   enter a muttrc command
+;                   tag-prefix                      apply next function to tagged messages
+<                   previous-line                   scroll up one line
+=                   first-entry                     move to the first entry
+>                   next-line                       scroll down one line
+?                   help                            this screen
+G                   last-entry                      move to the last entry
+H                   help                            this screen
+L                   bottom-page                     move to the bottom of the page
+M                   middle-page                     move to the middle of the page
+Z                   previous-page                   move to the previous page
+[                   half-up                         scroll up 1/2 page
+]                   half-down                       scroll down 1/2 page
+b                   previous-page                   move to the previous page
+j                   next-entry                      move to the next entry
+k                   previous-entry                  move to the previous entry
+n                   search-next                     search for next match
+q                   exit                            exit this menu
+t                   tag-entry                       tag the current entry
+z                   next-page                       move to the next page
+<Up>                previous-entry                  move to the previous entry
+<Down>              next-entry                      move to the next entry
+<Left>              previous-page                   move to the previous page
+<Right>             next-page                       move to the next page
+<PageUp>            previous-page                   move to the previous page
+<PageDown>          next-page                       move to the next page
+<Home>              first-entry                     move to the first entry
+<End>               last-entry                      move to the last entry
+<Enter>             select-entry                    select the current entry
+<F1>                M <shell-escape>lynx //softw... view help with lynx
+
+Unbound functions:
+
+delete-message                                      delete the current entry
+edit-type                                           edit attachment content type
+fetch-mail                                          retrieve mail from POP server
+tag-subthread                                       tag the current subthread
+next-unread                                         jump to the next unread message
+previous-unread                                     jump to the previous unread message
+decrypt-copy                                        make decrypted copy
+decrypt-save                                        make decrypted copy and delete
+top-page                                            move to the top of the page
+search-opposite                                     search for next match in opposite direction
+current-top                                         move entry to top of screen
+current-middle                                      move entry to middle of screen
+current-bottom                                      move entry to bottom of screen
+
+

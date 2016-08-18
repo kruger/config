@@ -1,0 +1,13 @@
+# ------------------------------------------------------
+#   Scott's muttrc 
+#   Date: Thu Mar  4 23:22:34 MST 2004
+# ------------------------------------------------------
+# Rather than have a big file, I prefer to break it up
+source ~/.mutt/muttrc.basic    # Basic settings
+source ~/.mutt/muttrc.server   # Local settings 
+source ~/.mutt/muttrc.colors.dark # set up the colors for a dark background
+#source ~/.mutt/muttrc.colors.light
+source ~/.mutt/muttrc.bindings # Key bindings 
+source ~/.mutt/muttrc.external # External programs
+source ~/.mutt/muttrc.hooks    # Context-sensitive settings
+source ~/.mutt/muttrc.lists    # Things for mailing lists

@@ -1,0 +1,41 @@
+# ------------------------------------------------------
+#  Mail storage and spool settings
+#   Comment out IMAP stuff (which for now I'm not using)
+# ------------------------------------------------------
+set hostname="txcorp.com"
+set hidden_host
+
+# ------------------------------------------------------
+#  Local spooling
+# ------------------------------------------------------
+set spoolfile=$MAIL       # incoming mailbox 
+set folder=~/mail
+set copy               # always make a copy of outgoing msgs
+set record="+Sent"     # folder for copies of outgoing mail
+#set record="+Sent-`date +%Y`"
+set postponed=+Drafts # folder for postponed msgs
+set check_new
+set mail_check=60            # check for new mail every minute
+
+
+# ------------------------------------------------------
+##  IMAP settings  
+# ------------------------------------------------------
+##set spoolfile="{kruger@volt.txcorp.com/var/mail/kruger}"
+set spoolfile="imaps://kruger@txmail.txcorp.com/var/mail/kruger"
+##set spoolfile="{/var/spool/mail/kruger}"
+## keep folders on Imap server
+set folder="imaps://kruger@txmail.txcorp.com/mail"
+### check every 10 minutes for new mail when using imap
+#set imap_checkinterval=60
+## the default value is ok for spoolfiles, not for imap (mutt-1.1.2)
+set timeout=60
+
+
+# ------------------------------------------------------
+# These define which mailboxes to monitor for notification that they
+# have received new mail.  
+# ------------------------------------------------------
+mailboxes !                 # Inbox
+mailboxes  =mbox 
+

@@ -1,0 +1,62 @@
+#------------------------------------------------------------
+#   Macros and commands for working with other programs
+#------------------------------------------------------------
+set shell="csh -f"
+
+###
+##  Printing
+#
+#set print_command=""                     # command for printing
+#set    print_command="enscript -Email -2 -r -G"    # Two columns, landscape, fancy header.
+#set   print_command="a2ps -P lp -1 -M letter -R"
+set   print_command="a2ps -P hp2300n"
+
+###
+##  Aliases  (a.k.a.  Contacts) #  I use abook.  See muttrc.external
+#
+set alias_file=~/.mutt/aliases
+set query_command="abook --mutt-query '%s'"
+macro pager A |'abook --add-email'\n
+
+###
+##  Default external viewers (see auto_view flags at bottom)
+#
+set pipe_decode                     # try to pgp/mime decode msgs first before piping them
+set mailcap_path=~/.mutt/mailcap:/etc/mailcap
+set mailcap_sanitize
+
+###
+##  Automatically view these types based on mailcap's
+#
+alternative_order text/plain text/html
+auto_view text/html text/enriched
+auto_view text/x-patch text/x-vcard text/x-script.elisp text/x-lisp
+auto_view image/*
+auto_view application/PostScript application/pdf
+auto_view application/zip application/x-gzip application/x-gunzip
+auto_view application/pgp-signature application/pgp
+auto_view application/octet-stream application/x-zip-compressed
+auto_view application/x-tar-gz application/x-arj-compressed
+auto_view application/x-perl application/x-sh application/x-tcl application/emacs-lisp
+#auto_view application/ms-tnef application/msword
+
+#------------------------------------------------------------
+#  Manually invoke external programs 
+#------------------------------------------------------------
+#  extract url's from messages, present menu, and start browser
+macro pager \cb '<pipe-message>urlview<enter>' 
+macro index \cb '<pipe-message>urlview<enter>' 
+
+#  Put text message into vi so I can do things with content
+macro pager \cv "<pipe-message>vim -c 'setfiletype mail' -<enter>" 
+macro index \cv "<pipe-message>vim -c 'setfiletype mail' -<enter>" 
+
+#  view attachment using less
+macro attach l "<pipe-entry>less\n" "View attachment using less"
+
+#  help
+macro generic <F1> "<shell-escape>lynx //software/mutt/doc/mutt/index.html\n" "view help with lynx"
+macro index   <F1> "<shell-escape>lynx //software/mutt/doc/mutt/index.html\n" "view help with lynx"
+macro pager   <F1> "<shell-escape>lynx //software/mutt/doc/mutt/index.html\n" "view help with lynx"
+
+

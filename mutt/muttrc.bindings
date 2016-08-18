@@ -1,0 +1,141 @@
+#------------------------------------------------------------
+#   Key bindings (using bind and macro)
+#   Make mutt's bindings as close to vim's as possible
+#   (mostly taken from someone off the net)
+#   See also muttrc.external for bindings that invoke external
+#    programs
+#------------------------------------------------------------
+bind generic   b    previous-page
+bind generic   G    last-entry
+bind generic   H    help
+bind generic \Cu    half-up
+bind generic \Cd    half-down
+bind generic \Cb    previous-page
+bind generic \Cf    next-page
+bind generic " "    next-page
+bind generic   1G   first-entry
+bind generic   1g   first-entry
+bind generic <Home> first-entry
+bind generic \Ca    first-entry
+bind generic <End>  last-entry
+bind generic \Ce    last-entry
+
+bind index   B     bounce-message
+bind index \eD     delete-thread          # ^U and ^D were bound. Now 
+bind index \eU     undelete-thread        # bind it now to something else
+bind index \ef     forget-passphrase
+bind index \Cb     previous-page
+bind index \Cf     next-page
+bind index " "    next-page
+bind index <Down>  next-entry
+bind index <Right> display-message
+bind index <Home>  first-entry
+bind index <End>   last-entry
+bind index   1G    first-entry
+bind index   1g    first-entry
+bind index \Ca     first-entry
+bind index   G     last-entry
+bind index \Ce     last-entry
+bind index   ?     search-reverse
+
+bind pager   G      bottom
+bind pager   H    help
+bind pager   q      exit
+bind pager   i      noop
+bind pager   B      bounce-message
+bind pager   b      previous-page
+bind pager   " "    next-page
+bind pager   \Cu    half-up
+bind pager   \Cd    half-down
+bind pager   \eD    delete-thread
+bind pager   \eU    undelete-thread
+bind pager   \Cb    previous-page
+bind pager   \Cf    next-page
+bind pager   \Ce    bottom
+bind pager   \Ca    top
+bind pager <Home>   top
+bind pager  1G      top
+bind pager  1g      top
+bind pager <End>    bottom
+bind pager <Left>   exit
+bind pager <Up>     previous-line
+bind pager <Down>   next-line
+bind pager <Insert> previous-entry
+bind pager   ?      search-reverse
+
+bind alias <Tab> next-entry
+
+bind browser <Right> select-entry
+
+#------------------------------------------------------------
+## Macros 
+#------------------------------------------------------------
+###
+##  save messages to folder (defined by save-hook) without confirmation
+#
+macro pager S "<save-message>\n" "Save without confirmation"
+macro index S "<save-message>\n" "Save without confirmation"
+
+###
+##  turn all N's into O's
+#  Cant't figure this one out
+#macro index \eN "<tag-pattern>~N\n<toggle-new><untag-pattern>*\o" "turn all N's in O's"
+
+###
+## toggle display of index lines in pager view (see pager_index_lines variable in muttrc.basic)
+# 
+macro pager <ESC>z  ":set pager_index_lines=0\n:macro pager z <ESC>Z \"toggle zoom\"\n"
+macro pager <ESC>Z  ":set pager_index_lines=8\n:macro pager z <ESC>z \"toggle zoom\"\n"
+macro pager z	   <ESC>z  "toggle zoom"
+
+
+###
+## Old Messages Save/delete
+#
+#Tag old messages
+macro index \Co "<tag-pattern>~r>6m!~F\n" "Tag old messages (6 months)"
+
+###			
+##  COMMA COMMANDS: Macros for quickly CHANGING to a folder
+#
+   macro index ",f"   "c?"
+   macro index   I    "c!\n"  # Pine compatibity
+   macro index ",i"  "c=!\n"
+   macro index ",m"  "c=mbox\n="
+   macro index ",t"  "c=techx\n="
+   macro index ",p"  "c=private\n="
+   macro index ",d"  "c=Draft\n="
+   macro index ",s"  "c=sent-mail\n="
+   macro pager ",f"   "c?"
+   macro pager   I    "c!\n"  # Pine compatibity
+   macro pager ",i"  "c=!\n"
+   macro pager ",m"  "c=mbox\n="
+   macro pager ",t"  "c=techx\n="
+   macro pager ",d"  "c=Draft\n="
+   macro pager ",s"  "c=sent-mail\n="
+
+###
+##  PERIOD COMMANDS: Macros for quickly SAVING to a folder
+#
+   macro index "d"   "s=Trash\r"
+   macro index ".i"  "s=!\n"
+   macro index ".m"  "s=mbox\n"
+   macro index ".t"  "s=techx\n"
+   macro index ".p"  "s=private\n"
+   macro index ".d"  "s=Draft\n"
+   macro index ".s"  "s=sent-mail\n"
+   macro pager "d"   "s=Trash\r"
+   macro pager ".i"  "s=!\n"
+   macro pager ".m"  "s=mbox\n"
+   macro pager ".t"  "s=techx\n"
+   macro pager ".p"  "s=private\n"
+   macro pager ".d"  "s=Draft\n"
+   macro pager ".s"  "s=sent-mail\n"
+
+###
+##  DOUBLE-COMMA COMMANDS: Quick views
+#
+   macro index ,,r "l~R\n"     # show read only
+   macro index ,,f "l~F\n"     # show flagged only
+   macro index ,,n "l~N\n"     # show new only
+   macro index ,,a "l~A\n"     # show all messages

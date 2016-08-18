@@ -1,0 +1,60 @@
+# ------------------------------------------------------
+# Mailing lists
+#  Mutt has a few nice features for handling mailing lists. In order to
+#  take advantage of them, you must specify which addresses belong to
+#  mailing lists, and which mailing lists you are subscribed to. Once you
+#  have done this, the list-reply function ("L") will work for all known lists.
+#  Additionally, when you send a message to a subscribed list, mutt will
+#  add a Mail-Followup-To header to tell other users' mail user agents
+#  not to send copies of replies to your personal address. Note that the
+#  Mail-Followup-To header is a non-standard extension which is not
+#  supported by all mail user agents. Adding it is not bullet-proof
+#  against receiving personal CCs of list messages. Also note that the
+#  generation of the Mail-Followup-To header is controlled by the
+#  followup_to configuration variable.
+#----------------------------------------------------
+
+subscribe private@nimrodteam.org
+subscribe internal@txcorp.com
+subscribe vimoutliner@red.noels-lab.com
+subscribe clue-tech@clue.denver.co.us
+subscribe lug@lug.boulder.co.us
+subscribe libtool@gnu.org
+
+###
+## Hooks for lists (usually want to save in own folder)
+##  See muttrc.hooks for notes and other hooks
+#
+save-hook  '~s rfmhdprop'  =rfmhdprop
+save-hook  '~t @txcorp\\.com'             =techx
+save-hook  '~t @red\\.noels-lab\\.com'    =lists/vo
+save-hook  '~t @clue\\.denver\\.co\\.us'  =lists/linux
+save-hook  '~t @lug\\.boulder\\.co\\.us'  =lists/linux
+save-hook  '~t @nersc\\.gov'  =lists/nersc
+save-hook  '~s Boulderfreecycle'  =lists/freecycle
+save-hook  '~s youngfusion'  =lists/youngfusion
+save-hook  '~s vorpal-devel'  =lists/vorpal
+save-hook  '~s vorpal-users'  =lists/vorpal
+save-hook  '~t @gnu\\.org'  =lists/autotools
+save-hook  '~c @gnu\\.org'  =lists/autotools
+save-hook  '~s SWIM'  =swim
+save-hook  '~s Edge-l'  =edge
+save-hook  '~s \\[plasmawall\\]'  =bpo
+save-hook  '~s \\[plasmawave\\]'  =bpo
+save-hook  '~s \\[modsim\\]'  =bpo
+save-hook  '~s \\[U\\.S\\.\ Burning\ Plasma\ Organization\ News\\]'  =bpo
+
+
+
+# ------------------------------------------------------
+# These define which mailboxes to monitor for notification that they
+# have received new mail.  Because I often like to receive notification
+# of mailing lists that have mail routed directly to them (see
+# ~/.procmail/lists), I put them here in lists. 
+# ------------------------------------------------------
+mailboxes  =lists/freecycle
+
+
+
+
+

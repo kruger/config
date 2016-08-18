@@ -1,0 +1,129 @@
+--------------------------------------------------------------------------------------------------------------
+Pager
+--------------------------------------------------------------------------------------------------------------
+^A                  top                             jump to the top of the message
+^B                  macro                           <pipe-message>urlview<enter>
+^D                  half-down                       scroll down 1/2 page
+^E                  bottom                          jump to the bottom of the message
+^F                  next-page                       move to the next page
+<Tab>               next-new                        jump to the next new message
+^K                  extract-keys                    extract PGP public keys
+^L                  redraw-screen                   clear and redraw the screen
+<Return>            next-line                       scroll down one line
+^N                  next-thread                     jump to the next thread
+^P                  previous-thread                 jump to previous thread
+^R                  read-thread                     mark the current thread as read
+^U                  half-up                         scroll up 1/2 page
+^V                  macro                           <pipe-message>vim -c 'setfiletype mail' -<enter>
+<Esc>/              search-reverse                  search backwards for a regular expression
+<Esc>C              decode-copy                     make decoded (text/plain) copy
+<Esc>D              delete-thread                   delete all messages in thread
+<Esc>U              undelete-thread                 undelete all messages in thread
+<Esc>Z              macro                           :set pager_index_lines=8\n:macro pager z <ESC>z "toggle zoom"
++                                                  \n
+<Esc>c              change-folder-readonly          open a different folder in read only mode
+<Esc>d              delete-subthread                delete all messages in subthread
+<Esc>e              resend-message                  use the current message as a template for a new one
+<Esc>k              mail-key                        mail a PGP public key
+<Esc>n              next-subthread                  jump to the next subthread
+<Esc>p              previous-subthread              jump to previous subthread
+<Esc>r              read-subthread                  mark the current subthread as read
+<Esc>s              decode-save                     make decoded copy (text/plain) and delete
+<Esc>u              undelete-subthread              undelete all messages in subthread
+<Esc>z              macro                           :set pager_index_lines=0\n:macro pager z <ESC>Z "toggle zoom"
++                                                  \n
+<Space>             next-page                       move to the next page
+!                   shell-escape                    invoke a command in a subshell
+$                   bottom                          jump to the bottom of the message
+,d                  macro                           c=Draft\n=
+,f                  macro                           c?
+,i                  macro                           c=!\n
+,m                  macro                           c=mbox\n=
+,s                  macro                           c=sent-mail\n=
+,t                  macro                           c=techx\n=
+-                   previous-page                   move to the previous page
+.d                  macro                           s=Draft\n
+.i                  macro                           s=!\n
+.m                  macro                           s=mbox\n
+.p                  macro                           s=private\n
+.s                  macro                           s=sent-mail\n
+.t                  macro                           s=techx\n
+/                   search                          search for a regular expression
+1G                  top                             jump to the top of the message
+1g                  top                             jump to the top of the message
+2                   jump                            jump to an index number
+3                   jump                            jump to an index number
+4                   jump                            jump to an index number
+5                   jump                            jump to an index number
+6                   jump                            jump to an index number
+7                   jump                            jump to an index number
+8                   jump                            jump to an index number
+9                   jump                            jump to an index number
+:                   enter-command                   enter a muttrc command
+?                   search-reverse                  search backwards for a regular expression
+@                   display-address                 display full address of sender
+A                   macro                           |abook --add-email\n
+B                   bounce-message                  remail a message to another user
+C                   copy-message                    copy a message to a file/mailbox
+F                   flag-message                    toggle a message's 'important' flag
+G                   bottom                          jump to the bottom of the message
+H                   help                            this screen
+I                   macro                           c!\n
+J                   next-entry                      move to the next entry
+K                   previous-entry                  move to the previous entry
+L                   list-reply                      reply to specified mailing list
+N                   mark-as-new                     toggle a message's 'new' flag
+P                   parent-message                  jump to parent message in thread
+Q                   quit                            save changes to mailbox and quit
+R                   recall-message                  recall a postponed message
+S                   skip-quoted                     skip beyond quoted text
+T                   toggle-quoted                   toggle display of quoted text
+V                   show-version                    show the Mutt version number and date
+\                   search-toggle                   toggle search pattern coloring
+^                   top                             jump to the top of the message
+a                   create-alias                    create an alias from a message sender
+b                   previous-page                   move to the previous page
+c                   change-folder                   open a different folder
+d                   macro                           s=Trash\r
+e                   edit                            edit the raw message
+f                   forward-message                 forward a message with comments
+g                   group-reply                     reply to all recipients
+h                   display-toggle-weed             display message and toggle header weeding
+j                   next-undeleted                  move to the next undeleted message
+k                   previous-undeleted              move to the previous undeleted message
+m                   mail                            compose a new mail message
+n                   search-next                     search for next match
+p                   print-message                   print the current entry
+q                   exit                            exit this menu
+r                   reply                           reply to a message
+s                   save-message                    save message/attachment to a file
+t                   tag-message                     tag the current entry
+u                   undelete-message                undelete the current entry
+v                   view-attachments                show MIME attachments
+x                   exit                            exit this menu
+z                   M <ESC>z                        toggle zoom
+|                   pipe-message                    pipe message/attachment to a shell command
+<Up>                previous-line                   scroll up one line
+<Down>              next-line                       scroll down one line
+<Left>              exit                            exit this menu
+<Right>             next-undeleted                  move to the next undeleted message
+<PageUp>            previous-page                   move to the previous page
+<PageDown>          next-page                       move to the next page
+<Home>              top                             jump to the top of the message
+<End>               bottom                          jump to the bottom of the message
+<BackSpace>         previous-line                   scroll up one line
+<Enter>             next-line                       scroll down one line
+<Insert>            previous-entry                  move to the previous entry
+<F1>                M <shell-escape>lynx //softw... view help with lynx
+
+Unbound functions:
+
+delete-message                                      delete the current entry
+edit-type                                           edit attachment content type
+search-opposite                                     search for next match in opposite direction
+next-unread                                         jump to the next unread message
+previous-new                                        jump to the previous new message
+previous-unread                                     jump to the previous unread message
+forget-passphrase                                   wipe PGP passphrase from memory
+decrypt-copy                                        make decrypted copy
+decrypt-save                                        make decrypted copy and delete

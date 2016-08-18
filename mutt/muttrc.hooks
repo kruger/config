@@ -1,0 +1,25 @@
+#----------------------------------------------------
+# Hooks  (NOTE: Save hooks are in muttrc.lists)
+# A hook is a concept borrowed from the EMACS editor which allows you to
+# execute arbitrary commands before performing some operation. For example, you
+# may wish to tailor your configuration based upon which mailbox you are reading,
+# or to whom you are sending mail. In the Mutt world, a hook consists of a
+# regular expression or pattern along with a configuration option/command. See
+#    * folder-hook
+#    * send-hook
+#    * message-hook
+#    * save-hook
+#    * mbox-hook
+#    * fcc-hook
+#    * fcc-save-hook
+# 
+# Send hooks:  actions are based on the recipients address. 
+# Folder hook: actions are based on which mailbox you are reading. 
+# Save hooks:  actions are based on the "From:" header of a messages 
+#  or the "To:" header if you are the author. 
+#----------------------------------------------------
+# in the +Sent-folders, when I do a search, I'm interested in
+# recipients (~t), not senders (~f), because the sender is always me.
+folder-hook .          'set simple_search="~f %s | ~s %s"'
+folder-hook Sent-.*    'set simple_search="~t %s | ~s %s"'
+

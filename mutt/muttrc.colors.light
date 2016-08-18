@@ -1,0 +1,72 @@
+#------------------------------------------------------------
+#   Color
+#   Tuned for white background
+#------------------------------------------------------------
+
+color normal		default		default
+
+color hdrdefault	red			default
+color signature		blue		default
+color indicator		black		brightred
+color error			brightred	default
+color status		white		blue
+color tree			magenta		default # the thread tree in the index menu
+color tilde			magenta		default
+color message		cyan		default
+color markers		cyan		default
+color attachment	brightmagenta default
+color search		default		green   # how to hilite searches in the pager
+color quoted		blue		default # quoted text
+color quoted1		magenta		default
+color quoted2		red			default
+color quoted3		green		default
+color quoted4		cyan		default
+color quoted5		blue		default
+color quoted6		magenta		default
+color quoted7		red			default
+color quoted8		green		default
+color quoted9		cyan		default
+color underline		brightgreen default
+color index			green default ~F
+
+color header		brightred	default ^(From|Subject):
+# point out url's
+color body			magenta		default "((ftp|http|https)://|(file|news):|www\\.)[-a-z0-9_.:]*[a-z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+color body			cyan		default [-a-z_0-9.]+@[-a-z_0-9.]+    # e-mail addresses
+
+# smilies and the like
+color body brightgreen white "<[Gg]>"
+color body brightgreen white "<[Bb][Gg]>"
+# see also the variables smileys
+color body brightgreen white " >?[;:][-^]?[][)(><}{|/DP][)}]*"
+
+# special strings which do *not* denote quoted material
+# see also the 'color' commands
+set smileys="(>From )|(>?[;:][-^]?[][)(><}{|/DP][)}]*)"
+
+
+#
+#  Mono
+#
+
+mono normal             none            # normal text
+mono indicator          reverse         # actual message
+mono tree               none            # thread arrows
+mono status             reverse         # status line
+#mono error              bold
+mono error              standout
+mono message            none            # info messages
+mono quoted             bold
+mono signature          none
+mono attachment         underline       # MIME attachments
+mono search             reverse         # search matches
+mono tilde              none            # ~ at bottom of msg
+mono markers            bold            # + at beginning of wrapped lines
+mono hdrdefault         none            # default header lines
+mono bold               bold            # hilite bold patterns in body
+mono underline          underline       # hilite underlined patterns in body
+mono header      		bold           "^(from|subject):"
+mono body        		underline      "((ftp|http|https)://|(file|news):|www\\.)[-a-z0-9_.:]*[a-z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+mono body        		underline      "[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono body        		bold           "(^| )\\*[-a-z0-9дцья*]+\\*[,.?]?[ \n]"
+mono body        		underline      "(^| )_[-a-z0-9дцья_]+_[,.?]?[ \n]"

@@ -1,0 +1,96 @@
+# ------------------------------------------------------
+#  Very basic settings
+# ------------------------------------------------------
+
+###
+## Identity
+#
+set realname="Scott Kruger"
+#set alternates=""                  # other "me"s
+my_hdr Organization: Tech-X Corporation
+set signature="~/.signature"
+set sig_dashes
+
+### 
+## Basic behavior
+#
+set status_on_top                   # status at the top of the screen
+set history=100                     # I want a long history
+set auto_tag  				# apply operation always to all tagged messages
+unset beep
+unset beep_new
+set move=no                         # don't move read messages
+set copy=yes                        # save copy of outgoing messages (see muttrc.server)
+set nomark_old                      # mail's stay on "New" status
+set delete     				# not obvious, but to purge the messages marked for
+                                    # deletion, type '$' (save changes to mailbox)
+###
+## Interactive behavior
+#
+set askcc                           # ask for cc:'s before editing
+set askbcc                          # ask for bcc:'s before editing
+set abort_unmodified=ask-yes        # ask if msg has not been modified
+set quit=ask-yes                    # ask before quitting
+set noconfirmappend                 # don't ask me if i want to append to mailboxes
+set confirmcreate                   # prompt when creating new files
+
+###
+## Editting
+#
+set edit_headers                    # make headers editable 
+set autoedit                        # go to the editor right away when composing
+#Start on first empty line
+#set editor="vim -c '/^$/+1'"        # use vim, of course, to edit messages
+# Start on subject line
+set editor="vim +/^Subject:"        # use vim, of course, to edit messages
+
+###
+## Message index configuration
+#
+set sort=date                       # sort by date
+#set sort=threads
+set sort_aux=date-sent
+#set to_chars=" +TCFL"              # Tricky.  string is 6 chars long
+set to_chars="   CFL"               # mark msgs cc'ed to me and from me not those to me
+unset ascii_chars 			# use ASC chars to display threading
+
+###
+## viewing headers
+#
+hdr_order From: To: Subject: Date: Cc:  # order in wich headers to display
+ignore * 						# Easier to ignore all 
+unignore From:					# and then add ones to see
+unignore To
+unignore Cc
+unignore Subject
+unignore Date
+
+###
+##  Reply and forwarding
+#
+set include=yes                           # always include a msg in the reply
+set indent_string='> '              	# indent interpolated msgs by >
+set attribution="On %d, %n did write:" 	# What get's written before replies:
+set fast_reply                            # don't ask so much when replying or forwarding
+set forward_format="Fwd: %s"              # subject line of forwarded msgs
+set reply_to                           	# always use reply-to if present
+unset metoo                               # Don't remove my address from lists when replying 
+                                          #  to multiple recipients
+set reply_regexp="^((re(\\^[0-9])? ?:|a(nt)?w(ort)?:|\\(fwd\\))[ \t]+)*" # more "reply" prefixes (will be removed for threading)
+
+###
+## Pager commands
+#
+set pager_stop                            #Just stop, don't go to next page.
+set pager_index_lines=8                   # display a few lines of headers in pager view
+set pager=builtin
+# Can use these, but CTRL-v to pop the message into vim is better. (See muttrc.external)
+#set pager="less.sh \n"
+#set pager="vim -R"
+
+
+###
+##  NOTES
+#
+#   For printing commands, see muttrc.external
+#   For using contact book, see muttrc.external

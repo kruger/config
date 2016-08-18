@@ -1,0 +1,67 @@
+#------------------------------------------------------------
+#   Color
+#   Tuned for dark background
+#------------------------------------------------------------
+# Mono definition
+mono normal        none
+mono indicator        reverse
+mono tree        none
+mono status        reverse
+mono error        bold
+mono message        none
+mono quoted        bold
+mono signature        none
+mono attachment        underline
+mono search        reverse
+mono tilde        none
+mono markers        bold
+mono hdrdefault        none
+mono bold        bold
+mono underline        underline
+mono header     bold        "^(from|subject|reply-to):"
+mono body     bold        "(^| )\\*[-a-z0-9~D÷~R~^*]+\\*[,.?]?[ \n]"
+mono body     underline    "[-a-z_0-9.+]+@[-a-z_0-9.]+"             # email
+mono body     underline     "((ftp|http|file|https)://|news:)[^ >)\"\t]+"  # URLs
+
+mono index    bold    ~N
+mono index    bold    ~F
+mono index    bold    ~T
+mono index    bold    ~D
+
+# color definition
+color normal     brightwhite    default # normal text
+color indicator  brightyellow   default # actual message
+color tree       magenta        default # thread arrows
+color status     brightyellow   blue # status line
+color error      brightred      default # errors
+color message    magenta        default # info messages
+color signature  magenta        default # signature
+color attachment brightyellow   magenta    # MIME attachments
+color search     brightred      default # search matches
+color tilde      brightmagenta  default # ~ at bottom of msg
+color markers    red            default # + at beginning of wrapped lines
+color hdrdefault brightgreen    default # default header lines
+color header     brightyellow   default ^From   # From
+color header     brightyellow   default ^Subject # Subject
+color bold       red            default # hiliting bold patterns in body
+color underline  green          default # hiliting underlined patterns in body
+color quoted     brightmagenta  default # quoted text
+color quoted1    cyan           default
+color quoted2    magenta        default
+color quoted3    cyan           default
+color quoted4    magenta        default
+color quoted5    cyan           default
+color quoted6    magenta        default
+color quoted7    cyan           default
+color quoted8    magenta        default
+color quoted9    cyan           default
+color body       yellow         default  "((ftp|http|file|https)://|news:)[^ >)\"\t]+"
+color body       yellow         default  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+color body       red            default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+color body       green          default  "(^| )_[-a-z0-9_]+_[,.?]?[\n]"
+color body       red            default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+color body       green          default  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
+color index      cyan           default  ~F    # Flagged
+color index      brightred      default  ~N    # New
+color index      magenta        default  ~T    # Tagged
+color index      cyan           default  ~D    # Deleted
