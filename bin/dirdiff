@@ -1,0 +1,82 @@
+#!/bin/bash
+#------------------------------------------------------------------
+# Script: dirdiff		Author: Scott Kruger
+# Usage: dirdiff
+# Description:  This script is for finding out which files are
+#	the same and which are different in two directories
+#------------------------------------------------------------------
+# CHANGE THIS STUFF:
+
+dir1=$1
+dir2=$2
+#dir1="$HOME/nimroot/Source/nimplot"
+#dir2="$HOME/nimroot/CooknT2/nimplot"
+glob_pattern="*"
+#glob_pattern="*.f"
+#glob_pattern="*.py"
+#glob_pattern="*.c"
+#glob_pattern="*.in"
+
+#------------------------------------------------------------------
+# Useful Variables
+#------------------------------------------------------------------
+same_file=SameFiles
+diff_file=DiffFiles
+total_file=DD.info
+#diffncs_file=Differences
+dir1_files=`ls $dir1/$glob_pattern`
+dir2_files=`ls $dir2/$glob_pattern`
+
+#------------------------------------------------------------------
+# File Headers
+#------------------------------------------------------------------
+echo 'FILES THAT ARE THE SAME:' > $same_file
+echo >> $same_file
+
+echo 'FILES THAT ARE THE DIFFERENT:' > $diff_file
+echo >> $diff_file
+
+#echo 'DIFFERENCES OF THE FILES:' > $diffncs_file
+#echo >> $diffncs_file; echo >> $diffncs_file
+
+#------------------------------------------------------------------
+# Body of Code
+#------------------------------------------------------------------
+
+echo > $total_file
+for file1 in $dir1_files 
+do
+  file1_name=`basename $file1`
+  no_counter_part=1
+
+  for file2 in $dir2_files 
+  do
+    file2_name=`basename $file2`
+
+    if [ "$file1_name" = "$file2_name" ]; then
+        no_counter_part=0
+	  if cmp -s $file1 $file2; then
+	      echo $file1_name >> $same_file
+	  else
+	      echo $file1_name >> $diff_file
+
+#	      echo "DIFFERENCES OF "  $file1 $file2 >> $diffncs_file
+#	      sdiff $file1 $file2 >> $diffncs_file
+#	      echo >> $diffncs_file; echo >> $diffncs_file; 
+	  fi
+    fi
+  done
+  if [ "$no_counter_part" = "1" ]; then
+#	  echo "$file1 has no counterpart in $dir2"
+	  echo "$file1 has no counterpart in $dir2" >> $total_file
+  fi
+done
+
+# I like everything in one file
+echo >> $total_file; echo >> $total_file
+cat $diff_file >> $total_file
+echo >> $total_file; echo >> $total_file
+cat $same_file >> $total_file
+/bin/rm $same_file $diff_file
+more $total_file
+

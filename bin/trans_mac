@@ -1,0 +1,9 @@
+#!/bin/sh
+set -vx
+for svalue in  `ls *$1`
+do
+	echo $svalue
+        tr '\015' '\012'< $svalue  > tmp.tm
+        mv tmp.tm $svalue
+done
+echo 'Done'

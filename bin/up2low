@@ -1,0 +1,9 @@
+#!/bin/sh
+for svalue in  `ls *`
+do
+       echo $svalue
+       small="`echo $svalue | tr A-Z a-z`"
+       echo $small
+       mv $svalue $small
+done
+echo 'Done'

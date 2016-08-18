@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# File:         addignores.sh
+#
+# Purpose:      Add files to svn:ignore in each directory recursively.
+#
+# Version:      $Id:
+#
+# Copyright &c 2009; Tech-X Corporation
+#
+#########
+#!/bin/sh
+
+case $# in 
+  0) echo "Usage: $0 list-of-files-or-patterns-to-ignore"
+     exit 0;;
+esac
+
+dir=`dirname $0`
+absdir=`(cd $dir; pwd -P)`
+name=`basename $0`
+
+for dir in *; do
+   if test -d "$dir/.svn"; then
+       cd $dir
+       $absdir/$name "$@"
+       cd ..
+   fi
+done
+
+pwd
+svn propget svn:ignore . | sed '/^$/d' > ignore$$
+echo "$@" | tr ' ' '\n' >> ignore$$ | sed '/^$/d' | sort -u ignore$$ -o ignore$$
+svn propset svn:ignore . --file ignore$$
+rm -f ignore$$
+

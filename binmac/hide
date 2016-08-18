@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#  Script written by Eugene Lee, Kirk McElhearn and Simon Forster.
+#  Additional rewriting by MordEth.
+
+FINDER="Finder"
+
+if [ "$1" == "" ]
+	then
+		echo -e "\nSyntax:"
+		echo "hide [app]	- hides specified app"
+		echo "hide -x [app]	- hides all apps but specified app; without [app], app = Terminal"
+		echo "hide -a [app]	- hides all apps but $FINDER; if [app] is specified, it stays visible"
+		echo "hide -f		- hides Finder"
+		echo "hide -v [app]	- brings specified app to the front, whether hidden or visible"
+		echo "hide -t		- toggles visible/hidden apps"
+		echo "hide -s		- shows all apps"
+		echo -e "hide -q [app]	- quits specified app\n"
+		echo "App names are case-insensitive, but must be quoted or escaped if they contain spaces."
+		exit 1
+fi
+
+osascript <<END
+	set arg1 to "$1"
+	set arg2 to "$2"
+	tell application "System Events"
+		if arg1 begins with "-" then
+			if arg1 contains "o" then set visible of every process whose visible is true and name is not arg2 to false
+			if arg1 contains "a" then set visible of every process whose visible is true and name is not "$FINDER" and name is not arg2 to false
+			if arg1 contains "f" then set visible of process "$FINDER" to false
+			if arg1 contains "v" then tell me to tell application arg2 to activate
+			if arg1 contains "q" then tell me to tell application arg2 to quit
+			if arg1 contains "t" then
+				set theVisible to name of every process whose visible is true
+				repeat with theProcess in every process
+					if theVisible contains name of theProcess then
+						set visible of contents of theProcess to false
+					else
+						set visible of contents of theProcess to true
+					end if
+				end repeat
+			end if
+			if arg1 contains "x" then tell application "Terminal" to activate
+			else if exists application process arg1 then
+				set visible of application process arg1 to false
+		end if
+	end tell
+END
+

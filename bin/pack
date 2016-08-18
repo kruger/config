@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# A script for automatically tarring up and gzipping a directory.
+#
+for dname in $*;
+do
+	echo $dname;
+	if [ -d $dname ]; then
+		tar cf - $dname | gzip > $dname.tar.gz;
+	else
+		tar cf - $dname | gzip > $dname.tar.gz;
+	fi
+	mv $dname $dname.del;
+done

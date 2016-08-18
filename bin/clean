@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# This cleans up output from the various codes.  The cleaner used is
+# based on the argument because this is easier for me to remember than 
+# the individual cleaners.
+#
+# The flags I have correspond to the following codes/scripts
+# 	t 	TOQ	
+# 	f 	FAR	
+# 	n 	NIMROD	
+# 	g 	fluxgrid	
+# 	l 	latex	
+#
+for arg
+do
+   case "$arg"
+   in
+	t)    f="dsk* *.bin *.dat outjmg outtoq";;
+
+	n)    f="*.out *.log *.bin  draw*.in *.dat *.plt core *.txt *.err summary.run";;
+
+	g)    f="*.out *.bin *.dat *.plt mode.list *.hdf draw.in fareq neoeq";;
+
+	l)    f="*.aux *.log *.dvi *.toc *.blg";;
+   esac
+
+   /bin/rm -f $f
+
+done

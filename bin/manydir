@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+#  A script for performing same operation 
+#	in subdirectories recursively
+#  The magic is in the find command which prints all subdirectories 
+#	except for hidden directories
+# For non recursive directory action, this is easier:
+# for dir in `ls -d $1*`
+
+startdir=$PWD
+for dir in `find $1 \( -name '.*' -prune \) -o \( -type d -print \)`
+do
+	cd $startdir
+	cd $dir
+	echo $dir
+	gridclean
+	/bin/rm dump.*
+done
+
+

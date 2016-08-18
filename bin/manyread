@@ -1,0 +1,12 @@
+#!/bin/bash
+#------------------------------------------------------------------
+# Script: manyread		Authors: Scott Kruger
+# Usage: manyread < filename
+#------------------------------------------------------------------
+# Initialize variables
+#------------------------------------------------------------------
+while read line  # For as many lines as the input file has...
+do
+  echo "$line"   # Output the line itself.
+
+done

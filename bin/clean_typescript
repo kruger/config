@@ -1,0 +1,5 @@
+#!/bin/sh
+set -vx
+        tr '\015' ' '< typescript  > temp
+        mv temp typescript
+echo 'Done'

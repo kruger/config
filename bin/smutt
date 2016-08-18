@@ -1,0 +1,4 @@
+#!/bin/bash
+start_dir=$HOME/Downloads	# This sets the default location for all saves
+cd $start_dir || exit 1
+mutt $@	# Pass through arguments

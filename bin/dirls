@@ -1,0 +1,41 @@
+#!/bin/bash
+# @(#)lsdir - Utility (script) for displaying only directory entries.
+# -------------------------------------------------------------------- #
+#                                                                      #
+# PROGRAM........: lsdir                                               #
+#                                                                      #
+# PURPOSE........: display only directory tree names recursively.      #
+#                  optionally provide starting path, default is pwd.   #
+#                                                                      #
+# PROGRAMMER.....: Mark Terjeson                                       #
+#                                                                      #
+# WRITTEN........: 07/15/96                                            #
+#                                                                      #
+# MODIFICATIONS..: __/__/__  _______________________________________   #
+#                                                                      #
+# Syntax.........: lsdir [path]                                        #
+#                                                                      #
+# -------------------------------------------------------------------- #
+
+#
+# OKAY, HERE WE GO
+#
+
+# establish directory to show
+if [ -n "$1" ]
+then
+    PWD="$1"
+else
+    PWD=`pwd`
+fi
+
+DIRS=`find $PWD -type d -print`
+
+echo "$DIRS\n"
+
+#
+# ALL DONE
+#
+
+
+

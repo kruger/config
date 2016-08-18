@@ -1,0 +1,31 @@
+#!/bin/sh
+#------------------------------------------------------------------
+# Script: join_session         		Author: Scott Kruger
+# Usage: join_session 
+# Description:  
+#	This script and the associated make_session automate the use
+#	of the multi-user feature of the screen program.  It
+#	essentially automates the management of the acl and session
+#	names.  
+#------------------------------------------------------------------
+#------------------------------------------------------------------
+# These files must match what's in join session
+#------------------------------------------------------------------
+tmp_session_name="/tmp/session_name"
+
+#------------------------------------------------------------------
+# Get the name of the session to join (crude but effective)
+#------------------------------------------------------------------
+session_name=`grep Multi $tmp_session_name | cut -f2 -d"	"`
+mk_user=`grep Socket $tmp_session_name | sed "s/^.*-//" | sed "s/\..*$//"`
+echo $session_name
+#echo $mk_user
+#exit
+#session="$mk_user/$session_name"
+
+#------------------------------------------------------------------
+# Now join
+#------------------------------------------------------------------
+echo "Joining session name" $session
+screen -x $session
+exit

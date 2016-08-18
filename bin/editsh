@@ -1,0 +1,10 @@
+#!/bin/sh
+echo $@
+echo $1
+usage_line="Usage: `basename $0` shell_script_file <file(s)>"
+if [ "$#" -lt 1 ]; then echo $usage_line; exit; fi
+if ! test -e $1; then
+	echo "#!/bin/sh"> $1 
+fi
+vim $@
+chmod u+rx $1 

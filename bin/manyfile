@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+#  A script for performing the same operation
+#   on a bunch of files
+#
+#set -v
+# for i in `seq 1 20` # do something 20 times.
+for file in *.sh
+do
+	echo $file ${file%sh}vsh5
+	#ln -sf echo $file ${file%sh}.vsh5
+done

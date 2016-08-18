@@ -1,0 +1,29 @@
+#!/bin/bash
+# usage: svndiff file
+
+if [[ ! -d .svn ]]
+then
+   echo ERROR: You are not working in an SVN directory.
+   exit 1
+fi
+
+# Define graphical diff tool
+#
+
+dif="gvimdiff \"+colo morning\" -R"
+
+file=$1
+prev=PREV_${file}
+
+# Trap bash command signals
+# SIGINT   2
+# SIGQUIT  3
+# SIGTERM 15
+trap "rm -f $prev" 2 3 15
+svn cat $file > $prev 2>/dev/null
+$dif $prev $file
+
+# Sleep for non-blocking apps like gvimdiff. 
+# Allow gvimdiff to read file before it is deleted.
+sleep 2
+rm -f $prev

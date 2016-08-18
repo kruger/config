@@ -1,0 +1,50 @@
+#!/bin/bash
+#------------------------------------------------------------------
+# Script: add_address 		Authors: Scott Kruger
+# Usage: add an address to $PIM/addresses/addressbook
+#------------------------------------------------------------------
+# Variables for users to setup.
+#------------------------------------------------------------------
+
+addressfile=$PIM/addresses/addressbook
+
+#------------------------------------------------------------------
+# Subroutine for making generating the menus easier
+#------------------------------------------------------------------
+function prompt ()
+{
+	echo "Enter $1"
+	read entered
+}
+
+#------------------------------------------------------------------
+# START CODE EXECUTION HERE
+#------------------------------------------------------------------
+clear
+echo ' '
+echo "Add an address to $addressfile"
+echo ' '
+
+entries="name email address city state zip phone workphone"
+
+# Now add information to the addressfile
+nentries=1
+for entry in $entries; do
+	prompt $entry
+	if [ ! "$entered" = "" ];  then 
+		lines[$nentries]="$entry=$entered"
+		nentries=$nentries+1
+	fi
+done
+
+# Get the last number in the addressfile and increment
+last_num=`grep "\[" $addressfile | tail -1 | sed 's/\[//g' | sed 's/\]//g'`
+let new_num=last_num+1
+lines[0]="["$new_num"]"
+
+# Now add information to the addressfile
+echo >> $addressfile
+for ((i=0; i < $nentries ; i++))
+do
+	echo ${lines[$i]} >> $addressfile
+done
