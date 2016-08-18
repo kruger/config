@@ -2,7 +2,102 @@ version 6.0
 "------------------------------------------
 "  Scott Kruger's .vimrc file 
 "  (based on Sven Gucke's file)
+"  This is a good intro to stuff:
+" https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven
+" https://www.youtube.com/channel/UCpdsZ1n09mwrbUGmU7lqnqA
+" See neovim:
+"   https://www.youtube.com/watch?v=LRQGAnPtNdM
 "------------------------------------------
+ :filetype off
+set nocompatible 			 " Let Vim behave like Vi?  Hell, no!
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" https://github.com/rudrab/vimf90
+Plugin 'rudrab/vimf90'
+
+" https://github.com/geoffharcourt/vim-matchit
+Bundle 'geoffharcourt/vim-matchit'
+
+" Also see this thread:
+" https://www.reddit.com/r/vim/comments/26mszm/what_is_everyones_favorite_commenting_plugin_and/
+" https://github.com/scrooloose/nerdcommenter
+Plugin 'scrooloose/nerdcommenter' 
+Plugin 'scrooloose/nerdtree'
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" This does fuzzy search after hitting <CTRL-P>
+"Plugin 'kien/ctrlp.vim'
+
+" GIT integration
+Plugin 'tpope/vim-fugitive'
+
+
+" Python plugins
+Plugin 'tmhedberg/SimpylFold'    " For python folding
+Plugin 'vim-scripts/indentpython.vim'
+
+" Latex
+Plugin 'lervag/vimtex'
+
+
+"RST
+" https://github.com/Rykka/riv.vim
+Plugin 'Rykka/riv.vim'
+
+
+let proj1 = { 'path': '~/ptsolveall/ptsolvedocs',}
+let g:riv_projects = [proj1]
+
+Plugin 'Rykka/InstantRst'
+
+
+""" TODO:
+"Powerline is a status bar that displays things like the current
+" virtualenv, git branch, files being edited, and much more.
+"  It’s written in Python, and it supports a number of other environments
+"  like zsh, bash, tmux, and IPython.
+"  Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+
+
+" Color schemes
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
+
+
+" See: https://github.com/Valloric/YouCompleteMe for feature list
+"Bundle 'Valloric/YouCompleteMe' 
+"let g:ycm_autoclose_preview_window_after_completion=1
+" From https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/:
+"   My leader key is mapped to space, so space-g 
+"   will goto definition of whatever I’m currently on. "
+"    Helpful when exploring new code.
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+""" Does targets within brackets
+Plugin 'wellle/targets.vim'
+
+
+"""
+" By hand:
+" cd ~/.vim/bundle; git clone https://github.com/scrooloose/nerdtree.git
+ 
+
+
+
+
 " ===================================================================
 " Mappings:  I change these most often so put it at the front of file
 " SEE :h modes for differences between map,nmap,vmap,imap,...
@@ -168,6 +263,27 @@ nmap <C-3> :b#<CR> 	" Previous buffer you were in
   nnoremap <silent> <F9> :TlistSync<CR>
 
 " -------------------------------------------------------------------
+" Thes comment highlighted sections
+" -------------------------------------------------------------------
+map ,# :s/^/#/<CR>
+map ,/ :s/^/\/\//<CR>
+map ,> :s/^/> /<CR>
+map ," :s/^/\"/<CR>
+map ,% :s/^/%/<CR>
+map ,! :s/^/!/<CR>
+map ,7 :s/^/c/<CR>
+map ,; :s/^/;/<CR>
+map ,- :s/^/--/<CR>
+map ,c :s/^\/\/\\|^--\\|^> \\|^[#"%!;c]//<CR>
+
+" wrapping comments
+map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR>
+map ,( :s/^\(.*\)$/\(\* \1 \*\)/<CR>
+map ,< :s/^\(.*\)$/<!-- \1 -->/<CR>
+map ,d :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR>
+
+
+" -------------------------------------------------------------------
 " nice examples. 
 " -------------------------------------------------------------------
 "      ,rcm = remove "control-m"s - for those mails sent from DOS:
@@ -276,8 +392,9 @@ nmap    _P      :r /tmp/vi_tmp<CR>
 "==========================================================
 " I like the tags file to be hidden.  For ctags use:
 "  ctags -o .tags .
-  set tags=./.tags,./../.tags		
-  let Tlist_Ctags_Cmd="/sw/bin/ctags"
+"  set tags=./.tags,./../.tags		
+  set tags+=tags;/
+  let Tlist_Ctags_Cmd="ctags"
 
 "==========================================================
 " Customizations of gui and console versions
@@ -327,8 +444,26 @@ nmap    _P      :r /tmp/vi_tmp<CR>
   let g:explVertical=1		" Split vertically
   let g:explStartRight=0    " Put new explorer window to the left of the
 			    		" current window
- :filetype on
- :filetype plugin indent on
+" vundle:
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" :filetype on
+" :filetype plugin indent on
+
+" Python.  Not sure if this will conflict with ftdetect
+" Note that PEP89 recommends 4 spaces, but Tx standard is 2
+au BufNewFile,BufRead *.py
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+
 
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -376,8 +511,8 @@ nmap    _P      :r /tmp/vi_tmp<CR>
 "SEK xfontsel isn't bad for helping to figure this one out.
 " set guifont=Monaco\ 13
 " From macvim FAQ:
-set macatsui enc=utf-8 gfn=Monaco:h14
-set nomacatsui anti enc=utf-8 gfn=Monaco:h14
+" set macatsui enc=utf-8 gfn=Monaco:h14
+" set nomacatsui anti enc=utf-8 gfn=Monaco:h14
 " set nomacatsui anti enc=utf-8 termenc=macroman gfn=Monaco:h13
 "------------------------------------------
 
@@ -389,8 +524,9 @@ set nomacatsui anti enc=utf-8 gfn=Monaco:h14
 " ===================================================================
 "  Various settings
 " ===================================================================
+  set clipboard=unnamed             " This uses the system clipboard on Mac
   set smarttab
-  set tabstop=6
+  set tabstop=4
   set expandtab 		             "This changes tabs to spaces.
   set nosmartindent
   set autoindent
@@ -425,7 +561,6 @@ set nomacatsui anti enc=utf-8 gfn=Monaco:h14
   set history=50                     " keep 50 lines of command line history
   set nobackup 			       " backups are for wimps  ;-)
   set backspace=2 			 " '2' is much smarter.->"help backspace"
-  set nocompatible 			 " Let Vim behave like Vi?  Hell, no!
   set comments=b:#,:%,fb:-,n:>,n:)   " comments default
   set dictionary=/usr/dict/words 	 " dictionary
   set noerrorbells 			 " errorbells: damn this beep!  ;-)
@@ -475,62 +610,6 @@ set nomacatsui anti enc=utf-8 gfn=Monaco:h14
 " set   keywordprg=man\ -s            Program to use for the "K" command.
 "  set   pastetoggle=<f11>
   set   shortmess=at                " Kind of messages to show.
-
-
-" ===================================================================
-"  For use with the calendar plugin
-" ===================================================================
- let calendar_action = 'MyCalAction'
- let calendar_diary = $OUTLINES
- let calendar_sign = 'MyGetSpecialDay'
-
- " These two function are defined as:
-
-"*****************************************************************
-"* CalendarDiary : calendar hook function
-"*----------------------------------------------------------------
-"*   day   : day you actioned
-"*   month : month you actioned
-"*   year  : year you actioned
-"*****************************************************************
-function! MyCalAction(day, month, year, week, dir)
-  "let sfile = expand(g:calendar_diary) . "/outline_calendar/" . a:year . ".otl"
-  if a:day < 10
-     let tday="0".a:day
-  else
-     let tday=a:day
-  endif
-  if a:month < 10
-     let tmonth="0".a:month
-  else
-     let tmonth=a:month
-  endif
-  let daytag =  a:year . "-" . tmonth . "-" . tday
-  "let vwinnum = bufwinnr('__Calendar')
-  let vwinnum = bufwinnr(1)
-
-  set ft=calendar
-  "SEK: These both work but I lose the highlighting
-  "  wincmd p
-  exe vwinnum . 'wincmd w'
-  exe " ta" . daytag
-endfunc
-
-
-"*****************************************************************
-" Mark fixed events in the calendar plugin
-"*****************************************************************
- function! MyGetSpecialDay(day, month, year)
-   let l:m100d = 10000 + (a:month * 100 ) + a:day
-   let l:holidays = expand(g:calendar_diary) . "/holidays"
-   exe "silent!" . "split " . l:holidays
-   let l:found = search(l:m100d)
-   if l:found
-     let l:found = 'h'  
-   endif
-   quit
-   return l:found
- endfunction 
 
 " ===================================================================
 " ASCII tables - you may need them some day.  Save them to a file!
