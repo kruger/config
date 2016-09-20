@@ -26,6 +26,10 @@ Plugin 'gmarik/Vundle.vim'
 " https://github.com/rudrab/vimf90
 Plugin 'rudrab/vimf90'
 
+" Mini-buff explorer -- So important
+" https://github.com/weynhamz/vim-plugin-minibufexpl
+Plugin 'weynhamz/vim-plugin-minibufexpl'
+
 " https://github.com/geoffharcourt/vim-matchit
 Bundle 'geoffharcourt/vim-matchit'
 
@@ -381,8 +385,8 @@ nmap    _P      :r /tmp/vi_tmp<CR>
 "==========================================================
 " I like the tags file to be hidden.  For ctags use:
 "  ctags -o .tags .
-"  set tags=./.tags,./../.tags		
-  set tags+=tags;/
+  set tags=./.tags,./../.tags		
+"  set tags+=tags;/
   let Tlist_Ctags_Cmd="ctags"
 
 "==========================================================
