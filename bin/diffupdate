@@ -1,0 +1,16 @@
+#!/bin/sh
+# Diff and then move $1 to $2
+args=
+if [ "$1" = "-u" ]; then
+    args="-u"
+    shift
+fi
+new="$2"
+ref="$1"
+
+diff $args "$ref" "$new"
+ret=$?
+echo "Updating $new --> $ref"
+mv "$new" "$ref"
+exit $ret
+
