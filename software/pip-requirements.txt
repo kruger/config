@@ -1,0 +1,23 @@
+# Invoke this with `pip install -r pip-requirements.txt`
+towncrier
+howdoi
+
+gensim     # https://radimrehurek.com/gensim/index.html   NLP
+
+usaddress  # https://github.com/datamade/usaddress
+pint       # https://pint.readthedocs.io/en/0.7.2/        Units
+arrow      # https://github.com/crsmithdev/arrow          Time handling
+pdftables  # https://github.com/vnaydionov/pdftables      PDF parsing
+datacleaner # https://github.com/rhiever/datacleaner      Pandas advanced handling
+parserator  # https://github.com/datamade/parserator      Probabilistic parsing
+Faker       # https://github.com/joke2k/faker             Generate fake data
+
+hypothesis  # http://hypothesis.works                     Testing framework
+airflow     #                                             Like Dask
+luigi       # http://luigi.readthedocs.io/en/stable/      Like Dask
+undebt      #                                             Code refactoring tool using pyparsing
+pre-commit  #                                             Pre-commit hooks http://pre-commit.com
+pynini      #                                             State machine parsing https://www.oreilly.com/ideas/how-to-get-superior-text-processing-in-python-with-pynini
+
+
+

@@ -1,0 +1,30 @@
+
+BREW
+brew install httpie   | https://httpie.org
+brew install MisterTea/et/et  # Eternal Terminal
+
+CONDA
+conda install pyramid
+
+See here for intel installation:
+https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda
+
+
+GITHUB
+git clone https://github.com/hcyrnd/simon.git  
+      -- MAC
+      -- Python example for creating a menubar
+
+git clone https://github.com/nvbn/thefuck.git  
+      -- TOOLS
+      -- Correct previous CLI command
+  
+
+git clone https://github.com/datamade/dedupe.git
+      -- PYTHON/datamade
+      -- python library for accurate and scaleable fuzzy matching, record deduplication and entity-resolution.
+
+git clone https://github.com/pyamg/pyamg.git
+git clone https://github.com/jedbrown/git-fat.git
+git clone https://github.com/jedbrown/numerical-computation.git
+git clone https://github.com/jedbrown/spectral-petsc.git
