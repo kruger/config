@@ -1,4 +1,5 @@
 ### This file configures various client-side behaviors.
+###   you copy it to:  ~/.subversion/config, 
 ###
 ### The commented-out examples below are intended to demonstrate
 ### how to use this file.

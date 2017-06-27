@@ -2,6 +2,7 @@
 ##  This is a local file -- meant to be customized per machine
 ##  by copying to $HOME/.tcshrc and editing.
 ##  Unlike the global files (e.g., global.cshrc and aliases.cshrc)
+##  I work on weird systems so this has stuff that is normally global
 #
 set cdpath=''
 
@@ -19,6 +20,8 @@ set cdpath=''
 #
 source $HOME/config/aliases.cshrc
 source $HOME/config/global.cshrc
+source $HOME/config/cdargs-tcsh.csh 
+source $HOME/config/git-completion.tcsh
 #source $HOME/config/codes.cshrc
 #source $HOME/config/techx.cshrc
 
@@ -41,8 +44,14 @@ if (-f /sw/bin/keychain ) then
       endif
 endif
 
+# Good for dark backgrounds:
+setenv LS_COLORS \
+"di=33;1:fi=37;1:ln=36;1:ex=01;31:pi=40;33:so=01;34:bd=40;33;01:cd=4;33;01:*.o=37:*.mod=37:*.log=37:*.aux=37:*.toc=37:*.lof=37:*.lot=37:*.tpt=37"
 
+# Good for light backgrounds:
+#setenv LS_COLORS "ex=01;31:ln=31:fi=31:di=01;34:pi=40;33:so=01;34:bd=40;33;01:cd=4;33;01:*.tar=04;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.dvi=04;35:*.ps=04;34:*.eps=04;34:*.tex=01;32"
 
+set DESKTOP='gabrielle'
 
 # Take me places quickly
 #alias nrl open $HOME/Papers/NRL_FORMULARY_07.pdf
@@ -89,9 +98,9 @@ setenv PATH /usr/local/bin:${PATH}
 setenv PATH "/opt/homebrew/bin:$PATH"
 setenv PYTHONPATH "/opt/homebrew/lib/python2.7/site-packages:$PATH"
 alias mvim /Applications/MacVim.app/mvim
-unalias ls
-alias ls ls --color -F
-
-
 setenv PATH /usr/local/texlive/2014/bin/x86_64-darwin:${PATH}
+
+# Useful for Mac
 alias myps 'ps -u kruger | grep -v login | grep -v tcsh | grep -v Applications | grep -v mdworker | grep -v System | grep -v /usr/lib | grep -v Library | grep -v agilebits | grep -v /usr/sbin'
+
+setenv PATH $HOME/anaconda/bin:${PATH}

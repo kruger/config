@@ -12,7 +12,15 @@ version 6.0
 set nocompatible 			 " Let Vim behave like Vi?  Hell, no!
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set runtimepath+=~/.vim/plugin
+
+""" I got these from Damian Conway's github repo 
+"See: https://www.youtube.com/watch?v=aHm36-na4-4&feature=youtu.be
+"plugin/autoswap_mac_linux.vim
+"plugin/hlnext.vim
+"plugin/listtrans.vim
+
+ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
@@ -25,6 +33,9 @@ Plugin 'gmarik/Vundle.vim'
 
 " https://github.com/rudrab/vimf90
 Plugin 'rudrab/vimf90'
+
+" https://github.com/mhinz/vim-grepper
+Plugin 'mhinz/vim-grepper'
 
 " Mini-buff explorer -- So important
 " https://github.com/weynhamz/vim-plugin-minibufexpl
@@ -45,6 +56,15 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " GIT integration
 Plugin 'tpope/vim-fugitive'
+
+" See this
+" https://majutsushi.github.io/tagbar/
+" https://www.reddit.com/r/vim/comments/2k9lnm/is_there_a_highquality_restructuredtext_plugin/
+Bundle 'majutsushi/tagbar'
+
+" Impressive python scratchpad.
+" https://github.com/metakirby5/codi.vim
+Plugin 'metakirby5/codi.vim'
 
 
 " Python plugins
@@ -513,7 +533,7 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 "set guifont=-b&h-lucidatypewriter-medium-r-normal-*-*-140-*-*-m-*-iso8859-1
 "set guifont=-b&h-lucidatypewriter-medium-r-normal-*-14-140-*-*-m-*-iso8859-1
 
- 
+
 " ===================================================================
 "  Various settings
 " ===================================================================
@@ -564,7 +584,8 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
   noremap <silent> <Space> :silent noh<Bar>echo<CR>
   set noinsertmode
   set lazyredraw                     " don't update screen whil executing macros
-  set textwidth=72
+  set textwidth=80
+  set colorcolumn=81
   set nonumber                       " Number the lines
   set path=.,$HOME,$HOME/.vim        " list of directories to search when 
                                      "  you specify file with edit command.

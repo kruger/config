@@ -206,3 +206,9 @@ alias h5header 'h5dump --header'
 alias h5lr 'h5ls -r'
 alias h5la 'h5ls -rv'
 alias h5dds 'h5dump -d'
+
+###
+## PETSc
+#
+alias petscset 'setenv PETSC_DIR $PWD; setenv PETSC_ARCH `ls -d arch* | head -1`'
+
