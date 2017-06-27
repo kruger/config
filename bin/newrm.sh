@@ -18,15 +18,12 @@ if [ $# -eq 0 ] ; then  # let 'rm' ouptut the usage error
   exec $realrm	# our shell dies and is replaced by /bin/rm
 fi
 
-# parse all options looking for '-f'
-
-flags=""
-
-while getopts "dfiPRrvW" opt
+# parse options -- using getopts because it is so easily extensible
+update=false
+while getopts "u" opt
 do
   case $opt in
-    f ) exec $realrm "$@"     ;;  # exec lets us exit this script directly.
-    * ) flags="$flags -$opt"  ;;  # other flags are for 'rm', not us
+    u ) update=true
   esac
 done
 shift $(( $OPTIND - 1 ))
