@@ -2,9 +2,12 @@
 BREW
 brew install httpie   | https://httpie.org
 brew install MisterTea/et/et  # Eternal Terminal
+brew install mosh
+brew install include-what-you-use
 
 CONDA
 conda install pyramid
+conda install -c damianavila82 rise
 
 See here for intel installation:
 https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda

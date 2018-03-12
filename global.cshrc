@@ -143,13 +143,13 @@ complete gvi 'n/*/f:^*.{aux,log,dvi,ps,bak,o,sty,toc,lof,lot,plt,mod,lyx,bbl,blg
 #					Networking completion
 #					Automatically setup hosts.
 
-set hosts=(volt.txcorp.com dipole.txcorp.com enrico.txcorp.com multipole.txcorp.com fusion.txcorp.com nimrod.txcorp.com iter.txcorp.com oxygen.txcorp.com qalion.txcorp.com qasnowleopard.txcorp.com qaubuntu.txcorp.com sandybridge.txcorp.com ivy.txcorp.com haswell.txcorp.com plasma.txcorp.com phi.txcorp.com ptsolvemac.txcorp.com sekruge@srngate.sandia.gov)
+set hosts=(volt.txcorp.com dipole.txcorp.com enrico.txcorp.com multipole.txcorp.com fusion.txcorp.com nimrod.txcorp.com iter.txcorp.com oxygen.txcorp.com qalion.txcorp.com qasnowleopard.txcorp.com qaubuntu.txcorp.com sandybridge.txcorp.com ivy.txcorp.com haswell.txcorp.com plasma.txcorp.com phi.txcorp.com ptsolvemac.txcorp.com sekruge@srngate.sandia.gov petsc@login.mcs.anl.gov)
 set noglob
 if ( ! $?hosts ) set hosts
 set hosts=($hosts)
 
 # Hosts where I have a different login name:
-set hosts=($hosts skruger@seaborg.nersc.gov skruger@hopper.nersc.gov skruger@bassi.nersc.gov skruger@jacquard.nersc.gov skruger@franklin.nersc.gov skruger@carver.nersc.gov hydra.gat.com skruger@euclid.nersc.gov jaguar.ccs.ornl.gov krugersc@129.244.40.23)
+set hosts=($hosts skruger@cori.nersc.gov skruger@edison.nersc.gov hydra.gat.com skruger@euclid.nersc.gov jaguar.ccs.ornl.gov krugersc@129.244.40.23)
 
 
 #					Complete on hosts

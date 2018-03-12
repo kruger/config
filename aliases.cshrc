@@ -210,5 +210,6 @@ alias h5dds 'h5dump -d'
 ###
 ## PETSc
 #
-alias petscset 'setenv PETSC_DIR $PWD; setenv PETSC_ARCH `ls -d arch* | head -1`'
+alias petscset 'setenv PETSC_DIR $PWD'
+alias checkpetsc 'env | grep PETSC'
 

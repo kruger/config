@@ -20,4 +20,19 @@ pre-commit  #                                             Pre-commit hooks http:
 pynini      #                                             State machine parsing https://www.oreilly.com/ideas/how-to-get-superior-text-processing-in-python-with-pynini
 
 
-
+elizabeth   # https://github.com/lk-geimfari/elizabeth    Generate fake data for testing
+validus     # https://shopnilsazal.github.io/validus/usage.html#basic-validation     Validation methods.  Very NICE!
+pudb        # https://documen.tician.de/pudb/index.html   A better debugger. Integrates with pytest
+maya        # https://github.com/kennethreitz/maya        Datetimes for humansD   A better debugger. Integrates with pytest
+magic-wormhole # https://github.com/warner/magic-wormhole   File transfer
+daiquiri    # https://julien.danjou.info/blog/python-logging-easy-with-daiquiri Improved logger
+sultan      # https://sultan.readthedocs.io/en/latest/sultan-examples.html Shell scripting
+fs          # https://www.pyfilesystem.org/page/installing/    File systems (zip, tar, hd, etc.)
+lolviz      # https://github.com/parrt/lolviz               Visualizing python datastructures.
+prettyprinter  # https://github.com/tommikaikkonen/prettyprinter    PrettyPrinter for python
+sshuttle    # http://sshuttle.readthedocs.io/en/stable/usage.html    SSH as vpn
+background  # https://github.com/kennethreitz/background    Run things in background
+python-switch # https://github.com/mikeckennedy/python-switch.git   Switch in python
+rise    # https://damianavila.github.io/RISE    Convert ipython nb to slideshow
+upstream  # https://github.com/prkumar/uplink   Requests-like URL fetcher
+gooey     # https://github.com/chriskiehl/Gooey Insta-gui
