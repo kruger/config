@@ -36,3 +36,9 @@ python-switch # https://github.com/mikeckennedy/python-switch.git   Switch in py
 rise    # https://damianavila.github.io/RISE    Convert ipython nb to slideshow
 upstream  # https://github.com/prkumar/uplink   Requests-like URL fetcher
 gooey     # https://github.com/chriskiehl/Gooey Insta-gui
+requests-html #https://github.com/kennethreitz/requests-html.git  Easier html parser
+yapf        # https://github.com/google/yapf.git   Pretty-formatter
+pythonscope # Automatically generate unit tests
+notifiers   # http://notifiers.readthedocs.io/en/latest/index.html Interface to slack, twilio, ...
+wxpython    # https://github.com/wxWidgets/Phoenix   GUI
+pygal       # http://pygal.org/en/stable/            Python charting
