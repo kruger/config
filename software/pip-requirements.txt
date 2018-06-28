@@ -42,3 +42,4 @@ pythonscope # Automatically generate unit tests
 notifiers   # http://notifiers.readthedocs.io/en/latest/index.html Interface to slack, twilio, ...
 wxpython    # https://github.com/wxWidgets/Phoenix   GUI
 pygal       # http://pygal.org/en/stable/            Python charting
+gain        # https://github.com/gaojiuli/gain       web crawling

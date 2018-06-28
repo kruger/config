@@ -4,6 +4,7 @@ brew install httpie   | https://httpie.org
 brew install MisterTea/et/et  # Eternal Terminal
 brew install mosh
 brew install include-what-you-use
+brew install colordiff
 
 CONDA
 conda install pyramid

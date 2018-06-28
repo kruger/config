@@ -44,6 +44,15 @@ Get dependency tree of the hash::
 
       spack find -d /nznbz5b
 
+Show variants and flags of package::
+
+      spack find --variants --show-flags trilinos@12.12.1
+
+Useful to see everything (and use short version)::
+
+      spack find --Lv trilinos
+
+
 See what package versions are availible to be isntalled::
 
       spack install <pkg name>
@@ -68,6 +77,28 @@ For dotkit (similar to modules)::
 For 'permanent activation'::
 
       spack load python
+
+Views::
+
+      spack view --verbose symlink -i myview  trilinos 
+      spack view --verbose symlink myview  moab
+
+The  -i above is to ignore conflicts and there are conflicts between superlu and
+SuiteSparse.
+
+The above do not work very well if you have multiple installed.  So you need to
+need to use::
+
+      spack find -lv moab
+      spack find -lv trilinos
+      spack find -dlv moab
+      spack find -dlv trilinos
+
+To find the versions that work.  For me, I could then::
+
+      spack view --verbose symlink myview moab^/oajmavs
+
+
 
 Spec options
 ======================
