@@ -92,6 +92,7 @@ alias showtab cat -t -v -e
 ###
 ## Job control
 #
+alias launch '$HOME/config/bin/nohuprun.sh \!$; tail -f \!$.out'
 alias mps 'ps -aux | sort  +4nr | more'
 alias gps 'ps -eaf | grep \!$'
 #alias gps 'ps -u kruger | grep \!$'
@@ -215,4 +216,17 @@ alias h5dds 'h5dump -d'
 alias petscset 'setenv PETSC_DIR $PWD'
 alias checkpetsc 'env | grep PETSC'
 alias cleanpetsc "find . -type d -name '*\.dSYM' -exec /bin/rm -r {} +"
-
+###
+##
+#
+#set MATH alias - takes an arithmetic assignment statement 
+# as argument, e.g., newvar = var1 + var2 
+# Separate all items and operators in the expression with blanks 
+#Example
+#                       set width = 20.8 
+#                       set height = 5.4 
+#                       MATH area = $width * $height 
+#                       echo $area 
+alias MATH 'set \!:1 = `echo "\!:3-$" | bc -l`' 
+#echo "(321-123)/123" | bc -l                   # quick cli math 
+#echo "print (10E3-123)/123" | python           # quick cli math (w/ scientific notation)
