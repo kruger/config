@@ -49,6 +49,7 @@ alias - cd -
 ###
 ## Archive
 #
+alias tarup 'tar -zcf \!$.tgz \!$'
 alias untar tar xf
 alias unpack 'untar \!$; gzip \!$; mv \!$.gz'
 # find dir -name "*.png" | xargs tar rf dir.tar; bzip2 dir.tar  # make archive of *.png in dir
@@ -138,6 +139,7 @@ alias netports 'netstat -nape --inet'
 alias established 'netstat -a | grep ESTABLISHED'
 alias sshproxy 'ssh -ND 9999 -p 39305 kruger@kinetic.physics.usu.edu'
 alias voltproxy 'ssh -ND 9999 volt.txcorp.com'
+alias wgetr 'wget -r -np -e robots=off --wait 1 '
 
 ###
 ## Printing/Graphics
@@ -212,4 +214,5 @@ alias h5dds 'h5dump -d'
 #
 alias petscset 'setenv PETSC_DIR $PWD'
 alias checkpetsc 'env | grep PETSC'
+alias cleanpetsc "find . -type d -name '*\.dSYM' -exec /bin/rm -r {} +"
 
