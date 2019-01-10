@@ -11,10 +11,10 @@ dir1=$1
 dir2=$2
 #dir1="$HOME/nimroot/Source/nimplot"
 #dir2="$HOME/nimroot/CooknT2/nimplot"
-glob_pattern="*"
+#glob_pattern="*"
 #glob_pattern="*.f"
 #glob_pattern="*.py"
-#glob_pattern="*.c"
+glob_pattern="*.h"
 #glob_pattern="*.in"
 
 #------------------------------------------------------------------
@@ -46,6 +46,7 @@ echo >> $diff_file
 echo > $total_file
 for file1 in $dir1_files 
 do
+  echo $file1
   file1_name=`basename $file1`
   no_counter_part=1
 

@@ -84,6 +84,7 @@ alias st set term=vt100
 # This removes anything under 1M because they aren't important
 #alias dusort 'du -sh * | grep -v "^[0-9]\+\.\?[0-9]k" | sort -n'
 alias dusort 'du -s \!* | sort -r -n | awk '"'"'{sum+=$1;printf("%9d %s\n",$1,$2)}'"'"
+alias dush 'du -sh * > dush.out; du -sh . >> dush.out'
 alias calmonth cal `date '+%m %Y'`
 alias mydate `date "+%Y-%m-%d"`
 alias lookall 'grep --color \!$ /usr/share/dict/words'
@@ -92,7 +93,7 @@ alias showtab cat -t -v -e
 ###
 ## Job control
 #
-alias launch '$HOME/config/bin/nohuprun.sh \!$; tail -f \!$.out'
+alias launch '$HOME/config/bin/nohuprun.sh "\!$"; tail -f \!$.out'
 alias mps 'ps -aux | sort  +4nr | more'
 alias gps 'ps -eaf | grep \!$'
 #alias gps 'ps -u kruger | grep \!$'
@@ -179,6 +180,7 @@ alias mpaa mplayer -vo aa # Run mplayer in ascii mode :)
 ###
 ## Programming
 #
+alias ctagsmine 'ctags -R -o .tags'
 alias valgrindm '/usr/local/valgrind/bin/valgrind --tool=memcheck --leak-check=yes \!$' 
 alias mkae make
 alias makel 'make >& out; less out; rm out'

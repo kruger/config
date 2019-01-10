@@ -14,6 +14,10 @@ set nocompatible 			 " Let Vim behave like Vi?  Hell, no!
 " set the runtime path to include Vundle and initialize
 set runtimepath+=~/.vim/plugin
 
+" If you comment out a Vundle below, definitely do a 
+" VundleClean; VundleInstall
+" otherwise it sticks around
+
 """ I got these from Damian Conway's github repo 
 "See: https://www.youtube.com/watch?v=aHm36-na4-4&feature=youtu.be
 "plugin/autoswap_mac_linux.vim
@@ -30,6 +34,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
+" https://github.com/tpope/vim-repeat
+Plugin 'tpope/vim-repeat'
 
 " https://github.com/rudrab/vimf90
 Plugin 'rudrab/vimf90'
@@ -50,17 +57,35 @@ Bundle 'geoffharcourt/vim-matchit'
 Plugin 'scrooloose/nerdcommenter' 
 Plugin 'scrooloose/nerdtree'
 
+
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " This does fuzzy search after hitting <CTRL-P>
 "Plugin 'kien/ctrlp.vim'
 
 " GIT integration
 Plugin 'tpope/vim-fugitive'
+" For git diff -- this is really awesome
+" https://vimawesome.com/plugin/vim-gitgutter
+Plugin 'airblade/vim-gitgutter'
+
+
+" Awesome statusbar
+" https://vimawesome.com/plugin/vim-airline 
+Plugin 'bling/vim-airline'
+
+" Linter
+" https://github.com/w0rp/ale
+Plugin 'w0rp/ale'
 
 " See this
 " https://majutsushi.github.io/tagbar/
 " https://www.reddit.com/r/vim/comments/2k9lnm/is_there_a_highquality_restructuredtext_plugin/
-Bundle 'majutsushi/tagbar'
+" https://vimawesome.com/plugin/tagbar
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/taglist.vim'
+
+" https://vimawesome.com/plugin/tabular 
+Plugin 'godlygeek/tabular'
 
 " Impressive python scratchpad.
 " https://github.com/metakirby5/codi.vim
@@ -77,7 +102,11 @@ Plugin 'lervag/vimtex'
 
 "RST
 " https://github.com/Rykka/riv.vim
+"let g:riv_fold_auto_update=0
+"let g:riv_fold_level=9
 Plugin 'Rykka/riv.vim'
+"let g:riv_fold_auto_update=0
+"let g:riv_fold_level=0
 
 
 let proj1 = { 'path': '~/ptsolveall/ptsolvedocs',}
@@ -86,28 +115,34 @@ let g:riv_projects = [proj1]
 Plugin 'Rykka/InstantRst'
 
 
-""" TODO:
-"Powerline is a status bar that displays things like the current
-" virtualenv, git branch, files being edited, and much more.
-"  It’s written in Python, and it supports a number of other environments
-"  like zsh, bash, tmux, and IPython.
-"  Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-
-
 " Color schemes
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 
+"  https://github.com/tomasiser/vim-code-dark
+"  To use: colorscheme codedark
+Plugin 'tomasiser/vim-code-dark'
+
+" See: 
+" https://www.reddit.com/r/vim/comments/5w6wac/vim_users_of_reddit_whats_your_favorite/
+"https://github.com/ajh17/VimCompletesMe
+" This isn't as featurefull as YouCompleteMe or Jedi
+Plugin 'ajh17/VimCompletesMe'
+
+""" Some like this the best nvim-completion-manager for python
+" I need to figure out how to configure
+"Plugin 'davidhalter/jedi-vim'
+
 
 " See: https://github.com/Valloric/YouCompleteMe for feature list
-"Bundle 'Valloric/YouCompleteMe' 
+" Plugin 'Valloric/YouCompleteMe' 
+
 "let g:ycm_autoclose_preview_window_after_completion=1
 " From https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/:
 "   My leader key is mapped to space, so space-g 
 "   will goto definition of whatever I’m currently on. "
 "    Helpful when exploring new code.
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 """ Does targets within brackets
@@ -175,6 +210,7 @@ nn <M-.> :call search ("^". matchstr (getline (line (".")), '\(\s*\)') ."\\S")<C
 " using the comamnd "noremap"!
   noremap <C-G> 2<C-G>
 
+ nmap ,,9 :set foldlevel=9<CR>
 
 " -------------------------------------------------------------------
 "  Files to edit and source quickly

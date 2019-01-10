@@ -223,7 +223,6 @@ alias vivy ssh -t dipole.txcorp.com ssh -A -t ivy.txcorp.com
 alias vphi ssh -t dipole.txcorp.com ssh -A -t phi.txcorp.com
 alias voxy ssh -t dipole.txcorp.com ssh -A -t oxygen.txcorp.com
 alias vhaswell ssh -t dipole.txcorp.com ssh -A -t haswell.txcorp.com
-alias vphi ssh -t dipole.txcorp.com ssh -A -t phi.txcorp.com
 alias ivy ssh ivy.txcorp.com
 alias phi ssh phi.txcorp.com
 alias ptmac ssh ptsolvemac.txcorp.com
