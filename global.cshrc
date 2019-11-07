@@ -4,7 +4,7 @@
 # See local.cshrc
 #----------------------------------------------------------------------
 
-setenv PATH $HOME/config/bin:${PATH}
+setenv PATH "$HOME/config/bin:${PATH}"
 
 ###
 ##  Basics

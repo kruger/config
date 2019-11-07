@@ -14,7 +14,7 @@ dir2=$2
 #glob_pattern="*"
 #glob_pattern="*.f"
 #glob_pattern="*.py"
-glob_pattern="*.h"
+glob_pattern="*.counts"
 #glob_pattern="*.in"
 
 #------------------------------------------------------------------

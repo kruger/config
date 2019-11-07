@@ -1,4 +1,5 @@
 #!/bin/bash
 
-nohup $@  1> $1.out  2>&1 </dev/null &
+bname=`basename $1`
+nohup $@  1> $bname.out  2>&1 </dev/null &
 exit

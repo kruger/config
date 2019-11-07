@@ -181,7 +181,7 @@ alias mpaa mplayer -vo aa # Run mplayer in ascii mode :)
 ## Programming
 #
 alias ctagsmine 'ctags -R -o .tags'
-alias valgrindm '/usr/local/valgrind/bin/valgrind --tool=memcheck --leak-check=yes \!$' 
+alias valgrindm '/usr/local/valgrind/bin/valgrind --tool=memcheck --leak-check=yes --track-origins=yes \!$' 
 alias mkae make
 alias makel 'make >& out; less out; rm out'
 alias lnmake 'ln -s make_includes/make_`uname`.inc make.inc'
