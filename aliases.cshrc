@@ -93,7 +93,7 @@ alias showtab cat -t -v -e
 ###
 ## Job control
 #
-alias launch '$HOME/config/bin/nohuprun.sh "\!$"; tail -f \!$.out'
+alias launch '$HOME/config/bin/nohuprun.sh "\!*"; tail -f `basename \!:1.out`'
 alias mps 'ps -aux | sort  +4nr | more'
 alias gps 'ps -eaf | grep \!$'
 #alias gps 'ps -u kruger | grep \!$'
