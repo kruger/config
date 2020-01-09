@@ -143,7 +143,7 @@ complete gvi 'n/*/f:^*.{aux,log,dvi,ps,bak,o,sty,toc,lof,lot,plt,mod,lyx,bbl,blg
 #					Networking completion
 #					Automatically setup hosts.
 
-set hosts=(volt.txcorp.com dipole.txcorp.com enrico.txcorp.com multipole.txcorp.com fusion.txcorp.com nimrod.txcorp.com iter.txcorp.com oxygen.txcorp.com qalion.txcorp.com qasnowleopard.txcorp.com qaubuntu.txcorp.com sandybridge.txcorp.com ivy.txcorp.com haswell.txcorp.com plasma.txcorp.com phi.txcorp.com ptsolvemac.txcorp.com sekruge@srngate.sandia.gov petsc@login.mcs.anl.gov)
+set hosts=(volt.txcorp.com dipole.txcorp.com enrico.txcorp.com multipole.txcorp.com fusion.txcorp.com nimrod.txcorp.com iter.txcorp.com oxygen.txcorp.com qalion.txcorp.com qasnowleopard.txcorp.com qaubuntu.txcorp.com sandybridge.txcorp.com ivy.txcorp.com haswell.txcorp.com plasma.txcorp.com phi.txcorp.com ptsolvemac.txcorp.com sekruge@srngate.sandia.gov krugers@login.mcs.anl.gov)
 set noglob
 if ( ! $?hosts ) set hosts
 set hosts=($hosts)
@@ -234,4 +234,5 @@ alias qaubuntu ssh qaubuntu.txcorp.com
 alias oxygen ssh oxygen.txcorp.com
 alias tatanka ssh krugersc@129.244.40.23
 alias loki ssh -X -t cmodws29.psfc.mit.edu  ssh loki.psfc.mit.edu
+alias mcs ssh krugers@login.mcs.anl.gov
 

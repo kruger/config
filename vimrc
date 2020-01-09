@@ -8,7 +8,7 @@ version 6.0
 " See neovim:
 "   https://www.youtube.com/watch?v=LRQGAnPtNdM
 "------------------------------------------
- :filetype off
+:filetype off
 set nocompatible 			 " Let Vim behave like Vi?  Hell, no!
 
 " set the runtime path to include Vundle and initialize
@@ -39,7 +39,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-repeat'
 
 " https://github.com/rudrab/vimf90
-Plugin 'rudrab/vimf90'
+"Plugin 'rudrab/vimf90'
 
 " https://github.com/mhinz/vim-grepper
 Plugin 'mhinz/vim-grepper'
@@ -64,6 +64,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " GIT integration
 Plugin 'tpope/vim-fugitive'
+
 " For git diff -- this is really awesome
 " https://vimawesome.com/plugin/vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
@@ -95,6 +96,7 @@ Plugin 'metakirby5/codi.vim'
 " Python plugins
 Plugin 'tmhedberg/SimpylFold'    " For python folding
 Plugin 'vim-scripts/indentpython.vim'
+
 
 " Latex
 Plugin 'lervag/vimtex'
@@ -441,7 +443,7 @@ nmap    _P      :r /tmp/vi_tmp<CR>
 "==========================================================
 " I like the tags file to be hidden.  For ctags use:
 "  ctags -o .tags .
-  set tags=./.tags,./../.tags		
+  set tags=.tags;
 "  set tags+=tags;/
   let Tlist_Ctags_Cmd="ctags"
 
@@ -481,6 +483,7 @@ nmap    _P      :r /tmp/vi_tmp<CR>
  	set   ttytype=xterm
  	set nottyfast                      " are we using a fast terminal?
  	set ttyscroll=0                    " turn off scrolling -> faster!
+    set t_Co=256
  endif
 "------------------------------------------
 "  FILETYPES
@@ -500,32 +503,30 @@ filetype plugin indent on    " required
 " :filetype on
 " :filetype plugin indent on
 
+" Use bundles above
 " Python.  Not sure if this will conflict with ftdetect
 " Note that PEP89 recommends 4 spaces, but Tx standard is 2
-au BufNewFile,BufRead *.py
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+"au BufNewFile,BufRead *.py
+"    \ set tabstop=2
+"    \ set softtabstop=2
+"    \ set shiftwidth=2
+"    \ set textwidth=79
+"    \ set expandtab
+"    \ set autoindent
+"    \ set fileformat=unix
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 
 
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
-"set t_ti= t_te=
-"if &t_Co > 2 || has("gui_running")
-	syntax on
-	set hlsearch
-	highlight Normal guibg=Black guifg=White
-	set background=dark
-	set title
-	set titleold=""
-"endif
+syntax on
+set hlsearch
+highlight Normal guibg=Black guifg=White
+set background=dark
+set title
+set titleold=""
 
 " Disable the spelling plugin by default
  	let spell_auto_type = "tex,mail,text,html,sgml,otl,cvs,none"
@@ -651,9 +652,10 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 "==========================================================
   set formatoptions=cqrt            " Options for "text format" command ("gq")
   set   wrapmargin=3			" Distance from edge to begin wrap
+
 "  set   modeline                   " Allow last line to be a modeline 
 "  set   modelines=1                " 
-  set   highlight=8r,db,es,hs,mb,Mr,nu,rs,sr,tb,vr,ws
+"  set   highlight=8r,db,es,hs,mb,Mr,nu,rs,sr,tb,vr,ws
 "  set   iskeyword=@,48-57,_,192-255,-,.,@-@
 "  set   joinspaces                   " insert two spaces after a 
                                       " period with every joining of lines.

@@ -1,0 +1,2 @@
+#!/bin/sh
+/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java -jar ~/config/lib/textidote.jar $@
