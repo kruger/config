@@ -5,6 +5,9 @@ TMux Cheat Sheet
 Basic commands
 --------------
 
+Most important:  All commands begin with CTRL-b (^b)
+
+
 Here are file spacing cases:
 
  - new session with name::
@@ -66,14 +69,20 @@ $ rename the current session d detach from the current session
 Windows
 =======
 
-c create a new window
-, rename the current window
-w list windows
-% split horizontally
-" split vertically
-n change to the next window
-p change to the previous window
-0 to 9 select windows 0 through 9
+Commands:: 
+
+      c create a new window
+      , rename the current window
+      w list windows
+      | split horizontally
+      - split vertically
+      CTRL-{j,k,h,l}   Change pane focus
+      # Rebound in .tmux.conf.  These are the defaults:
+      # % split horizontally
+      # "  split vertically
+      #n change to the next window
+      #p change to the previous window
+      0 to 9 select windows 0 through 9
 
 Panes
 =====

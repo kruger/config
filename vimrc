@@ -41,6 +41,9 @@ Plugin 'tpope/vim-repeat'
 " https://github.com/rudrab/vimf90
 "Plugin 'rudrab/vimf90'
 
+" See documentation
+Plugin 'christoomey/vim-tmux-navigator'
+
 " https://github.com/mhinz/vim-grepper
 Plugin 'mhinz/vim-grepper'
 
@@ -529,48 +532,7 @@ set title
 set titleold=""
 
 " Disable the spelling plugin by default
- 	let spell_auto_type = "tex,mail,text,html,sgml,otl,cvs,none"
-"------------------------------------------
-"  Local
-"------------------------------------------
-   "set printdevice=lp0				" Useful with :ha command
-"------------------------------------------
-"  Syntax customizations
-"------------------------------------------
-"If you are running in the GUI, you can get white text on a black background
-"with:
-" highlight Normal guibg=Black guifg=White
-" highlight Normal guibg=#090E57 guifg=#FFFFFF 
-" highlight Normal guibg=#070B35 guifg=#FFFFFF 
- highlight Normal guibg=#000000 guifg=#FFFFFF 
-
-
-"  Redefine the color for "Comment":
-  highlight Comment gui=bold
-  "hi! Comment	term=bold guifg=#FFDDFF cterm=bold ctermfg=10
-  hi! Comment	term=bold guifg=#FFDDFF cterm=bold ctermfg=6
-  "hi! Comment	term=bold guifg=#FFDDFF cterm=bold ctermfg=3
-  "hi! Comment	term=bold guifg=#FFDDFF ctermfg=8
-  "hi! Comment	term=bold guifg=#FFDDFF ctermfg=14
-  " hi! Comment     term=bold ctermfg=cyan guifg=Blue
-  " hi! Comment	term=bold ctermfg=Cyan guifg=#F1DEEF
-  " hi! Comment	term=bold ctermfg=Cyan guifg=Cyan
-
-"------------------------------------------
-"  FONTS
-"SEK xfontsel isn't bad for helping to figure this one out.
-" set guifont=Monaco\ 13
-" From macvim FAQ:
-" set macatsui enc=utf-8 gfn=Monaco:h14
-" set nomacatsui anti enc=utf-8 gfn=Monaco:h14
-" set nomacatsui anti enc=utf-8 termenc=macroman gfn=Monaco:h13
-"------------------------------------------
-
-"set guifont=-b&h-lucidatypewriter-medium-r-normal-*-19-190-*-*-m-*-iso8859-1
-"set guifont=-b&h-lucidatypewriter-medium-r-normal-*-*-140-*-*-m-*-iso8859-1
-"set guifont=-b&h-lucidatypewriter-medium-r-normal-*-14-140-*-*-m-*-iso8859-1
-
-
+let spell_auto_type = "tex,mail,text,html,sgml,otl,cvs,none"
 " ===================================================================
 "  Various settings
 " ===================================================================
@@ -597,12 +559,13 @@ set titleold=""
   set ruler                          " Show the position of the cursor.
   set laststatus=2                   " Display a status-bar.
   set showmode                       " Show the current mode
+" This is replaced by vim-airline above -- it's awesome
 "       statusline:  customize contents of the windows' status line.
 "       Show the current buffer number and filename with info on
 "       modification, read-only, and whether it is a help buffer
 "       (show only when applied).
 "       On right side, show current position with line+column+virtual_column:
- set   statusline=[%n]\ %f\ %(\ %M%R%H)%)%=%l\,%c%V\ %P
+" set   statusline=[%n]\ %f\ %(\ %M%R%H)%)%=%l\,%c%V\ %P
  set wmh=0 					"sets minumum window height
 
   set showmatch                      " Show matching parenthese.
@@ -726,4 +689,3 @@ set titleold=""
 " | 70  p | 71  q | 72  r | 73  s | 74  t | 75  u | 76  v | 77  w |
 " | 78  x | 79  y | 7a  z | 7b  { | 7c  | | 7d  } | 7e  ~ | 7f del|
 " ===================================================================
-"
