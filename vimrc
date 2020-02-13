@@ -8,7 +8,7 @@ version 6.0
 " See neovim:
 "   https://www.youtube.com/watch?v=LRQGAnPtNdM
 "------------------------------------------
-:filetype off
+filetype off
 set nocompatible 			 " Let Vim behave like Vi?  Hell, no!
 
 " set the runtime path to include Vundle and initialize
@@ -24,7 +24,7 @@ set runtimepath+=~/.vim/plugin
 "plugin/hlnext.vim
 "plugin/listtrans.vim
 
- set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
