@@ -1,0 +1,11 @@
+session_name: petsc
+start_directory: '$HOME/ptroot/upstream/petsc'
+windows:
+- focus: 'true'
+  window_name: petsc
+  layout: main-vertical
+  options: {}
+  panes:
+  - focus: 'true'
+  - shell_command: ''
+  - null

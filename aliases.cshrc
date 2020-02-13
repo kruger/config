@@ -90,6 +90,7 @@ alias mydate `date "+%Y-%m-%d"`
 alias lookall 'grep --color \!$ /usr/share/dict/words'
 alias showtab cat -t -v -e
 
+alias linenum 'echo 123456789112345678921234567893123456789412345678951234567896123456789712345678981234567899'
 ###
 ## Job control
 #

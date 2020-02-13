@@ -238,10 +238,11 @@ nn <M-.> :call search ("^". matchstr (getline (line (".")), '\(\s*\)') ."\\S")<C
 " -------------------------------------------------------------------
 " Note that :close closes the windows
 " I'm overwritting some mappings here, but I don't use them much
-nmap <C-h> <C-W>h				" Move left one window
-nmap <C-j> <C-W>j				" Move up one window 
-nmap <C-k> <C-W>k				" Move down one window
-nmap <C-l> <C-W>l				" Move right one window
+" This is now handled by tmux plugin above
+"nmap <C-h> <C-W>h				" Move left one window
+"nmap <C-j> <C-W>j				" Move up one window 
+"nmap <C-k> <C-W>k				" Move down one window
+"nmap <C-l> <C-W>l				" Move right one window
 "nmap <C-h> <C-W>h<C-W>_		" Move left one window and maximize
 "nmap <C-j> <C-W>j<C-W>_		" Move up one window and maximize
 "nmap <C-k> <C-W>k<C-W>_		" Move down one window and maximize
@@ -255,6 +256,7 @@ nmap <C-n> :bn<CR> 	" Next buffer in list
 nmap <C-p> :bp<CR> 	" Previous buffer in list
 nmap <C-#> :b#<CR> 	" Previous buffer you were in
 nmap <C-3> :b#<CR> 	" Previous buffer you were in
+
  " Jump to a specific buffer number
  map <M-9> :b9<CR>
  map <M-8> :b8<CR>
@@ -304,7 +306,7 @@ nmap <C-3> :b#<CR> 	" Previous buffer you were in
 " bindings (although it is possible to make tcsh act like vi)
  cnoremap <C-A> <Home>
  cnoremap <C-F> <Right>
- cnoremap <C-B> <Left>
+" cnoremap <C-B> <Left>
  cnoremap <C-D> <C-H>
  cnoremap <M-b> <S-Left>
  cnoremap <M-f> <S-Right>
@@ -368,10 +370,6 @@ map ,d :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR>
 nmap    _Y      :.w! /tmp/vi_tmp<CR>
 vmap    _Y      :w! /tmp/vi_tmp<CR>
 nmap    _P      :r /tmp/vi_tmp<CR>
-
-" Give the URL under the cursor to Mozilla
- noremap ,url yA:!mozilla -remote "openurl <C-R>""
-"
 
  
 " ===================================================================
