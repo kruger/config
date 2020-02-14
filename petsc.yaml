@@ -1,11 +1,23 @@
 session_name: petsc
-start_directory: '$HOME/ptroot/upstream/petsc'
 windows:
-- focus: 'true'
-  window_name: petsc
+- window_name: petsc-libaxb
+  start_directory: '$SCRATCH/ptroot/petsc-libaxb'
+  focus: 'true'
   layout: main-vertical
   options: {}
   panes:
   - focus: 'true'
-  - shell_command: ''
+    shell_command:
+    - ls
+  - null
+  - null
+- window_name: petsc
+  start_directory: '$SCRATCH/ptroot/petsc'
+  layout: main-vertical
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command:
+    - ls
+  - null
   - null
