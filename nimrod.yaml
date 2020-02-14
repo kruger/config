@@ -1,0 +1,19 @@
+session_name: petsc
+windows:
+- window_name: nimrod
+  start_directory: '${NIMALL}'
+  focus: 'true'
+  layout: main-vertical
+  options: {}
+  panes:
+  - focus: 'true'
+  - start_directory: '${SCRATCH}/builds-physics/nimdevel'
+  - start_directory: '${SCRATCH}/nimruns'
+- window_name: multispecies
+  start_directory: '${NIMROOT}/multispecies'
+  layout: main-vertical
+  options: {}
+  panes:
+  - focus: 'true'
+  - start_directory: '${SCRATCH}/builds-physics'
+  - start_directory: '${SCRATCH}/nimruns'
