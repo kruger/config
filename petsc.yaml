@@ -1,4 +1,4 @@
-session_name: petsc
+session_name: PETSc
 windows:
 - window_name: petsc-libaxb
   start_directory: '$SCRATCH/ptroot/petsc-libaxb'

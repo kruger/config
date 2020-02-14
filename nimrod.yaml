@@ -1,4 +1,4 @@
-session_name: petsc
+session_name: NIMROD
 windows:
 - window_name: nimrod
   start_directory: '${NIMALL}'
