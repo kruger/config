@@ -5,6 +5,8 @@ brew install MisterTea/et/et  # Eternal Terminal
 brew install mosh
 brew install include-what-you-use
 brew install colordiff
+brew install ansifilter
+brew install urlview
 
 CONDA
 conda install pyramid

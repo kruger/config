@@ -51,12 +51,7 @@ alias editcg 'vi $HOME/config/global.cshrc $HOME/config/aliases.cshrc; source $H
 ###
 ## Quick help
 #
-alias tiplin $EDITOR $HOME/.vim/doc/tips_linux.txt
-alias tipmac '$EDITOR $HOME/.vim/doc/tips_mac.txt'
-alias tipshl $EDITOR $HOME/.vim/doc/tips_shell.txt
-alias tiptcs $EDITOR $HOME/.vim/doc/tips_tcsh.txt
-alias tiptex $EDITOR $HOME/.vim/doc/tips_tex.txt
-alias tipvim $EDITOR $HOME/.vim/doc/tips_vim.txt
+alias tips $EDITOR $HOME/config/tips
 
 ###
 ## Moving around

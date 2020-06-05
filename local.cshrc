@@ -94,7 +94,9 @@ alias cd 'cd \!*;SetTab;SetTitle'
 SetTitle;SetTab
 
 
-setenv PATH /usr/local/bin:${PATH}
+setenv PATH "$HOME/config/bin:$HOME/config/binpy:$HOME/config/binmac:${PATH}"
+setenv PATH "/usr/local/bin:${PATH}"
+setenv PATH "$HOME/upstream/bin:${PATH}"
 setenv PATH "/opt/homebrew/bin:$PATH"
 setenv PYTHONPATH "/opt/homebrew/lib/python2.7/site-packages:$PATH"
 alias mvim /Applications/MacVim.app/mvim

@@ -652,3 +652,53 @@ For $ tmux list-commands.
 +--------------------+-----------------------------------+
 | command_list_usage | Command usage if listing commands |
 +--------------------+-----------------------------------+
+
+tmux-logger
+=============
+1. Logging
+Toggle (start/stop) logging in the current pane.
+
+Key binding: prefix + shift + p
+File name format: tmux-#{session_name}-#{window_index}-#{pane_index}-%Y%m%dT%H%M%S.log
+File path: $HOME (user home dir)
+Example file: ~/tmux-my-session-0-1-20140527T165614.log
+2. "Screen Capture"
+Save visible text, in the current pane. Equivalent of a "textual screenshot".
+
+Key binding: prefix + alt + p
+File name format: tmux-screen-capture-#{session_name}-#{window_index}-#{pane_index}-%Y%m%dT%H%M%S.log
+File path: $HOME (user home dir)
+Example file: tmux-screen-capture-my-session-0-1-20140527T165614.log
+3. Save complete history
+Save complete pane history to a file. Convenient if you retroactively remember you need to log/save all the work.
+
+Key binding: prefix + alt + shift + p
+File name format: tmux-history-#{session_name}-#{window_index}-#{pane_index}-%Y%m%dT%H%M%S.log
+File path: $HOME (user home dir)
+Example file: tmux-history-my-session-0-1-20140527T165614.log
+
+tmux-sessionist
+===============
+prefix + g - prompts for session name and switches to it. Performs 'kind-of' name completion.
+    - Faster than the built-in prefix + s prompt for long session lists.
+
+prefix + C (shift + c) 
+	- prompt for creating a new session by name.
+
+prefix + X (shift + x) 
+    - kill current session without detaching tmux.
+
+prefix + S (shift + s) 
+      - switches to the last session.
+      The same as built-in prefix + L that everyone seems to override with some other binding.
+      prefix + @ - promote current pane into a new session.
+      Analogous to how prefix + ! breaks current pane to a new window.
+
+prefix + t<secondary-key> 
+      - join currently marked pane (prefix + m) to current session/window, and switch to it
+      secondary-keys::
+
+            h, -, ": join horizontally
+            v, |, %: join vertically
+            f, @: join full screen
+
