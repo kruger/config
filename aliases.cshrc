@@ -142,7 +142,12 @@ alias netports 'netstat -nape --inet'
 alias established 'netstat -a | grep ESTABLISHED'
 alias sshproxy 'ssh -ND 9999 -p 39305 kruger@kinetic.physics.usu.edu'
 alias voltproxy 'ssh -ND 9999 volt.txcorp.com'
-alias wgetr 'wget -r -np -e robots=off --wait 1 '
+# r=recursive, c=continue (download of partially complete download) v=verbose
+# nc=no clobber, np=no parent (don't go up to parent directory)
+alias wgetr 'wget -rcv -np -nc -e robots=off --wait 1 '
+alias wgetebook 'wget -m -r -e robots=off --accept-regex=epub|pdf'
+
+
 
 ###
 ## dcoumentation
