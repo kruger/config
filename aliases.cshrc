@@ -44,6 +44,8 @@ alias go 'source $HOME/.dirtocd; /bin/rm $HOME/.dirtocd'
 #alias std 'set z\!$=$PWD'  # "set dir"
 #alias go 'cd z\!$'
 alias .. cd ..
+alias ... cd ../..
+alias .... cd ../../..
 alias - cd -
 
 ###
