@@ -44,6 +44,8 @@ alias go='source $HOME/.dirtocd; /bin/rm $HOME/.dirtocd'
 #alias std 'set z\!$=$PWD'  # "set dir"
 #alias go 'cd z\!$'
 alias ".."='cd ..'
+alias "..."='cd ../..'
+alias "...."='cd ../../..'
 #alias "-"='cd -'
 
 ###
@@ -89,7 +91,7 @@ alias killp='ps -ef|grep \!$ |cut -c 10-15|xargs kill'
 ###
 # Find files
 #
-alias ffind='find . -name \*\!*\* -print' # To find all links
+alias ffind='find . -name \$1 -print' # To find all links
 alias flink='find . -type l' 			# To list all directories and subdirectories:
 alias fdir='find . -type d -print' 		# To skip hidden directories:
 alias fdir2="find . \( -name '.*' -prune \) -o \( -type d -print \)"
