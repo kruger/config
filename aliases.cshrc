@@ -44,6 +44,8 @@ alias go 'source $HOME/.dirtocd; /bin/rm $HOME/.dirtocd'
 #alias std 'set z\!$=$PWD'  # "set dir"
 #alias go 'cd z\!$'
 alias .. cd ..
+alias ... cd ../..
+alias .... cd ../../..
 alias - cd -
 
 ###
@@ -142,17 +144,16 @@ alias netports 'netstat -nape --inet'
 alias established 'netstat -a | grep ESTABLISHED'
 alias sshproxy 'ssh -ND 9999 -p 39305 kruger@kinetic.physics.usu.edu'
 alias voltproxy 'ssh -ND 9999 volt.txcorp.com'
-alias wgetr 'wget -r -np -e robots=off --wait 1 '
+# r=recursive, c=continue (download of partially complete download) v=verbose
+# nc=no clobber, np=no parent (don't go up to parent directory)
+alias wgetr 'wget -rcv -np -nc -e robots=off --wait 1 '
+alias wgetebook 'wget -m -r -e robots=off --accept-regex=epub|pdf'
+
+
 
 ###
-## Printing/Graphics
+## dcoumentation
 #
-alias lp lpr
-alias pp 'enscript -2r -p \!$.ps \!$'
-alias dvips 'dvips -t letter'
-alias eps2jpg 'convert -quality 100 \!$.eps \!$.jpg'
-alias ps2jpg 'convert -crop 0x0 -quality 100 \!$.ps \!$.jpg'
-# Linux system often have something like this anyway:
 alias man2ps 'man -t \!$ > \!$.ps'
 alias man2txt 'man \!$ | col -b > \!$.txt'
 
@@ -166,17 +167,6 @@ alias rpmpkg 'rpm -qpi \!$' 			# To find info about an discovered rpm:
 alias rpmpkglist 'rpm -qpl \!$'		# To see what a package installs
 alias rpmreq 'rpm -q --requires \!$' 	# list files/packages that package needs
 alias rpmwhat 'rpm -q --whatrequires \!$' # list packages that need package
-
-###
-## X-Windowing Stuff
-#
-alias sdc setenv DISPLAY colt.saic.com:0
-alias gvi gvim 
-alias svi 'screen -t \!$ 1 vim \!$'
-alias xdvi 'xdvi -hush'
-alias xmgrace 'xmgrace -nxy'
-alias tec tecplot -showpanel
-alias mpaa mplayer -vo aa # Run mplayer in ascii mode :)
 
 ###
 ## Programming

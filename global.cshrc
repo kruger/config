@@ -51,12 +51,7 @@ alias editcg 'vi $HOME/config/global.cshrc $HOME/config/aliases.cshrc; source $H
 ###
 ## Quick help
 #
-alias tiplin $EDITOR $HOME/.vim/doc/tips_linux.txt
-alias tipmac '$EDITOR $HOME/.vim/doc/tips_mac.txt'
-alias tipshl $EDITOR $HOME/.vim/doc/tips_shell.txt
-alias tiptcs $EDITOR $HOME/.vim/doc/tips_tcsh.txt
-alias tiptex $EDITOR $HOME/.vim/doc/tips_tex.txt
-alias tipvim $EDITOR $HOME/.vim/doc/tips_vim.txt
+alias tips $EDITOR $HOME/config/tips
 
 ###
 ## Moving around
@@ -74,19 +69,6 @@ set rmstar 			# safety precaution for rm *
 unset autologout 		# Don't like autologout
 
 #----------------------------------------------------------------------
-# Keyboard bindings
-# 	To get these to actually work, use the CONTROL-V on the command
-# 	line to get the control or alt characters to work.  Then cut and
-# 	paste.
-#----------------------------------------------------------------------
-#
-#     CONTROL-a is the normal beginning of the line, but that conflicts
-#     with the command character for the "screen" program.  I like this
-#     better anyway since it is the opposite of CTRL-e
-#      bindkey "^[e" beginning-of-line # Alt-e
-
-#     This is normally Alt-b, but I find that awkward
-# bindkey ^[s backward-word	# Alt-s
 bindkey "^p" history-search-backward
 bindkey "^n" history-search-backward
 
@@ -143,7 +125,7 @@ complete gvi 'n/*/f:^*.{aux,log,dvi,ps,bak,o,sty,toc,lof,lot,plt,mod,lyx,bbl,blg
 #					Networking completion
 #					Automatically setup hosts.
 
-set hosts=(volt.txcorp.com dipole.txcorp.com enrico.txcorp.com multipole.txcorp.com fusion.txcorp.com nimrod.txcorp.com iter.txcorp.com oxygen.txcorp.com qalion.txcorp.com qasnowleopard.txcorp.com qaubuntu.txcorp.com sandybridge.txcorp.com ivy.txcorp.com haswell.txcorp.com plasma.txcorp.com phi.txcorp.com ptsolvemac.txcorp.com sekruge@srngate.sandia.gov krugers@login.mcs.anl.gov)
+set hosts=(volt.txcorp.com dipole.txcorp.com enrico.txcorp.com multipole.txcorp.com fusion.txcorp.com nimrod.txcorp.com iter.txcorp.com oxygen.txcorp.com qalion.txcorp.com qasnowleopard.txcorp.com qaubuntu.txcorp.com sandybridge.txcorp.com ivy.txcorp.com haswell.txcorp.com plasma.txcorp.com phi.txcorp.com ptsolvemac.txcorp.com sekruge@srngate.sandia.gov krugers@login.mcs.anl.gov krugers@noether.colorado.edu)
 set noglob
 if ( ! $?hosts ) set hosts
 set hosts=($hosts)
@@ -202,6 +184,7 @@ unset noglob
 ###
 ## Common machines
 #
+alias noether ssh krugers@noether.colorado.edu
 alias sandia ssh sekruge@srngate.sandia.gov
 alias dipole ssh kruger@dipole.txcorp.com
 alias fusion ssh kruger@fusion.txcorp.com
@@ -218,9 +201,11 @@ alias enrico ssh enrico.txcorp.com
 alias iter ssh iter.txcorp.com
 alias sandybridge ssh sandybridge.txcorp.com
 alias sb ssh sandybridge.txcorp.com
+alias hip ssh hip.txcorp.com
 alias vsb  ssh -t dipole.txcorp.com ssh -A -t sandybridge.txcorp.com
 alias vivy ssh -t dipole.txcorp.com ssh -A -t ivy.txcorp.com
 alias vphi ssh -t dipole.txcorp.com ssh -A -t phi.txcorp.com
+alias vhip ssh -t dipole.txcorp.com ssh -A -t hip.txcorp.com
 alias voxy ssh -t dipole.txcorp.com ssh -A -t oxygen.txcorp.com
 alias vhaswell ssh -t dipole.txcorp.com ssh -A -t haswell.txcorp.com
 alias ivy ssh ivy.txcorp.com

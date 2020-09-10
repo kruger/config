@@ -1,0 +1,12 @@
+#Add this to the [core] section of .git/config
+#    excludesfile = ~/config/gitignore.petsc
+conf*.out
+make*.out
+test*.out
+Save*
+SAVE*
+.tags
+*launchme.sh*
+*runme.sh*
+configtest.mod
+configure.help

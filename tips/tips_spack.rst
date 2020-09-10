@@ -4,7 +4,7 @@ Getting started
 
 Do some basic configuration::
 
-      sphinx bootstrap
+      spack bootstrap
 
 Most importantly, it gets the module system built and installed.
 
