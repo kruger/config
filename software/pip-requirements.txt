@@ -50,3 +50,5 @@ prophet     # https://github.com/facebook/prophet.git    Time series forecasting
 pulp        # https://pythonhosted.org/PuLP/#           Optimization package
 internetarchive   # https://pypi.org/project/internetarchive/      Download from
 internate arkix
+handcalcs   # https://github.com/connorferster/handcalcs            Cool Jupyter notebook renderer
+doitlive    # https://doitlive.readthedocs.io/en/latest             Do a live session automatically

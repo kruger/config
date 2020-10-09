@@ -106,3 +106,14 @@ setenv PATH /usr/local/texlive/2014/bin/x86_64-darwin:${PATH}
 alias myps 'ps -u kruger | grep -v login | grep -v tcsh | grep -v Applications | grep -v mdworker | grep -v System | grep -v /usr/lib | grep -v Library | grep -v agilebits | grep -v /usr/sbin'
 
 setenv PATH $HOME/anaconda/bin:${PATH}
+
+###
+## spack
+#
+setenv SPACK_ROOT  $HOME/spackroot/spack
+setenv PATH $SPACK_ROOT/bin:${PATH}
+alias spackinit 'source $SPACK_ROOT/share/spack/setup-env.csh'
+# It seems that setup-env should initialized modules but it doesn't
+alias spackmodinit 'source `spack location -i environment-modules`/Modules/init/tcsh'
+
+
