@@ -32,7 +32,7 @@ alias cp='cp -i'
 alias rmf='/bin/rm '
 alias rmi='/bin/rm -i'
 alias rmr='/bin/rm -rf'
-alias mkdir='mkdir -p'
+alias mkdir='mkdir -pv'
 
 ###
 ##  Make moving around easier.
@@ -58,6 +58,7 @@ alias unpack='untar \!$; gzip \!$; mv \!$.gz'
 
 alias grepc='grep --color="auto"'
 alias h=history
+alias j='jobs -l'
 alias x=exit
 alias k=clear
 alias who="who | sort"
@@ -87,6 +88,16 @@ alias gps='ps -eaf | grep \!$'
 alias showpi='procinfo -D -n1'
 alias killg='kill -9 `ps -eaf | grep kruger | grep \!$ | cut -f5 -d" " | tr "\012" " "`'
 alias killp='ps -ef|grep \!$ |cut -c 10-15|xargs kill'
+## pass options to free ##
+alias meminfo='free -m -l -t' ## get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10' ## get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10' ## Get server cpu info ##
+alias cpuinfo='lscpu' 
+## older system use /proc/cpuinfo ##
+##alias cpuinfo='less /proc/cpuinfo' ## ## get GPU ram on desktop / laptop##
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
 ###
 # Find files
