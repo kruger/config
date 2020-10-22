@@ -1,0 +1,51 @@
+% Standard letter template
+\documentclass{letter}
+
+% Generate the letter at the same time assuming that envlab 
+% is installed
+\usepackage{graphics}                 % Packages to allow inclusion of graphics
+\usepackage{color}                    % For creating coloured text and background
+
+% Note that the environment is somewhat picky
+\begin{document}
+      \address{
+%      \center \bf 
+      \large \bf
+				FAX MESSAGE \\
+      \large \bf
+	 2 PAGES INCLUDING COVER
+	}
+      
+  \begin{letter}
+	{
+      \large
+	 {\bf To:\ \ \ \ } TO PERSON \\
+	 {\bf Phone:}  TO PHONE\\
+	 {\bf Fax:\ \ \ } TO FAX
+	  \ \\
+	  \ \\
+	  \ \\
+	  \ \\
+	 {\bf From:\ } Scott Kruger\\
+	 {\bf Phone:} 720-974-1841\\
+	 {\bf Fax:\ \ \ } 303-448-7756 \\
+	} 
+
+      \normalsize
+      
+      \opening{}
+      
+		Here is the document you requested.
+%                 We wish to inform you that we will attack at dawn.
+      
+      
+      \signature{Scott Kruger\\
+      	 Research Scientist}
+      
+      \closing{Sincerely,}
+      
+      
+  \end{letter}
+\end{document}
+
+

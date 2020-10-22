@@ -1,0 +1,49 @@
+# The following stuff I mostly got off of the net:
+
+# keep a copy of msgid's to catch duplicate messages - i.e. where I get
+# a copy personally, and from a list, or where someone cross posts.
+:0 Whc: .msgid.lock
+| formail -D 15360 .msgid.cache
+
+# if last `test' recipe i.e. formail suceeded, 
+# keep a copy of the duplicates just in case I throw something away
+# in error, or a message gets resubmitted.
+:0 a:
+.Attic/duplicates
+
+# otherwise keep going
+
+# Put job notifications in separate place
+:0                      # Execute a script
+* ^From:.*skruger@nersc.gov*
+nimrod/jobs
+
+##This is my test
+#:0                      # Execute a script
+#* ^Subject:.*ZZZZ
+#| $PMDIR/ptest
+
+# Send a copy to somewhere else
+#:0                      # That's colon, zero, lowercase cee
+#! the_krugers@yahoo.com # That's exclamation mark, address to forward to
+
+#--------------------------------------------------------------------
+# Stuff related to removing SPAM
+#--------------------------------------------------------------------
+
+# Empty Message-IDs usually indicate a broken mailserver
+# which are very likely used to send spams. 
+:0
+* ^Message-ID.*<>
+.Attic/SPAM
+
+# "X-Advertisement" indicate, well, an advertisement. 
+:0
+* ^X-Advertisement:
+.Attic/SPAM
+
+#Try and get rid of at least some of the spam
+:0:
+* ^Subject.*adult
+.Attic/SPAM
+

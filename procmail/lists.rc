@@ -1,0 +1,129 @@
+
+#Before I do any of the automatic stuff, make some of the lists do what I want.
+#--------------------------------------------------------------------------
+##  Majordomo uses Sender header to tell when it is coming from
+:0:
+* ^Sender: owner-allusers@fusion.gat.com
+lists/ga
+
+:0:
+* ^Subject.*Boulderfreecycle*
+lists/freecycle
+
+:0:
+* ^Sender.*@cluedenver.org*
+lists/linux
+
+:0:
+* ^Subject.*\[lug\]*
+lists/linux
+
+:0:
+* ^Sender.*@clueboulder.org*
+lists/linux
+
+:0:
+* ^To.*jobs05@txcorp.com*
+hiring
+
+:0:
+* ^Subject.*\[SCIRUN-USERS\]*
+lists/scirun
+
+:0:
+* ^Subject.*\[Remind-Fans\]*
+lists/vo
+
+:0:
+* ^Subject.*\[Vimoutliner\]*
+lists/vo
+
+:0:
+* ^To.*libtool@gnu.org*
+lists/autotools
+
+:0:
+* ^To.*autoconf@gnu.org*
+lists/autotools
+
+:0:
+* ^To.*automake@gnu.org*
+lists/autotools
+
+:0:
+* ^Cc.*libtool@gnu.org*
+lists/autotools
+
+:0:
+* ^Cc.*autoconf@gnu.org*
+lists/autotools
+
+:0:
+* ^Cc.*automake@gnu.org*
+lists/autotools
+
+:0:
+* ^To.*info@nimrodteam.org*
+/dev/null
+
+
+#--------------------------------------------------------------------
+#From slashdot.  Remove Windows viruses
+#--------------------------------------------------------------------------
+#:0 B 
+#* Content-Disposition: attachment 
+#* name=.*\.(com|exe|pif|scr|bat|lnk|shf|vbs) 
+#{ 
+## Stick it somewhere 
+#:0 B: 
+#lists/viruses 
+#} 
+
+##SEK: I stole the stuff below straight from dotfile.com.  Awesome!
+###############################
+##  Dynamic Mail filters
+##
+##  I can't remember who I originally found this trick from, but it has made my life much
+##  simpler.  The following set of rules use the matching ability of procmail
+##  to dynamically filter mail based on parsing one of the possible mailing list headers.
+##  This means you can subscribe to new mailing lists without having to add lines
+##  to your procmail filters.  Very Good Thing (tm).
+##
+##  When I first found this list, I think there were 4 entries.  I am now up to 8.  I
+##  add a new entry every time some new mailing list ends up in my inbox (i.e. it
+##  is not covered by the current ruleset.)  Comments appear where I can remember
+##  them.
+#
+##  Used by the perl6-all list to break out into seperate mailboxes
+#:0:
+#* ^X-Mailing-List-Name: \/[^@]+
+#lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+#
+###  Majordomo uses Sender header to tell when it is coming from
+#:0:
+#* ^Sender: owner-\/[^@]+
+#lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+#
+#:0:
+#* ^X-BeenThere: \/[^@]+
+#lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+#
+#:0:
+#* ^Delivered-To: mailing list \/[^@]+
+#lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+#
+#:0:
+#* ^X-Mailing-List: <\/[^@]+
+#lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+#
+#:0:
+#* ^X-Loop: \/[^@]+
+#lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+#
+#:0:
+#* ^X-List-ID: <\/[^@\.]+
+#lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+#
+#:0:
+#* ^X-list: \/[^@\.]+
+#lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
