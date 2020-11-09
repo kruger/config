@@ -46,7 +46,7 @@ alias tmpdir   "cd $SCRATCH"
 ## Edit these configuration files and then source them
 #
 alias editcs 'vi $HOME/.tcshrc; source $HOME/.tcshrc'
-alias editcg 'vi $HOME/config/global.cshrc $HOME/config/aliases.cshrc  $HOME/config/aliases.bash; source $HOME/config/global.cshrc; source $HOME/config/aliases.cshrc'
+alias editcg 'vi $HOME/config/global.cshrc $HOME/config/aliases.cshrc  $HOME/config/mac.cshrc $HOME/config/aliases.bash; source $HOME/config/global.cshrc; source $HOME/config/aliases.cshrc; source $HOME/config/mac.cshrc'
 #
 
 ###

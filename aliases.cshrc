@@ -183,6 +183,7 @@ alias rpmwhat 'rpm -q --whatrequires \!$' # list packages that need package
 ###
 ## Programming
 #
+alias ptmake 'make -f gmakefile.test'
 alias ctagsmine 'ctags -R -o .tags'
 alias valgrindm '/usr/local/valgrind/bin/valgrind --tool=memcheck --leak-check=yes --track-origins=yes \!$' 
 alias mkae make
