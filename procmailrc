@@ -1,0 +1,20 @@
+# NOTE: I'm using this on a RedHat system so this file is automatically
+#  invoked by the mailer without needing to use the .forward file
+
+
+## Set to yes when debugging
+VERBOSE=no
+
+## Remove # when debugging; set to no if you want minimal logging
+# LOGABSTRACT=all 
+
+## Root directory for subsequent commands
+MAILDIR=$HOME/mail
+
+## Directory for storing procmail-related files
+PMDIR=$HOME/.procmail
+
+LOGFILE=$PMDIR/log
+
+# All other
+INCLUDERC=$PMDIR/other.rc

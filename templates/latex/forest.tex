@@ -1,0 +1,56 @@
+\documentclass[tikz,border=10pt,multi]{standalone}
+\usepackage{forest}
+\usetikzlibrary{backgrounds}
+\begin{document}
+\begin{forest}
+  for tree={
+    circle,
+    minimum size=25pt,
+    draw,
+    fill=lightgray,
+    font=\small\sffamily,
+    l sep+=10pt,
+    edge={->}
+  },
+  where n children=0{
+    tier=terminus,
+    +edge=densely dashed,
+  }{
+    if level=2{
+      tikz+={
+        \scoped[on background layer]{\path [line width=1pt, draw=lightgray, line cap=round] (current bounding box.west |- .center) -- (current bounding box.east |- .center);}
+      }
+    }{}
+  }
+  [
+    [
+      [
+        [0]
+        [100]
+        [100]
+        [0]
+      ]
+      [
+        [100]
+        [0]
+        [0]
+        [0]
+      ]
+    ]
+    [
+      [
+        [0]
+        [0]
+        [0]
+        [0]
+      ]
+      [
+        [100]
+        [100]
+        [0]
+        [100]
+      ]
+    ]
+  ]
+\end{forest}
+\end{document}

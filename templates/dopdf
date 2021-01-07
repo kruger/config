@@ -1,0 +1,4 @@
+/bin/rm $1.pdf
+pdflatex $1.tex
+pdflatex $1.tex
+kghostview $1.pdf

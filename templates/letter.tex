@@ -1,0 +1,52 @@
+% Standard letter template
+\documentclass{letter}
+
+% Generate the letter at the same time assuming that envlab 
+% is installed
+\usepackage[businessenvelope,nocapaddress]{envlab}
+\usepackage{graphics}                 % Packages to allow inclusion of graphics
+
+% Comment this out if you don't want the envelop generated
+\makelabels
+
+
+% If the letter doesn't fit on one page, but you
+% want it do, remove the ``%'' on the next line:
+% \setlength{\textheight}{8in}
+
+% Note that the environment is somewhat picky
+\begin{document}
+      % If you want headings on subsequent pages,
+      % remove the ``%'' on the next line:
+      % \pagestyle{headings}
+
+                             \address{
+     %                                \begin{picture}(5, 10)(0, 0)
+     %                            	    \put(60,0){\resizebox{2 cm}{!}
+     %                            		     {\includegraphics{coat}}}   % Inserts graphic
+     %                                 \end{picture}\\
+				     		  Scott Kruger\\
+                             	        5621 Arapahoe Drive\\
+                             	        Boulder, CO \ 80303} 
+      
+  \begin{letter}
+      {TO PERSON \\
+      TO STREET ADDRESS\\
+      TO CITY, STATE \ ZIP}
+      
+      \opening{Dear Sir:}
+      
+                 We wish to inform you that we will attack at dawn.
+      
+      
+      \signature{Scott Kruger\\
+      	 Research Scientist}
+      
+      \closing{Sincerely,}
+      
+      %\encl{[ENCLOSURE LISTING]}
+      
+  \end{letter}
+\end{document}
+
+

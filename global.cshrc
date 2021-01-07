@@ -4,7 +4,8 @@
 # See local.cshrc
 #----------------------------------------------------------------------
 
-setenv PATH "$HOME/config/bin:${PATH}"
+setenv PATH "$HOME/config/bin:$HOME/config/binpy:${PATH}"
+setenv PATH "/usr/local/bin:${PATH}"
 
 ###
 ##  Basics
@@ -45,7 +46,7 @@ alias tmpdir   "cd $SCRATCH"
 ## Edit these configuration files and then source them
 #
 alias editcs 'vi $HOME/.tcshrc; source $HOME/.tcshrc'
-alias editcg 'vi $HOME/config/global.cshrc $HOME/config/aliases.cshrc  $HOME/config/aliases.bash; source $HOME/config/global.cshrc; source $HOME/config/aliases.cshrc'
+alias editcg 'vi $HOME/config/global.cshrc $HOME/config/aliases.cshrc  $HOME/config/mac.cshrc $HOME/config/aliases.bash; source $HOME/config/global.cshrc; source $HOME/config/aliases.cshrc; source $HOME/config/mac.cshrc'
 #
 
 ###
@@ -125,7 +126,7 @@ complete gvi 'n/*/f:^*.{aux,log,dvi,ps,bak,o,sty,toc,lof,lot,plt,mod,lyx,bbl,blg
 #					Networking completion
 #					Automatically setup hosts.
 
-set hosts=(volt.txcorp.com dipole.txcorp.com enrico.txcorp.com multipole.txcorp.com fusion.txcorp.com nimrod.txcorp.com iter.txcorp.com oxygen.txcorp.com qalion.txcorp.com qasnowleopard.txcorp.com qaubuntu.txcorp.com sandybridge.txcorp.com ivy.txcorp.com haswell.txcorp.com plasma.txcorp.com phi.txcorp.com ptsolvemac.txcorp.com sekruge@srngate.sandia.gov krugers@login.mcs.anl.gov krugers@noether.colorado.edu coe0102@tulip.cray.com)
+set hosts=(volt.txcorp.com dipole.txcorp.com enrico.txcorp.com multipole.txcorp.com fusion.txcorp.com nimrod.txcorp.com iter.txcorp.com oxygen.txcorp.com qalion.txcorp.com qasnowleopard.txcorp.com qaubuntu.txcorp.com sandybridge.txcorp.com ivy.txcorp.com haswell.txcorp.com plasma.txcorp.com phi.txcorp.com ptsolvemac.txcorp.com sekruge@srngate.sandia.gov krugers@login.mcs.anl.gov krugers@noether.colorado.edu coe0102@tulip.cray.com kruger@login1.ascent.olcf.ornl.gov)
 set noglob
 if ( ! $?hosts ) set hosts
 set hosts=($hosts)
@@ -202,6 +203,7 @@ alias iter ssh iter.txcorp.com
 alias sandybridge ssh sandybridge.txcorp.com
 alias sb ssh sandybridge.txcorp.com
 alias hip ssh hip.txcorp.com
+alias ascent kruger@login1.ascent.olcf.ornl.gov
 alias vsb  ssh -t dipole.txcorp.com ssh -A -t sandybridge.txcorp.com
 alias vivy ssh -t dipole.txcorp.com ssh -A -t ivy.txcorp.com
 alias vphi ssh -t dipole.txcorp.com ssh -A -t phi.txcorp.com
