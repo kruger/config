@@ -41,11 +41,12 @@ alias cd 'cd \!*;SetTab;SetTitle'
 SetTitle;SetTab
 
 setenv PATH "$HOME/config/binmac:${PATH}"
-setenv PATH "/opt/homebrew/bin:$PATH"
-setenv PYTHONPATH "/opt/homebrew/lib/python3.9/site-packages:$PATH"
+setenv PATH "/usr/local/homebrew/bin:$PATH"
+setenv PYTHONPATH "/usr/local/homebrew/lib/python3.9/site-packages:$PATH"
 setenv PATH /usr/local/texlive/2018/bin/x86_64-darwin:${PATH}
 
 alias mvim /Applications/MacVim.app/Contents/bin/mvim
+#alias mvim /Applications/MacVim\ 2.app/Contents/bin/mvim
 
 # Useful for Mac
 alias myps 'ps -u kruger | grep -v login | grep -v tcsh | grep -v Applications | grep -v mdworker | grep -v System | grep -v /usr/lib | grep -v Library | grep -v agilebits | grep -v /usr/sbin'
