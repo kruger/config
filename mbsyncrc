@@ -1,0 +1,39 @@
+#################################
+######## Account mailbox ########
+#################################
+
+IMAPAccount txcorp
+Host mail.txcorp.com
+User kruger
+#set spoolfile="imaps://kruger@mail.txcorp.com/"
+#PassCmd "security find-internet-password -s 'imap.mailbox.org' -a 's.rademacker@mailbox.org' -w"
+PassCmd "cat ~/.mutt/.mbsync"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile ~/.cert/mail.txcorp.com.pem
+
+# Remote storage
+IMAPStore txcorp-remote
+Account txcorp
+
+# Local storage
+MaildirStore txcorp-local
+Subfolders Verbatim
+Path ~/Mail/txcorp/
+Inbox ~/Mail/txcorp/INBOX
+
+Channel txcorp
+Master :txcorp-remote:
+Slave :txcorp-local:
+# Include everything
+Patterns * !txcrap
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+#Create Slave
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+#################################
+######## Account viu ############
+#################################
+
