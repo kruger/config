@@ -61,3 +61,26 @@ Workflow - Remove file from previous commit::
          git commit -c ORIG_HEAD               # commit again, you can even re-use the same commit message
          https://stackoverflow.com/questions/12481639/remove-files-from-git-commit
 
+
+gitk::
+
+ To check (only) the commits in a branch - say origin/jacobf/2020-09-09/feature/petscmapping/future
+
+  gitk main..origin/jacobf/2020-09-09/feature/petscmapping/future
+  
+  [equivalent to "git log main..origin/jacobf/2020-09-09/feature/petscmapping/future"]
+ 
+  And then check the diffs for individual commit (as needed) via this interface
+ 
+  Check only the diffs for changes to include/petsc.h in this branch
+ 
+  gitk main..origin/jacobf/2020-09-09/feature/petscmapping/future include/petsc.h
+
+  Also: sometimes I don't want to see the individual commits - just the overall change in this branch [aka the MR 'changes' view]
+ 
+  git diff main...origin/jacobf/2020-09-09/feature/petscmapping/future
+ 
+  Only diff for include/petsc.h
+ 
+  git diff main...origin/jacobf/2020-09-09/feature/petscmapping/future include/petsc.h
+
