@@ -1,5 +1,20 @@
 
 BREW
+Most important:
+coreutils
+fd
+fzf
+rust
+#
+applications
+neomutt, notmuch, urlview, abook, lynx, gpgme, isync, khard, ripmime
+visidata
+tmux # Prefer over spack just to avoid the loading issues
+omega, xapian, ghostscript, xpdf
+dbeaver
+
+
+
 brew install httpie   | https://httpie.org
 brew install MisterTea/et/et  # Eternal Terminal
 brew install mosh
@@ -11,6 +26,7 @@ brew install urlview
 CONDA
 conda install pyramid
 conda install -c damianavila82 rise
+conda install dtale -c conda-forge
 
 See here for intel installation:
 https://software.intel.com/en-us/articles/using-intel-distribution-for-python-with-anaconda

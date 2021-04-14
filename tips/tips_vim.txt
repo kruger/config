@@ -112,6 +112,16 @@ CTRL-A,CTRL-X                   : increment,decerement number under cursor/*}}}*
 gq<CR>
 gqap  (a is motion p paragraph (visual mode))/*}}}*/
 ------------------------------------------------------------------------------
+# Quickfix window/*{{{*/
+https://stackoverflow.com/questions/1747091/how-do-you-use-vims-quickfix-feature
+:copen " Open the quickfix window
+:ccl   " Close it
+:cw    " Open it if there are "errors", close it otherwise (some people prefer this)
+:cn    " Go to the next error in the window
+:cp    " Go to the previous error in the window
+:cnf   " Go to the first error in the next file
+:.cc   " Go to error under cursor (if cursor is in quickfix window)
+------------------------------------------------------------------------------
 # Recording (BEST TIP of ALL)/*{{{*/
 qq  # record to q
 your commands

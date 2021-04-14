@@ -20,10 +20,13 @@ fi
 
 # parse options -- using getopts because it is so easily extensible
 update=false
-while getopts "u" opt
+flags=''
+while getopts "urf" opt
 do
   case $opt in
-    u ) update=true
+    u ) update=true;;
+    r ) flags="$flags -r";;
+    f ) flags="$flags -f";;
   esac
 done
 shift $(( $OPTIND - 1 ))
