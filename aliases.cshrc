@@ -97,7 +97,7 @@ alias linenum 'echo 123456789112345678921234567893123456789412345678951234567896
 ###
 ## Job control
 #
-alias launch '$HOME/config/bin/nohuprun.sh "\!*"; tail -f `basename \!:1.out`'
+alias launch '$HOME/config/bin/nohuprun.sh \!*; tail -f `basename \!:1.out`'
 alias mps 'ps -aux | sort  +4nr | more'
 alias gps 'ps -eaf | grep \!$'
 #alias gps 'ps -u kruger | grep \!$'
@@ -132,16 +132,12 @@ alias fdir2 "find . \( -name '.*' -prune \) -o \( -type d -print \)"
 alias addpath 'source $HOME/config/addpath.csh'
 alias addpypath 'source $HOME/config/addpypath.csh'
 
+
 ###
 ## Documentation
 #
 alias vinfo 'vi -c Info \!$' 			            # Requires info.vim plugin
 alias infoman 'info --subnodes --output - \!$ | less' # Because info really, really sucks
-
-###
-## Mail
-#
-alias mutt 'screen -c $HOME/.screenmutt'
 
 ###
 ## Network
@@ -183,6 +179,9 @@ alias rpmwhat 'rpm -q --whatrequires \!$' # list packages that need package
 ###
 ## Programming
 #
+alias gitgraph "git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+# This is a bash alias
+#alias mygitdiff "git diff $(git merge-base --fork-point main)"
 alias ptmake 'make -f gmakefile.test'
 alias ctagsmine 'ctags -R -o .tags'
 alias valgrindm '/usr/local/valgrind/bin/valgrind --tool=memcheck --leak-check=yes --track-origins=yes \!$' 

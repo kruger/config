@@ -4,9 +4,10 @@ Getting started
 
 Do some basic configuration::
 
-      spack bootstrap
+    git clone https://github.com/spack/spack <SPACK_ROOT>
+    . <SPACK_ROOT>/share/spack/setup-env.sh
 
-Most importantly, it gets the module system built and installed.
+
 
 Basic commands
 ======================
@@ -98,6 +99,30 @@ To find the versions that work.  For me, I could then::
 
       spack view --verbose symlink myview moab^/oajmavs
 
+Buildcache
+======================
+
+
+Configure Spack to Use the Local Build Cache::
+
+    spack mirror add local /storage/warpspeed/e4s-cache
+
+Trust the Public Key::
+
+    spack buildcache keys -it
+
+
+List Available Builds::
+
+    spack buildcache list -a
+
+Find RAJA+rocm versions in Buildcache::
+
+    spack buildcache list -lva raja
+
+Install RAJA+rocm from Buildcache::
+
+    spack install --cache-only raja@develop~cuda+examples+exercises~ipo~openmp+rocm+shared~tests amdgpu_target=gfx906 build_type=RelWithDebInfo cuda_arch=none
 
 
 Spec options

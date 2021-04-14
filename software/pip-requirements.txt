@@ -1,6 +1,11 @@
+
 # Invoke this with `pip install -r pip-requirements.txt`
 towncrier
 howdoi
+
+#TODO
+apple-calendar-integration
+
 
 gensim     # https://radimrehurek.com/gensim/index.html   NLP
 

@@ -1,0 +1,1 @@
+/Users/kruger/.mutt/tips_muttrc.txt
