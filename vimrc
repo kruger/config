@@ -8,8 +8,9 @@ version 6.0
 " See neovim:
 "   https://www.youtube.com/watch?v=LRQGAnPtNdM
 "------------------------------------------
-filetype off
+:filetype off
 set nocompatible 			 " Let Vim behave like Vi?  Hell, no!
+set encoding=utf-8
 
 " set the runtime path to include Vundle and initialize
 set runtimepath+=~/.vim/plugin
@@ -35,8 +36,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" GIT integration
+Plugin 'tpope/vim-fugitive'
+
 " https://github.com/tpope/vim-repeat
 Plugin 'tpope/vim-repeat'
+
+" tpope da man
+Plugin 'tpope/vim-obsession'
 
 " https://github.com/rudrab/vimf90
 "Plugin 'rudrab/vimf90'
@@ -46,13 +53,17 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 " https://github.com/mhinz/vim-grepper
 Plugin 'mhinz/vim-grepper'
+let g:grepper = {}
+let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
 " Mini-buff explorer -- So important
 " https://github.com/weynhamz/vim-plugin-minibufexpl
-Plugin 'weynhamz/vim-plugin-minibufexpl'
+"Plugin 'weynhamz/vim-plugin-minibufexpl'
+" This is confusing
+"Plugin 'fholgado/minibufexpl'
 
 " https://github.com/geoffharcourt/vim-matchit
-Bundle 'geoffharcourt/vim-matchit'
+Plugin 'geoffharcourt/vim-matchit'
 
 " Also see this thread:
 " https://www.reddit.com/r/vim/comments/26mszm/what_is_everyones_favorite_commenting_plugin_and/
@@ -60,22 +71,57 @@ Bundle 'geoffharcourt/vim-matchit'
 Plugin 'scrooloose/nerdcommenter' 
 Plugin 'scrooloose/nerdtree'
 
-
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-" This does fuzzy search after hitting <CTRL-P>
-"Plugin 'kien/ctrlp.vim'
 
-" GIT integration
-Plugin 'tpope/vim-fugitive'
+" This does fuzzy search after hitting <CTRL-P>
+" Lots of people like this, but I prefer fzf 
+"Plugin 'kien/ctrlp.vim'
 
 " For git diff -- this is really awesome
 " https://vimawesome.com/plugin/vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
 
+" This is used by vim-airline if you want to have buffers shown in statusline
+" I've switched to buffers in tabline
+"Plugin 'bling/vim-bufferline'
+
+" This is for airline-tabline extension
+" https://github.com/vim-ctrlspace/vim-ctrlspace
+Plugin 'vim-ctrlspace/vim-ctrlspace'
+" Neovim only?
+let g:CtrlSpaceDefaultMappingKey = "<C-space>"
+" Important ?
+set showtabline=0
+set hidden                         " Use if you don't autowrite
+if executable('rg')
+    let g:CtrlSpaceGlobCommand = 'rg --color=never --files'
+elseif executable('fd')
+    let g:CtrlSpaceGlobCommand = 'fd --type=file --color=never'
+elseif executable('ag')
+    let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+endif
+" This is OS specific
+let g:CtrlSpaceFileEngine = '~/.vim/bundle/vim-ctrlspace/bin/file_engine_darwin_amd64'
+
+
 
 " Awesome statusbar
 " https://vimawesome.com/plugin/vim-airline 
-Plugin 'bling/vim-airline'
+"
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" Buffers in tab are superior I think
+"let g:airline_section_c='bufferline'
+"let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#fzf#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" Is this needed for ctrl-space functionality?
+let g:airline_exclude_preview = 1
+
+" This is faster and more customizable -- but I don't have time to figure out
+"Plugin 'rbong/vim-crystalline'
 
 " Linter
 " https://github.com/w0rp/ale
@@ -85,8 +131,15 @@ Plugin 'w0rp/ale'
 " https://majutsushi.github.io/tagbar/
 " https://www.reddit.com/r/vim/comments/2k9lnm/is_there_a_highquality_restructuredtext_plugin/
 " https://vimawesome.com/plugin/tagbar
-Plugin 'majutsushi/tagbar'
+"
+Plugin 'preservim/tagbar'
+let g:tagbar_position="topleft vertical"
+
 Plugin 'vim-scripts/taglist.vim'
+let g:Tlist_Ctags_Cmd='/opt/homebrew/bin/ctags'
+
+"gtags
+"Plugin 'vim-scripts/gtags.vim'
 
 " https://vimawesome.com/plugin/tabular 
 Plugin 'godlygeek/tabular'
@@ -101,38 +154,11 @@ Plugin 'tmhedberg/SimpylFold'    " For python folding
 Plugin 'vim-scripts/indentpython.vim'
 
 
-" Latex
-Plugin 'lervag/vimtex'
-
-
-"RST
-" https://github.com/Rykka/riv.vim
-"let g:riv_fold_auto_update=0
-"let g:riv_fold_level=9
-Plugin 'Rykka/riv.vim'
-"let g:riv_fold_auto_update=0
-"let g:riv_fold_level=0
-
-
-let proj1 = { 'path': '~/ptsolveall/ptsolvedocs',}
-let g:riv_projects = [proj1]
-
-Plugin 'Rykka/InstantRst'
-
-
-" Color schemes
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
-
-"  https://github.com/tomasiser/vim-code-dark
-"  To use: colorscheme codedark
-Plugin 'tomasiser/vim-code-dark'
-
 " See: 
 " https://www.reddit.com/r/vim/comments/5w6wac/vim_users_of_reddit_whats_your_favorite/
 "https://github.com/ajh17/VimCompletesMe
 " This isn't as featurefull as YouCompleteMe or Jedi
-Plugin 'ajh17/VimCompletesMe'
+"Plugin 'ajh17/VimCompletesMe'
 
 """ Some like this the best nvim-completion-manager for python
 " I need to figure out how to configure
@@ -154,13 +180,43 @@ Plugin 'ajh17/VimCompletesMe'
 Plugin 'wellle/targets.vim'
 
 
+" Pretty impressive
+"https://github.com/itchyny/calendar.vim
+Plugin 'itchyny/calendar.vim'
+
+" This one has hooks 
+"https://github.com/mattn/calendar-vim
+"Plugin 'mattn/calendar-vim'
+
+
 """
 " By hand:
 " cd ~/.vim/bundle; git clone https://github.com/scrooloose/nerdtree.git
  
+" Latex
+Plugin 'lervag/vimtex'
+
+"RST
+" https://github.com/Rykka/riv.vim
+"let g:riv_fold_auto_update=0
+"let g:riv_fold_level=9
+Plugin 'Rykka/riv.vim'
+"let g:riv_fold_auto_update=0
+"let g:riv_fold_level=0
+
+let proj1 = { 'path': '~/ptsolveall/ptsolvedocs',}
+let g:riv_projects = [proj1]
+
+Plugin 'Rykka/InstantRst'
 
 
+" Color schemes
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
 
+"  https://github.com/tomasiser/vim-code-dark
+"  To use: colorscheme codedark
+Plugin 'tomasiser/vim-code-dark'
 
 " ===================================================================
 " Mappings:  I change these most often so put it at the front of file
@@ -192,6 +248,10 @@ set guioptions+=f
 " -------------------------------------------------------------------
 " General Editing
 " -------------------------------------------------------------------
+"  As an alternative to autochdir, give mapping to change to same directory as
+"  file and then print current directory
+nnoremap ,,cd :cd %:p:h<CR>:pwd<CR>
+
 "
 " I find that these strange combinations do A LOT
 nmap <M-j> j0.
@@ -216,6 +276,8 @@ nn <M-.> :call search ("^". matchstr (getline (line (".")), '\(\s*\)') ."\\S")<C
   noremap <C-G> 2<C-G>
 
  nmap ,,9 :set foldlevel=9<CR>
+ nmap ,,0 :set foldlevel=0<CR>
+ nmap ,,1 :set foldlevel=1<CR>
 
 " -------------------------------------------------------------------
 "  Files to edit and source quickly
@@ -225,13 +287,10 @@ nn <M-.> :call search ("^". matchstr (getline (line (".")), '\(\s*\)') ."\\S")<C
  nmap ,,src :so ~/.vimrc<CR>
 
 "  These files contain useful info. Need to reference quickly like help
- nmap ,,tq :e ~/config/tips/vim_quickref.txt<CR>
- nmap ,,tv :e ~/config/tips/tips_vim.txt<CR>
- nmap ,,tt :e ~/config/tips/tips_tcsh.txt<CR>
- nmap ,,tl :e ~/config/tips/tips_linux.txt<CR>
- nmap ,,ts :e ~/config/tips/tips_shell.txt<CR>
- nmap ,,tx :e ~/config/tips/tips_tex.txt<CR>
- nmap ,,tc :e ~/config/tips/crefvim.txt<CR>
+ nmap ,,t :e ~/config/tips/<CR>
+
+map ,,ad :e ~/.addresses<CR>
+map ,,cal :Calendar -view=year -split=horizontal -position=below -height=12<CR>
 
 " -------------------------------------------------------------------
 " Moving around
@@ -287,8 +346,6 @@ nmap <C-3> :b#<CR> 	" Previous buffer you were in
  nmap \  l
 " Quick insertion of an empty line:
  nmap <CR> o<ESC>
-" Quick insertion of an blank space
- nmap <C-SPACE> i <ESC>
 
 " when the backspace key sends a "delete" character
 " then you simply map the "delete" to a "backspace" (CTRL-H):
@@ -319,24 +376,25 @@ nmap <C-3> :b#<CR> 	" Previous buffer you were in
   nnoremap <silent> <F9> :TlistSync<CR>
 
 " -------------------------------------------------------------------
-" Thes comment highlighted sections
+" These comment highlighted sections
+"  Deprecated in favor of nerdcommenter plugin above
 " -------------------------------------------------------------------
-map ,# :s/^/#/<CR>
-map ,/ :s/^/\/\//<CR>
-map ,> :s/^/> /<CR>
-map ," :s/^/\"/<CR>
-map ,% :s/^/%/<CR>
-map ,! :s/^/!/<CR>
-map ,7 :s/^/c/<CR>
-map ,; :s/^/;/<CR>
-map ,- :s/^/--/<CR>
-map ,c :s/^\/\/\\|^--\\|^> \\|^[#"%!;c]//<CR>
+"map ,# :s/^/#/<CR>
+"map ,/ :s/^/\/\//<CR>
+"map ,> :s/^/> /<CR>
+"map ," :s/^/\"/<CR>
+"map ,% :s/^/%/<CR>
+"map ,! :s/^/!/<CR>
+"map ,7 :s/^/c/<CR>
+"map ,; :s/^/;/<CR>
+"map ,- :s/^/--/<CR>
+"map ,c :s/^\/\/\\|^--\\|^> \\|^[#"%!;c]//<CR>
 
 " wrapping comments
-map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR>
-map ,( :s/^\(.*\)$/\(\* \1 \*\)/<CR>
-map ,< :s/^\(.*\)$/<!-- \1 -->/<CR>
-map ,d :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR>
+"map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR>
+"map ,( :s/^\(.*\)$/\(\* \1 \*\)/<CR>
+"map ,< :s/^\(.*\)$/<!-- \1 -->/<CR>
+"map ,d :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR>
 
 
 " -------------------------------------------------------------------
@@ -448,44 +506,6 @@ nmap    _P      :r /tmp/vi_tmp<CR>
 "  set tags+=tags;/
   let Tlist_Ctags_Cmd="ctags"
 
-"==========================================================
-" Customizations of gui and console versions
-"==========================================================
- if has("gui_running")
-	set mousemodel=popup_setpos
- else
- 	" This gets the Alt stuff to work in a konsole window.  Mysterious shit.
- 	map  <Esc>j <M-j>
- 	map  <Esc>n <M-n>
- 	map  <Esc>l <M-l>
-       map <Esc>9 <M-9>
-       map <Esc>8 <M-8>
-       map <Esc>7 <M-7>
-       map <Esc>6 <M-6>
-       map <Esc>5 <M-5>
-       map <Esc>4 <M-4>
-       map <Esc>3 <M-3>
-       map <Esc>2 <M-2>
-       map <Esc>1 <M-1>
-       map <Esc>0 <M-0>
-       imap <Esc>9 <M-9>
-       imap <Esc>8 <M-8>
-       imap <Esc>7 <M-7>
-       imap <Esc>6 <M-6>
-       imap <Esc>5 <M-5>
-       imap <Esc>4 <M-4>
-       imap <Esc>3 <M-3>
-       imap <Esc>2 <M-2>
-       imap <Esc>1 <M-1>
-       imap <Esc>0 <M-0>
- 	" Settings only for terminal windows
- 	"set nottybuiltin
- 	set notbi term=xterm
- 	set   ttytype=xterm
- 	set nottyfast                      " are we using a fast terminal?
- 	set ttyscroll=0                    " turn off scrolling -> faster!
-    set t_Co=256
- endif
 "------------------------------------------
 "  FILETYPES
 " Filetypes control various things for different types of files
@@ -537,12 +557,13 @@ let spell_auto_type = "tex,mail,text,html,sgml,otl,cvs,none"
   set clipboard=unnamed             " This uses the system clipboard on Mac
   set smarttab
   set tabstop=4
-  set expandtab 		             "This changes tabs to spaces.
+  set expandtab 		             "This changes tabs to spaces
+  "set listchars=tab:>~,nbsp:+,trail:.
+  "set list
   set nosmartindent
   set autoindent
-  " New in 6.2
   "set autochdir				 " Change local directory automatically to current
-  set shiftwidth=6                   " # of spaces to use for (auto)indent.
+  set shiftwidth=4                   " # of spaces to use for (auto)indent.
   set hidden                         " Use if you don't autowrite
   set autowrite                      " Save changes before going to next file
   set mousehide                      " Hide the mouse pointer while typing
@@ -553,6 +574,7 @@ let spell_auto_type = "tex,mail,text,html,sgml,otl,cvs,none"
   set smartcase                      " Use case if user uses
   set scrolloff=5                    " Let me always have context     
   set whichwrap=<,>                  " Determine which direction keys will wrap
+  set wrapmargin=10			         " Distance from edge to begin wrap
 
   set ruler                          " Show the position of the cursor.
   set laststatus=2                   " Display a status-bar.
@@ -612,7 +634,6 @@ let spell_auto_type = "tex,mail,text,html,sgml,otl,cvs,none"
 " Things I don't understand very well
 "==========================================================
   set formatoptions=cqrt            " Options for "text format" command ("gq")
-  set   wrapmargin=3			" Distance from edge to begin wrap
 
 "  set   modeline                   " Allow last line to be a modeline 
 "  set   modelines=1                " 
@@ -624,6 +645,7 @@ let spell_auto_type = "tex,mail,text,html,sgml,otl,cvs,none"
 "  set   pastetoggle=<f11>
   set   shortmess=at                " Kind of messages to show.
 
+   
 " ===================================================================
 " ASCII tables - you may need them some day.  Save them to a file!
 " ===================================================================
