@@ -1,0 +1,5 @@
+#!/bin/sh
+pdftotext $1 -  2> /dev/null | head -n 10 | par | head -n 10
+#pdftotext $1 -  2> /dev/null | head -n 10 | fmt -w 60 | head -n 10
+#pdftotext -f 1 -l 2 $1 -  2> /dev/null | head -n 10 | fmt -w 60 | head -n 10
+#pdftotext -f 1 -l 1 $1 - | head -n 3 | less

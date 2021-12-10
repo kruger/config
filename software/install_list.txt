@@ -13,8 +13,13 @@ tmux # Prefer over spack just to avoid the loading issues
 omega, xapian, ghostscript, xpdf
 dbeaver
 
+# 1. Install Sixel which is the workhorse: brew install libsixel (https://github.com/saitoha/libsixel)
+# 2. Install python bindings for it: pip install PySixel
+# 3. Install matplotlib backend for pysixel: pip install https://github.com/ejolly/matplotlib-sixel
 
+brew install miller #-- CSV CLI application
 
+pdfjam 
 brew install httpie   | https://httpie.org
 brew install MisterTea/et/et  # Eternal Terminal
 brew install mosh
@@ -22,6 +27,8 @@ brew install include-what-you-use
 brew install colordiff
 brew install ansifilter
 brew install urlview
+starfish
+fonts (see writeup)
 
 CONDA
 conda install pyramid

@@ -39,7 +39,7 @@ alias mkdir='mkdir -pv'
 #
 alias cdp='cd -P'
 alias std='echo "cd " $PWD > $HOME/.dirtocd'   # "set dir"
-alias ssd='std; ssh \!$'
+#TODOalias ssd='std; ssh \!$'
 alias go='source $HOME/.dirtocd; /bin/rm $HOME/.dirtocd'
 #alias std 'set z\!$=$PWD'  # "set dir"
 #alias go 'cd z\!$'
@@ -51,21 +51,21 @@ alias "...."='cd ../../..'
 ###
 ## Archive
 #
-alias tarup='tar -zcf \!$.tgz \!$'
+#TODO alias tarup='tar -zcf \!$.tgz \!$'
 alias untar='tar xf'
-alias unpack='untar \!$; gzip \!$; mv \!$.gz'
+#TODO alias unpack='untar \!$; gzip \!$; mv \!$.gz'
 # find dir -name "*.png" | xargs tar rf dir.tar; bzip2 dir.tar  # make archive of *.png in dir
 
 alias grepc='grep --color="auto"'
 alias h=history
-alias j='jobs -l'
+#Causes problems with autojump alias j='jobs -l'
 alias x=exit
 alias k=clear
 alias who="who | sort"
 alias st=set term=vt100
 # This removes anything under 1M because they aren't important
 #alias dusort 'du -sh * | grep -v "^[0-9]\+\.\?[0-9]k" | sort -n'
-alias dusort='du -s \!* | sort -r -n | awk '"'"'{sum+=$1;printf("%9d %s\n",$1,$2)}'"'"
+#TODO alias dusort='du -s \!* | sort -r -n | awk '"'"'{sum+=$1;printf("%9d %s\n",$1,$2)}'"'"
 alias dush='du -sh * > dush.out; du -sh . >> dush.out'
 alias calmonth="cal `date '+%m %Y'`"
 alias mydate='`date "+%Y-%m-%d"`'
@@ -177,6 +177,7 @@ alias svngetc='svn cat \!$ > C\!$'
 alias svngetr='echo \!$1 \!$2'
 alias svnfiles='svn status  |& grep -v \? | grep -v "Performing status" | grep -v ^X'
 alias notinsvn='svn status  |& grep \?'
+alias svnvimdiff='svn diff --diff-cmd ~/bin/svnvimdiff.sh'
 
 # How to get svn to work properly
 #svn propset svn:eol-style native */*.{nml,txt,sh,pre,in}

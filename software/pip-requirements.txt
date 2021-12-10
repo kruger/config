@@ -6,6 +6,10 @@ howdoi
 #TODO
 apple-calendar-integration
 
+events     # Natural events style programming
+watchdog   # Watch the file system
+natsort    # https://github.com/SethMMorton/natsort
+           # Natural sorting:  good for units or handling padding
 
 gensim     # https://radimrehurek.com/gensim/index.html   NLP
 
@@ -57,3 +61,5 @@ internetarchive   # https://pypi.org/project/internetarchive/      Download from
 internate arkix
 handcalcs   # https://github.com/connorferster/handcalcs            Cool Jupyter notebook renderer
 doitlive    # https://doitlive.readthedocs.io/en/latest             Do a live session automatically
+
+pyinstrument # Now the best profiler 2021-08-17

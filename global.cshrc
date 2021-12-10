@@ -127,7 +127,6 @@ complete gvi 'n/*/f:^*.{aux,log,dvi,ps,bak,o,sty,toc,lof,lot,plt,mod,lyx,bbl,blg
 
 #					Networking completion
 #					Automatically setup hosts.
-
 set hosts=(volt.txcorp.com dipole.txcorp.com enrico.txcorp.com multipole.txcorp.com fusion.txcorp.com nimrod.txcorp.com iter.txcorp.com oxygen.txcorp.com qalion.txcorp.com qasnowleopard.txcorp.com qaubuntu.txcorp.com sandybridge.txcorp.com ivy.txcorp.com haswell.txcorp.com plasma.txcorp.com phi.txcorp.com ptsolvemac.txcorp.com sekruge@srngate.sandia.gov krugers@login.mcs.anl.gov krugers@noether.colorado.edu coe0102@tulip.cray.com kruger@login1.ascent.olcf.ornl.gov krugers@orthus.nic.uoregon.edu)
 set noglob
 if ( ! $?hosts ) set hosts
@@ -210,6 +209,7 @@ alias vsb  ssh -t dipole.txcorp.com ssh -A -t sandybridge.txcorp.com
 alias vivy ssh -t dipole.txcorp.com ssh -A -t ivy.txcorp.com
 alias vphi ssh -t dipole.txcorp.com ssh -A -t phi.txcorp.com
 alias vhip ssh -t dipole.txcorp.com ssh -A -t hip.txcorp.com
+alias cybele ssh -p 2039 kruger@cybele.gat.com
 alias voxy ssh -t dipole.txcorp.com ssh -A -t oxygen.txcorp.com
 alias vhaswell ssh -t dipole.txcorp.com ssh -A -t haswell.txcorp.com
 alias ivy ssh ivy.txcorp.com
