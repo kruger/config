@@ -3,6 +3,8 @@
 towncrier
 howdoi
 
+jupyterlab_vim
+
 #TODO
 apple-calendar-integration
 

@@ -1,0 +1,66 @@
+.d                  macro                          s=Draft\n
+.i                  macro                          s=!\n
+.p                  macro                          s=petsc\n
+.s                  macro                          s=sent-mail\n
+/                   search                         search for a regular expression
+1G                  top                            jump to the top of the message
+1g                  top                            jump to the top of the message
+2                   jump                           jump to an index number
+3                   jump                           jump to an index number
+4                   jump                           jump to an index number
+5                   jump                           jump to an index number
+6                   jump                           jump to an index number
+7                   jump                           jump to an index number
+8                   jump                           jump to an index number
+9                   jump                           jump to an index number
+:                   enter-command                  enter a neomuttrc command
+?                   search-reverse                 search backwards for a regular expression
+@                   display-address                display full address of sender
+A                   macro                          |abook --add-email\n
+B                   bounce-message                 remail a message to another user
+C                   copy-message                   copy a message to a file/mailbox
+F                   flag-message                   toggle a message's 'important' flag
+G                   bottom                         jump to the bottom of the message
+H                   help                           this screen
+I                   macro                          c!\n
+J                   next-entry                     move to the next entry
+K                   previous-entry                 move to the previous entry
+L                   list-reply                     reply to specified mailing list
+N                   mark-as-new                    toggle a message's 'new' flag
+O                   sort-reverse                   sort messages in reverse order
+P                   parent-message                 jump to parent message in thread
+Q                   quit                           save changes to mailbox and quit
+R                   recall-message                 recall a postponed message
+S                   M <save-message>\n             Save without confirmation
+T                   toggle-quoted                  toggle display of quoted text
+V                   show-version                   show the NeoMutt version number and date
+W                   clear-flag                     clear a status flag from a message
+Y                   edit-label                     add, change, or delete a message's label
+\                   search-toggle                  toggle search pattern coloring
+^                   top                            jump to the top of the message
+a                   create-alias                   create an alias from a message sender
+b                   previous-page                  move to the previous page
+c                   change-folder                  open a different folder
+d                   macro                          s=Trash\r
+e                   edit-or-view-raw-message       edit the raw message if the mailbox is not read-only,
+                          otherwise view it
+f                   forward-message                forward a message with comments
+g                   group-reply                    reply to all recipients
+h                   display-toggle-weed            display message and toggle header weeding
+j                   next-undeleted                 move to the next undeleted message
+k                   previous-undeleted             move to the previous undeleted message
+m                   mail                           compose a new mail message
+n                   search-next                    search for next match
+o                   sort-mailbox                   sort messages
+p                   print-message                  print the current entry
+q                   exit                           exit this menu
+r                   reply                          reply to a message
+s                   save-message                   save message/attachment to a mailbox/file
+t                   tag-message                    tag the current entry
+u                   undelete-message               undelete the current entry
+v                   view-attachments               show MIME attachments
+w                   set-flag                       set a status flag on a message
+x                   exit                           exit this menu
+y                   M <exit><change-folder>?       show incoming mailboxes list
+z                   M <ESC>z                       toggle zoom
+|                   pipe-message                   pipe message/attachment to a shell command

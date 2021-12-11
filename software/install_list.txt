@@ -1,7 +1,4 @@
-git clone https://github.com/nvbn/thefuck.git  
-      -- TOOLS
-      -- Correct previous CLI command
-  
+git clone https://github.com/cheat/cheat
 
 git clone https://github.com/datamade/dedupe.git
       -- PYTHON/datamade
