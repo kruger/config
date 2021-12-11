@@ -1,0 +1,93 @@
+# Install with:
+# brew bundle Brewfile
+tap "homebrew/bundle"       # First line of a bundle
+tap "homebrew/cask"         # Not needed on command line
+tap "homebrew/cask-fonts"   # Just needed for font casks below
+tap "homebrew/core"         # Not needed on command line
+
+# General utilities
+brew "colordiff"    # More colorful diffs outside of git
+brew "coreutils"    # Basic stuff with a g prefix
+brew "gnu-sed"      # Adds the gsed command, more powerful than BSD sed
+brew "gnu-time"     # Nicer timing
+brew "openssl"      # Security stuff
+brew "fd"           # Improvement over find
+brew "fzf"          # Fuzzy finder
+brew "git"          # The latest version of git instead of Apple's older one
+brew "git-gui"      # A quicker way to apply partial changes
+brew "htop"         # htop is better than top for checking processes
+brew "tree"         # tree is nice for looking at directories
+brew "wget"         # Mac's have curl by default, but not wget
+brew "bash"         # Bash 5 instead of 3, in case you need it
+brew "rename"       # Rename files utility
+brew "tmux"         # Split windows and saving terminal sessions (screen replacement)
+brew "bat"          # Nicely colorized replacement for cat
+brew "neovim"       # New editor
+brew "macvim"       # GUI vim
+
+# Programming tools
+brew "ccache"       # Faster builds by caching
+brew "cmake"        # Build software projects
+brew "doxygen"      # Doxygen generates C++ documentation
+brew "pre-commit"   # Allows pre-commit hooks to be installed and managed #TODO
+brew "swig"         # Software wrapper interface generator
+brew "rust"         # Many programs written in rust
+brew "qt"           # The Qt Toolkit
+brew "clang-format" # Format C++ files
+brew "include-what-you-use"
+
+# Mail and related apps
+brew "neomutt"           # Main program
+brew "notmuch"           # search
+brew "urlview"           # Extract url's from message
+brew "abook"             # address book
+brew "lynx"              # terminal webviewer
+brew "gpgme"             # Manage gpg
+brew "isync"             # Sync with imap server
+brew "khard"             # I forget
+brew "ripmime"           # Extract mime attachments
+
+# Apps
+brew "visidata"          # Explore large datasets (pandas and csv?)
+brew "omega"             # File indexer
+brew "xapian"            # File indexer
+brew "dbeaver"           # sqlite data explorer
+brew "miller"            # CSV CLI app
+
+# PDF
+brew "ghostscript"       # 
+brew "xpdf"              # 
+brew "pdfjam"              # 
+
+# Other
+# 1. Install Sixel which is the workhorse: brew install libsixel (https://github.com/saitoha/libsixel)
+# 2. Install python bindings for it: pip install PySixel
+# 3. Install matplotlib backend for pysixel: pip install https://github.com/ejolly/matplotlib-sixel
+brew "libsixel"           # Extract mime attachments
+brew "PySixel"           # Extract mime attachments
+
+
+# Terminal/cli
+brew "MisterTea/et/et"  # Eternal Terminal
+brew "starfish"
+brew "httpie"           # terminal web browser: https://httpie.org
+brew "ansifilter"
+
+# Fonts
+cask "font-hack-nerd-font"
+cask "font-sauce-code-pro-nerd-font"
+
+# Core
+#cask "iterm2"       # A great terminal
+#cask "mactex"       # LaTeX. Huge.
+#cask "miniconda"    # Nice way to get a system Conda install
+#cask "java"         # The programming language vm
+#cask "google-chrome"# Since once and a while a site doesn't work with Safari
+#cask "gimp"         # Photo editor
+#cask "blender"      # The 3D application
+
+# Apps
+cask "inkscape"     # 2D vector drawings
+cask "tikzit"       # Fast drawings
+
+
