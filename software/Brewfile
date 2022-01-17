@@ -18,12 +18,15 @@ brew "git-gui"      # A quicker way to apply partial changes
 brew "htop"         # htop is better than top for checking processes
 brew "tree"         # tree is nice for looking at directories
 brew "wget"         # Mac's have curl by default, but not wget
+# Note:  To use this in chsh:  `sudo vim /etc/shells` to whitelist
 brew "bash"         # Bash 5 instead of 3, in case you need it
 brew "rename"       # Rename files utility
 brew "tmux"         # Split windows and saving terminal sessions (screen replacement)
 brew "bat"          # Nicely colorized replacement for cat
 brew "neovim"       # New editor
 brew "macvim"       # GUI vim
+brew "jq"           # JSON query -- more useful than appears
+brew "htmlq"        # html query -- like jq for html
 
 # Programming tools
 brew "ccache"       # Faster builds by caching
