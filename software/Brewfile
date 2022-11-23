@@ -4,8 +4,13 @@ tap "homebrew/bundle"       # First line of a bundle
 tap "homebrew/cask"         # Not needed on command line
 tap "homebrew/cask-fonts"   # Just needed for font casks below
 tap "homebrew/core"         # Not needed on command line
+tap "wez/wezterm"           # wezterm is the best
+tap "hisbaan/tap"        # didyoumean
+tap "zegervdv/zathura"   # zathura
+
 
 # General utilities
+brew "didyoumean"   # spelling utility
 brew "colordiff"    # More colorful diffs outside of git
 brew "coreutils"    # Basic stuff with a g prefix
 brew "gnu-sed"      # Adds the gsed command, more powerful than BSD sed
@@ -13,8 +18,10 @@ brew "gnu-time"     # Nicer timing
 brew "openssl"      # Security stuff
 brew "fd"           # Improvement over find
 brew "fzf"          # Fuzzy finder
+brew "zoxide"       # Better cd -- remembers where you were
 brew "git"          # The latest version of git instead of Apple's older one
 brew "git-gui"      # A quicker way to apply partial changes
+brew "git-lfs"      # Large file support
 brew "htop"         # htop is better than top for checking processes
 brew "tree"         # tree is nice for looking at directories
 brew "wget"         # Mac's have curl by default, but not wget
@@ -26,6 +33,7 @@ brew "bat"          # Nicely colorized replacement for cat
 brew "neovim"       # New editor
 brew "macvim"       # GUI vim
 brew "jq"           # JSON query -- more useful than appears
+brew "dasel"        # Like jq but does toml, yaml, ...; multiple files, ...
 brew "htmlq"        # html query -- like jq for html
 
 # Programming tools
@@ -49,6 +57,8 @@ brew "gpgme"             # Manage gpg
 brew "isync"             # Sync with imap server
 brew "khard"             # I forget
 brew "ripmime"           # Extract mime attachments
+brew "khal"              # CLI calendar that supports syncing
+brew "buku"              # bookmark manager
 
 # Apps
 brew "visidata"          # Explore large datasets (pandas and csv?)
@@ -56,11 +66,16 @@ brew "omega"             # File indexer
 brew "xapian"            # File indexer
 brew "dbeaver"           # sqlite data explorer
 brew "miller"            # CSV CLI app
+brew "qalculate-gtk"     # GUI and CLI calculate that is awsome
+brew "wtfutil"           # TUI dashboard
+brew "sampler"           # TUI dashboard
+brew "nb"                # Notebook manager
 
 # PDF
 brew "ghostscript"       # 
 brew "xpdf"              # 
 brew "pdfjam"              # 
+brew "zathura"           # PDF and document viewer
 
 # Other
 # 1. Install Sixel which is the workhorse: brew install libsixel (https://github.com/saitoha/libsixel)
@@ -69,12 +84,16 @@ brew "pdfjam"              #
 brew "libsixel"           # Extract mime attachments
 brew "PySixel"           # Extract mime attachments
 
+brew "imagemagic"           # Extract mime attachments
+
 
 # Terminal/cli
 brew "MisterTea/et/et"  # Eternal Terminal
-brew "starfish"
+brew "starfish"         # shell prompt on steroids
 brew "httpie"           # terminal web browser: https://httpie.org
 brew "ansifilter"
+brew "xonsh"            # Shell/python repl hybrid 
+brew "rcm"              # Dot file management
 
 # Fonts
 cask "font-hack-nerd-font"
@@ -92,5 +111,10 @@ cask "font-sauce-code-pro-nerd-font"
 # Apps
 cask "inkscape"     # 2D vector drawings
 cask "tikzit"       # Fast drawings
+cask "kitty"        # prefer wezterm but has icat
+cask "wezterm"      # the best terminal
+cask "skim"         # pdf viewer and note taker
+cask "sioyek"       # Seems to be the best pdf viewer
+
 
 

@@ -1,4 +1,11 @@
 
+###
+##  Basics
+#
+# I like prompt simple and consistent on all machines
+# Doesn't work with starfish
+PROMPT_CONTROL="`hostname -s`: "
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -20,6 +27,8 @@ shopt -s checkwinsize
 
 # Don't stupidly escape variables
 shopt -u progcomp
+shopt -s direxpand
+
 
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -147,6 +156,7 @@ alias vivy="ssh -t dipole.txcorp.com ssh -A -t ivy.txcorp.com"
 alias vphi="ssh -t dipole.txcorp.com ssh -A -t phi.txcorp.com"
 alias vhip="ssh -t dipole.txcorp.com ssh -A -t hip.txcorp.com"
 alias cybele="ssh -p 2039 kruger@cybele.gat.com"
+alias iris="ssh -p 2039 -t kruger@cybele.gat.com -A -t iris.gat.com"
 alias voxy="ssh -t dipole.txcorp.com ssh -A -t oxygen.txcorp.com"
 alias vhaswell="ssh -t dipole.txcorp.com ssh -A -t haswell.txcorp.com"
 alias ivy="ssh ivy.txcorp.com"

@@ -3,6 +3,10 @@
 # See local.cshrc
 #----------------------------------------------------------------------
 ###
+## Which vim flavor do I want?
+#
+alias vi=nvim
+###
 ## Various listings
 #
 # F option is to give indication of type of file which is 
@@ -100,8 +104,11 @@ alias cpuinfo='lscpu'
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
 ###
-# Find files
+# Find files  -- find is obsolete with fd
 #
+export FZF_DEFAULT_COMMAND="fd --type file"
+# Fuzzy find with preview
+alias fp='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 alias ffind='find . -name \$1 -print' # To find all links
 alias flink='find . -type l' 			# To list all directories and subdirectories:
 alias fdir='find . -type d -print' 		# To skip hidden directories:
@@ -118,7 +125,6 @@ alias addpypath='source $HOME/config/addpypath.csh'
 ###
 ## Documentation
 #
-alias vinfo='vi -c Info \!$' 			            # Requires info.vim plugin
 alias infoman='info --subnodes --output - \!$ | less' # Because info really, really sucks
 
 ###
@@ -140,6 +146,11 @@ alias established='netstat -a | grep ESTABLISHED'
 alias sshproxy='ssh -ND 9999 -p 39305 kruger@kinetic.physics.usu.edu'
 alias voltproxy='ssh -ND 9999 volt.txcorp.com'
 alias wgetr='wget -r -np -e robots=off --wait 1 '
+
+###
+##  Apple install
+#
+alias xcodeupdate='xcode-select --install'
 
 ###
 ## Documentation

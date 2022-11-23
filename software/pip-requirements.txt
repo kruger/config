@@ -45,9 +45,9 @@ prettyprinter  # https://github.com/tommikaikkonen/prettyprinter    PrettyPrinte
 sshuttle    # http://sshuttle.readthedocs.io/en/stable/usage.html    SSH as vpn
 background  # https://github.com/kennethreitz/background    Run things in background
 python-switch # https://github.com/mikeckennedy/python-switch.git   Switch in python
-rise    # https://damianavila.github.io/RISE    Convert ipython nb to slideshow
-upstream  # https://github.com/prkumar/uplink   Requests-like URL fetcher
-gooey     # https://github.com/chriskiehl/Gooey Insta-gui
+rise        # https://damianavila.github.io/RISE    Convert ipython nb to slideshow
+uplink      # https://github.com/prkumar/uplink   Requests-like URL fetcher
+gooey       # https://github.com/chriskiehl/Gooey Insta-gui
 requests-html #https://github.com/kennethreitz/requests-html.git  Easier html parser
 yapf        # https://github.com/google/yapf.git   Pretty-formatter
 pythonscope # Automatically generate unit tests
@@ -65,3 +65,15 @@ handcalcs   # https://github.com/connorferster/handcalcs            Cool Jupyter
 doitlive    # https://doitlive.readthedocs.io/en/latest             Do a live session automatically
 
 pyinstrument # Now the best profiler 2021-08-17
+
+matplotlib-backend-kitty  # into the  terminal
+sixelplot                 # same
+
+pympler  # Memory Profiler also valgrind for python
+
+papis   # Papis is a powerful and highly extensible command-line based bibliography manager.
+pubs    # Pubs brings your bibliography to the command line.
+
+
+
+rst2myst[sphinx]   # I'm switching to md

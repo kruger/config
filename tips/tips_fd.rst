@@ -120,6 +120,28 @@ we can use the ``-I`` (or ``--no-ignore``) option:
 To really search *all* files and directories, simply combine the hidden
 and ignore features to show everything (``-HI``).
 
+
+Misc
+~~~~
+
+fd 806.png -x mv {} vultr     # move file to vultr folder
+fd "2021.*" -X  mediainfo     # open result in `mediainfo res1 res2`
+fd prop -x mpv &              # open result in `mpv res1; mpv res2` in background
+
+# these two are the same; get modified in past 24 hrs
+fd -I -t f --changed-within 24h
+find -type f -mtime -1 -print0
+
+# for most cmds you don't need the {} syntax, but mv requires it
+fd "2021.*" -X mv {} ~/scratch/tmp7
+
+fd -e SC2Replay -X stat -c "%y    %n" | sort
+
+# lookup based on filename, curr dir only, and delete
+find -maxdepth 1 | xargs rm -v
+fd -d1 "sc2rep-(linux|win|mac)" -X rm -v
+
+
 Excluding specific files or directories
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -326,3 +348,4 @@ You can even use fd’s colored output inside fzf by setting:
 
 For more details, see the `Tips
 section <https://github.com/junegunn/fzf#tips>`__ of the fzf README.
+
