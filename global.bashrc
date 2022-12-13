@@ -17,6 +17,9 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# This is mostly for MacOS
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -137,11 +140,9 @@ alias sandia="ssh sekruge@srngate.sandia.gov"
 alias dipole="ssh kruger@dipole.txcorp.com"
 alias fusion="ssh kruger@fusion.txcorp.com"
 alias hydra="ssh hydra.gat.com"
-alias franklin="ssh skruger@franklin.nersc.gov"
-alias carver="ssh skruger@carver.nersc.gov"
-alias hopper="ssh skruger@hopper.nersc.gov"
-alias bassi="ssh skruger@bassi.nersc.gov"
 alias davinci="ssh skruger@davinci.nersc.gov"
+alias perlmutter="ssh skruger@perlmutter.nersc.gov"
+alias cori="ssh skruger@cori.nersc.gov"
 alias volt="ssh volt.txcorp.com"
 alias dipole="ssh dipole.txcorp.com"
 alias multipole="ssh multipole.txcorp.com"

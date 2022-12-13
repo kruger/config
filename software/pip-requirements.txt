@@ -30,6 +30,7 @@ undebt      #                                             Code refactoring tool 
 pre-commit  #                                             Pre-commit hooks http://pre-commit.com
 pynini      #                                             State machine parsing https://www.oreilly.com/ideas/how-to-get-superior-text-processing-in-python-with-pynini
 
+humre       # Human-readable regex
 
 elizabeth   # https://github.com/lk-geimfari/elizabeth    Generate fake data for testing
 validus     # https://shopnilsazal.github.io/validus/usage.html#basic-validation     Validation methods.  Very NICE!
@@ -68,6 +69,7 @@ pyinstrument # Now the best profiler 2021-08-17
 
 matplotlib-backend-kitty  # into the  terminal
 sixelplot                 # same
+plotext
 
 pympler  # Memory Profiler also valgrind for python
 
@@ -76,4 +78,6 @@ pubs    # Pubs brings your bibliography to the command line.
 
 
 
+
 rst2myst[sphinx]   # I'm switching to md
+

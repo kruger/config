@@ -46,6 +46,7 @@ brew "rust"         # Many programs written in rust
 brew "qt"           # The Qt Toolkit
 brew "clang-format" # Format C++ files
 brew "include-what-you-use"
+brew "mermaid-cli"  # Mermaid creates graphs similar to dot
 
 # Mail and related apps
 brew "neomutt"           # Main program
