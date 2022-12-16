@@ -17,7 +17,6 @@ export PATH="/usr/local/homebrew/opt/coreutils/libexec/gnubin/:${PATH}"
 export SCRATCH=/scr_gabrielle/kruger
 alias tmpdir="cd $SCRATCH"
 
-source $HOME/config/aliases.bashrc
 source $HOME/config/global.bashrc
 
 export SPACK_ROOT=$HOME/spackroot/spack

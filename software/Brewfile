@@ -61,17 +61,6 @@ brew "ripmime"           # Extract mime attachments
 brew "khal"              # CLI calendar that supports syncing
 brew "buku"              # bookmark manager
 
-# Apps
-brew "visidata"          # Explore large datasets (pandas and csv?)
-brew "omega"             # File indexer
-brew "xapian"            # File indexer
-brew "dbeaver"           # sqlite data explorer
-brew "miller"            # CSV CLI app
-brew "qalculate-gtk"     # GUI and CLI calculate that is awsome
-brew "wtfutil"           # TUI dashboard
-brew "sampler"           # TUI dashboard
-brew "nb"                # Notebook manager
-
 # PDF
 brew "ghostscript"       # 
 brew "xpdf"              # 
@@ -86,6 +75,9 @@ brew "libsixel"           # Extract mime attachments
 brew "PySixel"           # Extract mime attachments
 
 brew "imagemagic"           # Extract mime attachments
+brew "charmbracelet/tap/vhs" 
+brew "ffmpeg"
+brew "ttyd --HEAD"
 
 
 # Terminal/cli
@@ -116,6 +108,17 @@ cask "kitty"        # prefer wezterm but has icat
 cask "wezterm"      # the best terminal
 cask "skim"         # pdf viewer and note taker
 cask "sioyek"       # Seems to be the best pdf viewer
+
+# Apps
+brew "visidata"          # Explore large datasets (pandas and csv?)
+brew "omega"             # File indexer
+brew "xapian"            # File indexer
+brew "dbeaver"           # sqlite data explorer
+brew "miller"            # CSV CLI app
+brew "qalculate-gtk"     # GUI and CLI calculate that is awsome
+brew "wtfutil"           # TUI dashboard
+brew "sampler"           # TUI dashboard
+brew "nb"                # Notebook manager
 
 
 

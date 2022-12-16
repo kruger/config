@@ -7,3 +7,5 @@ tips/PDFs
 mac
 lib
 templates/latex/Books
+bin/sshproxy.sh
+software/CLI_research.rst

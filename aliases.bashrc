@@ -66,7 +66,6 @@ alias h=history
 alias x=exit
 alias k=clear
 alias who="who | sort"
-alias st=set term=vt100
 # This removes anything under 1M because they aren't important
 #alias dusort 'du -sh * | grep -v "^[0-9]\+\.\?[0-9]k" | sort -n'
 #TODO alias dusort='du -s \!* | sort -r -n | awk '"'"'{sum+=$1;printf("%9d %s\n",$1,$2)}'"'"
@@ -76,6 +75,15 @@ alias mydate='`date "+%Y-%m-%d"`'
 alias lookall='grep --color \!$ /usr/share/dict/words'
 alias showtab='cat -t -v -e'
 
+###
+## Terminal stuff
+#
+alias st=set term=vt100
+settitle() { echo -n -e "\033]0;$@\007"; }
+setautotitle() {
+   title=`basename $PWD | tr '[:lower:]' '[:upper:]'`
+   echo -n -e "\033]0;${title}\007";
+  }
 alias linenum='echo 123456789112345678921234567893123456789412345678951234567896123456789712345678981234567899'
 ###
 ## Job control
