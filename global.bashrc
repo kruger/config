@@ -114,3 +114,64 @@ alias editbg='vi $HOME/config/global.bashrc $HOME/config/aliases.bashrc; source 
 #
 alias tips="$EDITOR $HOME/config/tips"
 
+###
+## Moving around
+#
+export CDPATH=(~ $CDPATH)
+
+#					Networking completion
+#					Automatically setup hosts.
+#set hosts=(volt.txcorp.com dipole.txcorp.com enrico.txcorp.com multipole.txcorp.com fusion.txcorp.com nimrod.txcorp.com iter.txcorp.com oxygen.txcorp.com qalion.txcorp.com qasnowleopard.txcorp.com qaubuntu.txcorp.com sandybridge.txcorp.com ivy.txcorp.com haswell.txcorp.com plasma.txcorp.com phi.txcorp.com ptsolvemac.txcorp.com sekruge@srngate.sandia.gov krugers@login.mcs.anl.gov krugers@noether.colorado.edu coe0102@tulip.cray.com kruger@login1.ascent.olcf.ornl.gov krugers@orthus.nic.uoregon.edu)
+#set hosts=($hosts skruger@cori.nersc.gov skruger@edison.nersc.gov hydra.gat.com skruger@euclid.nersc.gov jaguar.ccs.ornl.gov krugersc@129.244.40.23)
+
+
+#					Complete on hosts
+#complete ssh	p/1/\$hosts/ c/-/"(l n)"/   n/-l/u/ N/-l/c/ n/-/c/ p/2/c/ p/*/f/
+#complete scp "c,*:/,F:/," "c,*:,F:$HOME," 'n/*/$hosts/:/'
+#
+#complete svn p/1/"(add rm remove mv move cat co checkout commit diff \
+#                   edit editors export history import init \
+#                   log login rdiff release \
+#                   status tag unedit update watch)"/ 
+#
+####
+### Common machines
+#
+alias noether="ssh krugers@noether.colorado.edu"
+alias sandia="ssh sekruge@srngate.sandia.gov"
+alias dipole="ssh kruger@dipole.txcorp.com"
+alias fusion="ssh kruger@fusion.txcorp.com"
+alias hydra="ssh hydra.gat.com"
+alias davinci="ssh skruger@davinci.nersc.gov"
+alias perlmutter="ssh skruger@perlmutter.nersc.gov"
+alias cori="ssh skruger@cori.nersc.gov"
+alias volt="ssh volt.txcorp.com"
+alias dipole="ssh dipole.txcorp.com"
+alias multipole="ssh multipole.txcorp.com"
+alias enrico="ssh enrico.txcorp.com"
+alias iter="ssh iter.txcorp.com"
+alias sandybridge="ssh sandybridge.txcorp.com"
+alias sb="ssh sandybridge.txcorp.com"
+alias hip="ssh hip.txcorp.com"
+alias ascent="kruger@login1.ascent.olcf.ornl.gov"
+alias vsb=" ssh -t dipole.txcorp.com ssh -A -t sandybridge.txcorp.com"
+alias vivy="ssh -t dipole.txcorp.com ssh -A -t ivy.txcorp.com"
+alias vphi="ssh -t dipole.txcorp.com ssh -A -t phi.txcorp.com"
+alias vhip="ssh -t dipole.txcorp.com ssh -A -t hip.txcorp.com"
+alias cybele="ssh -p 2039 kruger@cybele.gat.com"
+alias iris="ssh -p 2039 -t kruger@cybele.gat.com -A -t iris.gat.com"
+alias voxy="ssh -t dipole.txcorp.com ssh -A -t oxygen.txcorp.com"
+alias vhaswell="ssh -t dipole.txcorp.com ssh -A -t haswell.txcorp.com"
+alias ivy="ssh ivy.txcorp.com"
+alias phi="ssh phi.txcorp.com"
+alias ptmac="ssh ptsolvemac.txcorp.com"
+alias haswell="ssh haswell.txcorp.com"
+alias plasma="ssh plasma.txcorp.com"
+alias qalion="ssh qalion.txcorp.com"
+alias qasnowleopard="ssh qasnowleopard.txcorp.com"
+alias qaubuntu="ssh qaubuntu.txcorp.com"
+alias oxygen="ssh oxygen.txcorp.com"
+alias tatanka="ssh krugersc@129.244.40.23"
+alias loki="ssh -X -t cmodws29.psfc.mit.edu  ssh loki.psfc.mit.edu"
+alias mcs="ssh krugers@login.mcs.anl.gov"
+alias tulip="ssh coe0102@tulip.cray.com"
