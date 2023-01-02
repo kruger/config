@@ -154,7 +154,6 @@ end)
 local merge = require('kruger.utils').merge
 local basic = require('kruger.basic')
 local appearance = require('kruger.appearance')
-local keymaps = require('kruger.keymaps')
 local keywork = require('kruger.keymaps-workspace')
 
-return merge(basic, appearance, keymaps, keywork)
+return merge(basic, appearance, keywork)
