@@ -43,6 +43,9 @@ Set another upstream repo::
 
   git remote add upstream https://bitbucket.org/petsc/petsc
 
+Rename local branch::
+
+  git branch -m <newname>
 
 Git stash workflow::
 

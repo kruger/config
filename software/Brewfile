@@ -9,6 +9,7 @@ tap "hisbaan/tap"        # didyoumean
 tap "zegervdv/zathura"   # zathura
 
 
+
 # General utilities
 brew "didyoumean"   # spelling utility
 brew "colordiff"    # More colorful diffs outside of git
@@ -29,6 +30,7 @@ brew "wget"         # Mac's have curl by default, but not wget
 brew "bash"         # Bash 5 instead of 3, in case you need it
 brew "rename"       # Rename files utility
 brew "tmux"         # Split windows and saving terminal sessions (screen replacement)
+brew "dtach"        # Like only have the session manager from tmux
 brew "bat"          # Nicely colorized replacement for cat
 brew "neovim"       # New editor
 brew "macvim"       # GUI vim
@@ -64,6 +66,7 @@ brew "buku"              # bookmark manager
 # PDF
 brew "ghostscript"       # 
 brew "xpdf"              # 
+brew "poppler"           # Has xpdf as a dependency.   I use pdfdetach from this
 brew "pdfjam"              # 
 brew "zathura"           # PDF and document viewer
 
@@ -91,7 +94,8 @@ brew "rcm"              # Dot file management
 # Fonts
 cask "font-hack-nerd-font"
 cask "font-sauce-code-pro-nerd-font"
-
+cask "freecad"
+cask "klayout"
 # Core
 #cask "iterm2"       # A great terminal
 #cask "mactex"       # LaTeX. Huge.
@@ -108,6 +112,9 @@ cask "kitty"        # prefer wezterm but has icat
 cask "wezterm"      # the best terminal
 cask "skim"         # pdf viewer and note taker
 cask "sioyek"       # Seems to be the best pdf viewer
+cask "keycastr"     # Makes key strokes visible
+cask "mactex"       # The best
+
 
 # Apps
 brew "visidata"          # Explore large datasets (pandas and csv?)

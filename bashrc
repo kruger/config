@@ -17,6 +17,9 @@ export PATH="/usr/local/homebrew/opt/coreutils/libexec/gnubin/:${PATH}"
 export SCRATCH=/scr_gabrielle/kruger
 alias tmpdir="cd $SCRATCH"
 
+# Very miscellaneous
+alias nrl="open /Users/kruger/Papers/NRL_FORMULARY_07.pdf"
+
 source $HOME/config/global.bashrc
 
 export SPACK_ROOT=$HOME/spackroot/spack
@@ -49,3 +52,5 @@ eval "$(starship init bash)"
 
 # Direnv -- customized directory settings
 eval "$(direnv hook bash)"
+
+

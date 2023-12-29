@@ -15,10 +15,15 @@ natsort    # https://github.com/SethMMorton/natsort
 
 gensim     # https://radimrehurek.com/gensim/index.html   NLP
 
+pdftables  # https://github.com/vnaydionov/pdftables      PDF parsing
+pypdf       # Seems to be the standard pdf parser now
+pdf2doi    # Seems to be the standard pdf parser now      Better than my own tool
+pdf2bib    # Uses pdf2doi
+pdf-renamer # https://github.com/MicheleCotrufo/pdf-renamer Uses pdf2bib
+file_organizer # https://github.com/codedai/file_organizer  Uses pdf2doi and ChatGPT to summarize paper
 usaddress  # https://github.com/datamade/usaddress
 pint       # https://pint.readthedocs.io/en/0.7.2/        Units
 arrow      # https://github.com/crsmithdev/arrow          Time handling
-pdftables  # https://github.com/vnaydionov/pdftables      PDF parsing
 datacleaner # https://github.com/rhiever/datacleaner      Pandas advanced handling
 parserator  # https://github.com/datamade/parserator      Probabilistic parsing
 Faker       # https://github.com/joke2k/faker             Generate fake data
@@ -80,4 +85,8 @@ pubs    # Pubs brings your bibliography to the command line.
 
 
 rst2myst[sphinx]   # I'm switching to md
+baca               # TUI E-reader built on Textual
+periodictable      # Lots of data
+trogon             # Clik -> Textualize
 
+FinQual            # Get data from SEC

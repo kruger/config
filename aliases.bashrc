@@ -94,7 +94,9 @@ launch () {
 }
 
 #alias launch='$HOME/config/bin/nohuprun.sh "\!*"; tail -f `basename \!:1.out`'
-alias mps='ps -aux | sort  +4nr | more'
+# This is really for the mac ps which is BSD based
+alias myps='ps -u kruger | grep -v login | grep -v tcsh | grep -v Applications | grep -v mdworker | grep -v System | grep -v /usr/lib | grep -v Library | grep -v agilebits | grep -v /usr/sbin'
+alias mps='ps -aux | sort  -nr | more'
 alias gps='ps -eaf | grep \!$'
 #alias gps 'ps -u kruger | grep \!$'
 alias showpi='procinfo -D -n1'
@@ -210,6 +212,22 @@ alias h5lr='h5ls -r'
 alias h5la='h5ls -rv'
 alias h5dds='h5dump -d'
 
+###
+##  Papers
+#
+alias extractbib='pdfdetach -saveall ${1}'
+mvpaperstosort() {
+    dest_dir=$HOME/Papers/Library/ToSort
+    for file in "$@"; do
+       mv -i "$file" "$dest_dir"
+    done
+}
+pdfless () 
+{ 
+      pdftotext -layout "$1" - |
+          sed 's/\f/\n\n ----------------- ----------------- <page> ----------------- ----------------- \n\n\n/g' |
+          ${PAGER:-less} -S
+}
 ###
 ## PETSc
 #
